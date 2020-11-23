@@ -1,6 +1,4 @@
-{% extends 'base.html' %}{% load static %}{% load crispy_forms_tags %}
-
-{% block content %}
+{% extends 'base.html' %}{% load static %} {% block content %}
 <div class="container mt-3">
 
     <!--single big chonky card-->
@@ -19,32 +17,27 @@
                 <div class="row container container-fluid">
 
                     <!--auto select the current user to foreignkey in model-->
-                    <input id="user-id" type="hidden" value="{{user.account.id}}">
-                    {{form.user}}
+                    <input id="user-id" type="hidden" value="{{user.account.id}}"> {{form.user}}
 
                     <!--left colum-->
                     <div class="col-6">
 
                         <div class="form-group">
-                            <label for="form.authors">Título del capítulo</label>
-                            {{form.title}}
+                            <label for="form.authors">Título del capítulo</label> {{form.title}}
                         </div>
 
 
                         <div class="form-group">
-                            <label for="form.authors">Título del libro</label>
-                            {{form.bookTitle}}
+                            <label for="form.authors">Título del libro</label> {{form.bookTitle}}
                         </div>
 
                         <div class="form-group">
-                            <label for="form.title">Editorial del libro</label>
-                            {{form.bookEditorial}}
+                            <label for="form.title">Editorial del libro</label> {{form.bookEditorial}}
                         </div>
 
                         <div class="row">
                             <div class="form-group col-6">
-                                <label for="form.indexed">ISBN del libro</label>
-                                {{form.bookIsbn}}
+                                <label for="form.indexed">ISBN del libro</label> {{form.bookIsbn}}
                             </div>
                             <!--<div class="form-group  col-6">
                                 <label for="form.indexInfo">Año de publicacion</label>
@@ -52,8 +45,7 @@
                             </div>-->
                         </div>
                         <div class="form-group">
-                            <label for="form.file" class="form-control-file">Elegir archivo</label>
-                            {{form.file}}
+                            <label for="form.file" class="form-control-file">Elegir archivo</label> {{form.file}}
                         </div>
                     </div>
 
@@ -62,14 +54,12 @@
                         <div class="form-group">
                             <label for="form.project">Proyecto</label>
                             <small id="proyectHelp" class="form-text text-muted">Seleccione el proyecto al
-                                cual corresponda la publicación de este libro</small>
-                            {{form.project}}
+                                cual corresponda la publicación de este libro</small> {{form.project}}
                         </div>
                         <div class="form-group">
                             <label for="form.journal">Co Autor(es)</label>
                             <small id="proyectHelp" class="form-text text-muted">Seleccione autores según
-                                corresponda a quienes hayan participado en esta publicación</small>
-                            {{form.authors}}
+                                corresponda a quienes hayan participado en esta publicación</small> {{form.authors}}
                         </div>
                         <div class="form-group">
                             <label>¿Necesita dar credito a un autor que no existe
@@ -102,9 +92,7 @@
 
                 <!--errors-->
                 <div class="form-group mt-2">
-                    {% if form.errors %}
-                    {{form.errors}}
-                    {% endif %}
+                    {% if form.errors %} {{form.errors}} {% endif %}
                 </div>
             </form>
         </div>

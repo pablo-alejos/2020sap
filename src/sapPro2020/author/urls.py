@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .views import AuthorIndexView, AuthorCreateView, AuthorDetailView, AuthorDeleteView, AuthorUpdateView
 
-app_name = 'account'
+app_name = 'author'
 urlpatterns = [
     path('index', login_required(AuthorIndexView.as_view()), name='author-index'),
     path('create', login_required(AuthorCreateView.as_view()), name='author-create'),
