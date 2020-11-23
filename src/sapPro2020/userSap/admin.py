@@ -12,7 +12,7 @@ class UserSapAdmin(UserAdmin):
     form = UserSapChangeForm
     model = UserSap
     list_display = ('email', 'account', 'rol', 'is_staff', 'is_active',)
-    list_filter = ('email', 'account', 'rol', 'is_staff', 'is_active',)
+    list_filter = ('rol', 'is_staff', 'is_active',)
 
     fieldsets = (
         (None, {'fields': ('email', 'password', 'rol',)}),
