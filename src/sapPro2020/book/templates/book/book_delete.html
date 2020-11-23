@@ -1,0 +1,95 @@
+{% extends 'base.html' %}{% load static %}
+
+
+{% block content %}
+<!--
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<div class="row sap-container shadow-lg rounded">
+    <div class="card-body">
+
+        <div class="row container">
+            <h3 class="sap-h3 col-11">Detalles del libro</h3>
+            <div class="col-1">
+                <a href="{% url 'book:book-index' %}" class="btn btn-danger">Cancelar</a>
+            </div>
+        </div>
+
+        <div class="row container ml-2">
+            <h4><strong>{{object.title}}</strong></h4>
+        </div>
+        <div class="row container ml-2">
+            <h5><em><small><strong>Titulo completo: </strong>{{object.title}}</small></em></h5>
+        </div>
+        <div class="row container ml-2">
+            <div class="col-2 p-0">
+                <img typeof="foaf:Image"
+                    src="https://portals.iucn.org/library/sites/library/files/styles/publication/public/book_covers/BC-1981-001.jpg?itok=pE30M_DN"
+                    width="200" height="287">
+            </div>
+            <div class="col-10 pl-5">
+                <h5><em><small><strong>Subido por: </strong></em>{{object.user.account}}</small></h5>
+
+                <h5><em><small><strong>Autores: </strong></em>
+                    {% for author in object.authors.all%}
+                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
+                    {% if author != object.authors.last%} | {% endif %}
+                    {% endfor %}</small></h5>
+                <h5><em><small><strong>Editorial: </strong></em>{{object.editorial}}</small></h5>
+                <h5><em><small><strong>ISBN: </strong></em>{{object.isbn}}</small></h5>
+                <h5><em><small><strong>Año de publicacion: </strong></em>{{object.publicationYear}}</small></h5>
+                <div class="simple-separator"></div>
+                <h5><em><small><strong>Fecha de subida: </strong></em>{{object.created}}</small></h5>
+                <h5><em><small><strong>Ultima actualizacion: </strong></em>{{object.created}}</small></h5>
+                <div class="simple-separator"></div>
+                <h5><em><small><strong>Descarga el archivo pdf: </strong></em>
+                    <a class="sap-intext-link sap-card-link" href="{{ MEDIA_URL }}/archiving/{{object.file}}"
+                        target=”_blank”>{{object.file.name|cut:"archiving/"}}</a>
+                    </small></h5>
+                <div class="simple-separator mb-2"></div>
+                {% if object.user == user %}
+
+
+                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
+                    Eliminar
+                </button>
+                <a class="btn btn-warning " href="{% url 'book:book-update' object.id %}">Editar</a>
+                {% endif %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar {{object.title}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Esta publicacion compete tambien a: {% for author in object.authors.all%}
+                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
+                    {% if author != object.authors.last%} | {% endif %}
+                    {% endfor %}</p>
+                <p> ¿Esta seguro que desea eliminar esta publicacion? </p>
+                <p> Este proceso es irreversible </p>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-warning" href="{% url 'book:book-detail' object.id %}">Cancelar</a>
+                <form method="post">
+                    {% csrf_token %}
+                    <input type="submit" class="btn btn-danger" value="Confirmar">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(window).load(function () {
+        $('#deletemodal').modal('show');
+    }); 
+</script>-->
+{% endblock %}

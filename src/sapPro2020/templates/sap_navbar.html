@@ -1,0 +1,106 @@
+{% load static %}
+<!--::header part start::-->
+<header class="container-fluid sticky-top bg-light " style="border-bottom: solid 10px; border-color: #DD971A;">
+  <nav class="row navbar navbar-expand-lg ">
+
+    <a class="navbar-brand" href="{% url 'home' %}">
+      <img src="{% static 'img/client_logo/uabc.png' %}" width="100" height="50">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"><img src="{% static 'img/toggle.png' %}"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!--botones principales-->
+      <ul class="navbar-nav w-100 mr-auto">
+
+        <li class="nav-item container">
+          <a class="nav-link" href="{% url 'publication:publication-index' %}" role="button">
+            <button class="sap-nav-button btn-1">
+              <span class="sap-nav-span">Publicaciones</span></button></a>
+        </li>
+
+        <li class="nav-item container">
+          <a class="nav-link" href="{% url 'publication:publication-index' %}" role="button">
+            <button class="sap-nav-button btn-1">
+              <span class="sap-nav-span">Seguimiento</span></button></a>
+        </li>
+
+        <li class="nav-item container">
+          <a class="nav-link" href="{% url 'publication:publication-index' %}" role="button">
+            <button class="sap-nav-button btn-1">
+              <span class="sap-nav-span">Autores</span></button></a>
+        </li>
+
+      </ul>
+
+      <!-- si el usuario esta logeado-->
+      {% if user.is_authenticated %}
+      <ul class="navbar-nav">
+        <!--li de notificaciones-->
+        <li class="nav-item dropdown">
+          <a class="pading-transition-left nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <svg class="bi bi-bell-fill shake" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M8 16a2 2 0 002-2H6a2 2 0 002 2zm.995-14.901a1 1 0 10-1.99 0A5.002 5.002 0 003 6c0 1.098-.5 6-2 7h14c-1.5-1-2-5.902-2-7 0-2.42-1.72-4.44-4.005-4.901z" />
+              <span class="badge badge-danger">4</span>
+            </svg>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+            <a class="pading-transition-left-1 dropdown-item btn btn-outline sap-form-link"
+              href="{% url 'userSap:user-index' %}">Notificacion de ejemplo <span
+                class="badge badge-primary">Revision</span></a>
+
+            <a class="pading-transition-left-1 dropdown-item btn btn-outline sap-form-link"
+              href="{% url 'userSap:user-index' %}">Notificacion de ejemplo <span
+                class="badge badge-danger">Rechazado</span></a>
+            <a class="pading-transition-left-1 dropdown-item btn btn-outline sap-form-link"
+              href="{% url 'userSap:user-index' %}">Notificacion de ejemplo <span
+                class="badge badge-success">Aprobado</span></a>
+            <a class="pading-transition-left-1 dropdown-item btn btn-outline sap-form-link"
+              href="{% url 'userSap:user-index' %}">Notificacion de ejemplo <span
+                class="badge badge-warning">Pendiente</span></a>
+            <div class="dropdown-divider"></div>
+            <a class="pading-transition-left-1 dropdown-item btn btn-outline sap-form-link"
+              href="{% url 'userSap:user-index' %}">Ver todas</a>
+          </div>
+        </li>
+
+        <!--li menu de usuario-->
+        <li class="nav-item dropdown">
+          <a class="pading-transition-left nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {% if user.account.firstName %}
+            {{ user.account.firstName }}
+            {% else%}
+            {{user.email}}
+            {% endif %}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-index' %}"><img
+                src="{% static 'img/open-iconic/svg/person.svg' %}" height="18px" width="18px"> Perfil</a>
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-update' user.id %}"><img
+                src="{% static 'img/open-iconic/svg/cog.svg' %}" height="18px" width="18px"> Editar inicio de
+              sesion</a>
+            <a class="pading-transition-left-1 dropdown-item"
+              href="{% url 'userSap:user-update-password' user.id %}"><img
+                src="{% static 'img/open-iconic/svg/key.svg' %}" height="18px" width="18px"> Cambiar contraseña</a>
+            <div class="dropdown-divider"></div>
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-logout' %}"><img
+                src="{% static 'img/open-iconic/svg/account-logout.svg' %}" height="18px" width="18px"> Salir</a>
+          </div>
+        </li>
+      </ul>
+      {% else %}
+      <div class="form-group form-group-sm row mr-auto">
+        <div class="col-6"><a href="{% url 'userSap:user-login' %}" class="btn btn-outline-success">Entrar</a></div>
+        <div class="col-6"><a href=" {% url 'userSap:user-create' %}" class="btn btn-outline-dark">Registro</a></div>
+      </div>
+      {% endif %}
+    </div>
+  </nav>
+</header>
+<!-- Header part end-->

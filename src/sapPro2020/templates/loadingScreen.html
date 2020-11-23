@@ -1,0 +1,37 @@
+{% load static %}
+
+<div class="" id="loading" style=" width: 300px;
+                          height: 300px;
+                          position: absolute;
+                          left: 50%;
+                          top: 50%;
+                          transform: translate(-50%, -50%);">
+    <div class=" row w-100 h-100 text-center ">
+        <div class="col-12 ">
+            <!--<div class="spinner-border text-success" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div> -->
+            <img src="{% static 'img/loader.gif' %}" width="120px" height="120px">
+        </div>
+    </div>
+</div>
+</div>
+
+
+<script>
+
+    window.onload = loader;
+
+    function loader() {
+        setTimeout(function () {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("page").style.display = "block";
+        }, 800);
+        //$("#loading").fadeOut(800, function () {
+         //   $("#page").fadeIn(200)
+        //});
+        $("#loading").fadeOut(800);
+        $("#page").fadeIn(800);
+    }
+
+</script>

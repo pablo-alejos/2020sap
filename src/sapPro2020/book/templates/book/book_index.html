@@ -1,0 +1,61 @@
+{% extends "base.html" %}{% load static %} {% block content %}
+
+
+<div class="row sap-container shadow-lg rounded">
+    <div class="card-body">
+        <h3 class="sap-h3">Libros</h3>
+        {% if object_list %}
+        <table id="table" data-locale="es-MX" data-toggle="table" data-pagination="true" data-page-size="5"
+            data-pagination-loop="false" data-sort-class="table-active" data-sortable="true" data-filter-control="true"
+            data-show-search-clear-button="true" data-click-to-select="true"
+            data-classes="table table-bordered table-hover" data-maintain-meta-data="true">
+            <thead>
+                <tr>
+                    <!--   <th>Project</th> -->
+                    <th data-field="state" data-checkbox="true"></th>
+                    <th data-field="Titulo" data-sortable="true">Título</th>
+                    <th data-field="Autor" data-sortable="true">Autor</th>
+                    <th data-field="Authors" data-sortable="true">Authors</th>
+                    <th data-field="ISBN" data-sortable="true">ISBN</th>
+                    <th data-field="Editorial" data-sortable="true">Editorial</th>
+                    <th>Descargar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in object_list  %}
+                <tr>
+                    <!--<td>{{book.project}}</td>-->
+                    <td></td>
+                    <td data-field="title" data-filter-control="input"><a class=" sap-intext-link"
+                            href="{% url 'book:book-detail' book.id %}">
+                            {{book.title}}</a>
+                        {% if book.user == user %}
+                        <a class="sap-intext-link" href="{% url 'book:book-delete' book.id %}">Eliminar</a>
+                        <a class="sap-intext-link" href="{% url 'book:book-update' book.id %}">Editar</a>
+                        {% endif %}
+                    </td>
+                    <td data-field="account" data-filter-control="input">{{book.user.account}}</td>
+                    <td data-field="author" data-filter-control="input">{% for author in book.authors.all%}
+                        {{author.lastNameA}}
+                        {% endfor %}</td>
+                    <td data-field="isbn" data-filter-control="input">{{book.isbn}}</td>
+                    <td data-field="editorial" data-filter-control="input">{{book.editorial}}</td>
+                    <td><a class="sap-intext-link" href="{{ MEDIA_URL }}/archiving/{{book.file}}"
+                            target=”_blank”>Archivo</td></a>
+                    <!--{{book.file.name|cut:"archiving/"}}-->
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h2>No se pudieron recuperar libros registrados</h2>
+        {% endif %}
+    </div>
+</div>
+<script>
+
+    $(function () {
+        $('#table').bootstrapTable()
+    })
+</script>
+{% endblock %}

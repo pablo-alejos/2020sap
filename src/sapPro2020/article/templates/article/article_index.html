@@ -1,0 +1,62 @@
+{% extends 'base.html' %}{% load static %}
+
+{% block content %}
+
+<div class="row sap-container shadow-lg rounded">
+    <div class="card-body">
+        <h3 class="sap-h3">Articulos</h3>
+        {% if object_list %}
+            <table id="table" data-locale="es-MX" data-toggle="table" data-pagination="true" data-page-size="5"
+            data-pagination-loop="false" data-sort-class="table-active" data-sortable="true" data-filter-control="true"
+            data-show-search-clear-button="true" data-click-to-select="true"
+            data-classes="table table-bordered table-hover" data-maintain-meta-data="true">
+            <thead>
+                <tr>
+                    <th data-field data-checkbox="true"></th>
+                    <th data-field="Titulo" data-sortable="true">Titulo</th>
+                    <th data-field="Autor" data-sortable="true">Autor</th>
+                    <th data-field="Autores" data-sortable="true">Autores</th>
+                    <th data-field="Revista" data-sortable="true">Revista</th>
+                    <th data-field="Indizado" data-sortable="true">Indizado</th>
+                    <th data-field="Paginas" data-sortable="true">Páginas</th>
+                    <th>Descargar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {%for article in object_list%}
+            <tr>
+            <td></td>
+             <td data-field="title" data-filter-control="input"><a class=" sap-intext-link"
+                            href="{% url 'article:article-detail' article.id %}">
+                            {{article.title}}</a>
+                        {% if article.user == user %}
+                        <a class="sap-intext-link" href="{% url 'article:article-delete' article.id %}">Eliminar</a>
+                        <a class="sap-intext-link" href="{% url 'article:article-update' article.id %}">Editar</a>
+                        {% endif %}
+                    </td>
+                    <td data-field="autor" data-filter-control="input">{{article.user.account}}</td>
+                    <td data-field="autores" data-filter-control="input">{% for author in article.authors.all%}
+                        {{author.lastNameA}}
+                        {% endfor %}</td>
+                    <td data-field="revista" data-filter-control="input">{{article.journal}}</td>
+                    <td data-field="indizado" data-filter-control="input">{{article.indexed}}</td>
+                    <td data-field="paginas" data-filter-control="input">{{article.pages}}</td>
+                    <td><a class="sap-intext-link" href="{{ MEDIA_URL }}/archiving/{{book.file}}"
+                            target=”_blank”>Archivo</td></a>
+            </tr>
+            {%endfor%}
+            </tbody>
+            </table>
+            {%else%}
+            <h2>No se pudieron recuperar libros registrados</h2>
+            {%endif%}
+    </div>
+</div>
+<script>
+
+    $(function () {
+        $('#table').bootstrapTable()
+    })
+</script>
+
+{% endblock %}

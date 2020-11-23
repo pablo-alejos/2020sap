@@ -1,0 +1,21 @@
+{% extends "base.html" %}{% load static %} {% block content %}
+
+<div class="row sap-container">
+    <div class="col-12 item-form">
+        <div class="row container">
+            <h3 class="sap-h3 col-12">Agregar cuerpo académico </h3>
+        </div>
+        <div class="row container">
+            <div class="card-body">
+                <!--academy data-->
+                <div class="form-group row mt-2">
+                    <form method="post"> {% csrf_token %}
+                        {{form.as_p}}
+                        <input type="submit" class="btn btn-success" value="Enviar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

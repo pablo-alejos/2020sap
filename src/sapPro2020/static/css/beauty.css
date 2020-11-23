@@ -1,0 +1,601 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  color: #333;
+  background-color: #fafafa;
+  background-color: #007b5e;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu a::after {
+  transform: rotate(-90deg);
+  position: absolute;
+  right: 3px;
+  top: 40%;
+}
+
+.dropdown-submenu:hover .dropdown-menu,
+.dropdown-submenu:focus .dropdown-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute !important;
+  margin-top: -30px;
+  left: 100%;
+}
+
+@media (max-width: 992px) {
+  .dropdown-menu {
+    width: 50%;
+  }
+  .dropdown-menu .dropdown-submenu {
+    width: auto;
+  }
+}
+
+.filterable {
+  margin-top: 60px;
+  margin-left: 50px;
+}
+
+.filterable .panel-heading .pull-right {
+  margin-top: -20px;
+}
+
+.filterable .filters input[disabled] {
+  background-color: transparent;
+  border: none;
+  cursor: auto;
+  box-shadow: none;
+  padding: 0;
+  height: auto;
+}
+
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+  color: #333;
+}
+
+.filterable .filters input[disabled]::-moz-placeholder {
+  color: #333;
+}
+
+.filterable .filters input[disabled]:-ms-input-placeholder {
+  color: #333;
+}
+.jplist-selected {
+  background-color: #dd971a;
+  border-color: #dd971a;
+}
+
+/* author pablo.alejos
+    css for clear all li items
+*/
+
+li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  list-style: none;
+}
+
+/* author pablo.alejos
+    css for sap uabc
+*/
+
+#id-select-book-user {
+  position: absolute;
+  display: none;
+}
+
+/*sap classes*/
+
+.tp {
+  padding: 8%;
+  transition: padding 0.2s;
+  font-size: large;
+}
+
+.tp:hover {
+  padding: 5%;
+}
+
+.sap-padding-class {
+  align-items: flex-end;
+}
+
+.sap-list-item:hover,
+.sap-list-item:active {
+  background-color: #dbdbdb;
+  border-left: 2px solid #000;
+  padding-left: 15%;
+}
+
+.sap-list-item {
+  padding-left: 10%;
+  font-weight: bold;
+  transition: padding-left 0.2s;
+}
+
+/*sap text*/
+
+.bold {
+  font-weight: 500;
+}
+
+.bold:hover {
+  font-weight: 600;
+  text-decoration: wavy;
+}
+
+/*sap containers*/
+
+.item-form {
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  line-height: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: calc(100% - 48px);
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  padding: 1.25rem;
+}
+
+.sap-container {
+  background-color: #fff;
+  background-color: rgba(var(--d87, 255, 255, 255), 1);
+  border: 1px solid #dbdbdb;
+  border-left: 0px;
+  max-width: 1380px;
+  overflow: hidden;
+  width: 100%;
+  margin: 30px auto 0;
+}
+
+.sap-menu {
+  flex-basis: auto;
+  -webkit-box-flex: 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.sap-menu-container {
+  border-right: 0.5px solid rgba(var(--b6a, 219, 219, 219), 1);
+  flex-basis: auto;
+  flex-grow: 0;
+  flex-shrink: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+.sap-box-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/*sap separators*/
+
+.simple-separator {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.simple-separator-left {
+  border-left: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.lil-chonky-separator {
+  border-bottom: 2px solid rgba(0, 0, 0, 0.125);
+}
+
+/*sap links*/
+
+.sap-form-link {
+  padding-left: 5%;
+  font-weight: 0;
+  font-size: small;
+}
+
+.sap-form-link:hover {
+  color: #b72d5b;
+}
+
+.h-aRd {
+  border-left: 2px solid transparent;
+  /*border-left-color: transparent;*/
+  display: block;
+  font-size: 16px;
+  height: 100%;
+  line-height: 20px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: calc(100% - 48px);
+}
+
+.h-aRd,
+.h-aRd:visited,
+.h-aRd:active,
+.h-aRd:hover {
+  color: rgba(var(--i1d, 38, 38, 38), 1);
+}
+
+.sap-intext-link {
+  font-weight: 100;
+}
+
+.sap-intext-link:hover {
+  color: #b72d5b;
+}
+
+.sap-card-link {
+  color: #0000ee;
+  font-weight: 100;
+}
+
+/*sap titles*/
+
+.sap-h3 {
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  /*padding-top: 8px;*/
+  /*padding-bottom: 8px;*/
+}
+
+.sap-text {
+  font-weight: 100;
+}
+
+.sap-form-label {
+  font-weight: 100;
+  font-size: 16px;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+/*sap colors*/
+
+.bg-sap-yellow {
+  background-color: #dd971a;
+}
+
+.bg-sap-green {
+  background-color: #007521;
+}
+
+/*sap buttons*/
+
+.sap-btn-dark {
+  border-color: #000;
+  border-radius: 1px;
+}
+
+.btn-outline {
+  color: #000;
+  background-color: #ffffff;
+  border-color: #dbdbdb;
+  border-radius: 0;
+}
+
+.btn-outline:hover,
+.btn-outline:active,
+.btn-outline:focus,
+.btn-outline.active {
+  background: #dbdbdb;
+}
+
+/*----- button 1 -----*/
+
+.sap-nav-button {
+  display: inline-block;
+  position: relative;
+  background: none;
+  border: none;
+  color: #000;
+  font-size: 18px;
+  padding: 5%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.sap-nav-span {
+  display: inline-block;
+}
+
+.sap-nav-button::before,
+.sap-nav-button::after {
+  content: "";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #007521;
+}
+
+.sap-nav-span::before,
+.sap-nav-span::after {
+  content: "";
+  width: 2px;
+  height: 0;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #007521;
+}
+
+.sap-nav-button:hover::before,
+.sap-nav-button:hover::after {
+  width: 100%;
+}
+
+.sap-nav-button:hover .sap-nav-span::before,
+.sap-nav-button:hover .sap-nav-span::after {
+  height: 100%;
+}
+
+.btn-1::before,
+.btn-1::after {
+  transition-delay: 0.2s;
+}
+
+.btn-1 .sap-nav-span::before,
+.btn-1 .sap-nav-span::after {
+  transition-delay: 0s;
+}
+
+.btn-1::before {
+  right: 0;
+  top: 0;
+}
+
+.btn-1::after {
+  left: 0;
+  bottom: 0;
+}
+
+.btn-1 .sap-nav-span::before {
+  left: 0;
+  top: 0;
+}
+
+.btn-1 .sap-nav-span::after {
+  right: 0;
+  bottom: 0;
+}
+
+.btn-1:hover::before,
+.btn-1:hover::after {
+  transition-delay: 0s;
+}
+
+.btn-1:hover .sap-nav-span::before,
+.btn-1:hover .sap-nav-span::after {
+  transition-delay: 0.2s;
+}
+
+/*displaying*/
+
+#page {
+  display: none;
+}
+
+#loading {
+  display: block;
+}
+
+/* animations */
+
+.pading-transition-left {
+  padding-left: 0%;
+  transition: padding-left 0.2s;
+}
+
+.pading-transition-left:hover {
+  padding-left: 5%;
+}
+
+.pading-transition-left-1 {
+  padding-left: 5%;
+  transition: padding-left 0.2s;
+}
+
+.pading-transition-left-1:hover {
+  padding-left: 8%;
+}
+
+@keyframes shaking {
+  0% {
+    -webkit-transform: rotateZ(0);
+  }
+  2% {
+    -webkit-transform: rotateZ(30deg);
+  }
+  4% {
+    -webkit-transform: rotateZ(-28deg);
+  }
+  6% {
+    -webkit-transform: rotateZ(34deg);
+  }
+  8% {
+    -webkit-transform: rotateZ(-32deg);
+  }
+  10% {
+    -webkit-transform: rotateZ(30deg);
+  }
+  12% {
+    -webkit-transform: rotateZ(-28deg);
+  }
+  14% {
+    -webkit-transform: rotateZ(26deg);
+  }
+  16% {
+    -webkit-transform: rotateZ(-24deg);
+  }
+  18% {
+    -webkit-transform: rotateZ(22deg);
+  }
+  20% {
+    -webkit-transform: rotateZ(-20deg);
+  }
+  22% {
+    -webkit-transform: rotateZ(18deg);
+  }
+  24% {
+    -webkit-transform: rotateZ(-16deg);
+  }
+  26% {
+    -webkit-transform: rotateZ(14deg);
+  }
+  28% {
+    -webkit-transform: rotateZ(-12deg);
+  }
+  30% {
+    -webkit-transform: rotateZ(10deg);
+  }
+  31% {
+    -webkit-transform: rotateZ(0);
+  }
+  100% {
+    -webkit-transform: rotateZ(0);
+  }
+}
+
+.shake {
+  animation-name: shaking;
+  animation-duration: 9s;
+  animation-iteration-count: infinite;
+}
+
+.shake:hover {
+  animation-name: shaking;
+  animation-duration: 6s;
+  animation-iteration-count: 1;
+}
+
+@-webkit-keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/*Push*/
+
+@keyframes hvr-push {
+  50% {
+    -webkit-transform: scale(0.8);
+    transform: scale(0.8);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* Buzz */
+
+@-webkit-keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+@keyframes hvr-buzz {
+  50% {
+    -webkit-transform: translateX(3px) rotate(2deg);
+    transform: translateX(3px) rotate(2deg);
+  }
+  100% {
+    -webkit-transform: translateX(-3px) rotate(-2deg);
+    transform: translateX(-3px) rotate(-2deg);
+  }
+}
+
+.hvr-buzz {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.hvr-buzz:hover,
+.hvr-buzz:focus,
+.hvr-buzz:active {
+  -webkit-animation-name: hvr-buzz;
+  animation-name: hvr-buzz;
+  -webkit-animation-duration: 0.15s;
+  animation-duration: 0.15s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+/* Icon Pop */
+
+@-webkit-keyframes hvr-icon-pop {
+  50% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+
+@keyframes hvr-icon-pop {
+  50% {
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+}
+
+.hvr-icon-pop {
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
+
+.hvr-icon-pop .hvr-icon {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  transition-delay: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+.hvr-icon-pop:hover .hvr-icon,
+.hvr-icon-pop:focus .hvr-icon,
+.hvr-icon-pop:active .hvr-icon {
+  -webkit-animation-name: hvr-icon-pop;
+  animation-name: hvr-icon-pop;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  animation-delay: 0.3s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-iteration-count: 1;
+  animation-iteration-count: 1;
+}

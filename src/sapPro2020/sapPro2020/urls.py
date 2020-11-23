@@ -28,5 +28,6 @@ urlpatterns = [
     path('etiqueta/', include('tag.urls')),
     path('proyecto/', include('project.urls')),
     path('evento/', include('event.urls')),
+    path('autor/', include('author.urls')),
     #path('responseArticle/', searchArticleView,name="responseArticle"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
