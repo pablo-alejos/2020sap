@@ -32,7 +32,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
-        help_text=_('Designates whether the user can log into this site.'),
+        help_text=_('IMPORTANTE. Marcar esta casilla le da al usuario acceso completo a  este sitio de administracion.'),
     )
 
     is_active = models.BooleanField(
@@ -59,6 +59,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
 
     def get_short_name(self):
         return self.account.firstName
+        #return "just a blank name pls"
 
     def get_absolute_url(self):
         return reverse("userSap:user-index")
