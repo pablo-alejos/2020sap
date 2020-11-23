@@ -1,3 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Account
+from .models import Academy
+from .models import Program
+
+admin.site.register(Account)
+admin.site.register(Academy)
+admin.site.register(Program)
