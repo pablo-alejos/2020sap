@@ -1,8 +1,6 @@
 from django.db import models
 from django.urls import reverse, reverse_lazy
 
-from annoying.fields import AutoOneToOneField
-
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, AbstractUser
 
 from django.contrib.auth.models import PermissionsMixin

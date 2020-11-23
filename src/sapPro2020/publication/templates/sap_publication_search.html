@@ -1,0 +1,374 @@
+{% extends 'base.html' %}{% load static %}
+
+{% block content %}
+
+<div class="row sap-container rounded">
+    <div class="w-100 ">
+        <h3 class="sap-h3 p-3 w-100 ">Filtrar publicaciones</h3>
+    </div>
+    <!--left column-->
+    <div class="col-3 sap-menu-container XfvCs">
+        <form method="POST" id="filterForm" name="filterForm">{% csrf_token %}
+            <ul class=" sap-menu">
+                <li class="form-group container my-0">
+                    <div class="hvr-icon-pop h-aRd m-auto row bold sap-intext-link">
+                        <div class="custom-control custom-switch">
+                            <input onclick="toggle('.bookFiltersDiv', this)" type="checkbox"
+                                class="custom-control-input" name="want_book" id="want_book">
+                            <label class="custom-control-label w-100" for="want_book">
+                                <span> Incluir libros&nbsp;<svg class="hvr-icon bi bi-book " width="1em" height="1em"
+                                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                                            clip-rule="evenodd" />
+                                        <path fill-rule="evenodd"
+                                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z"
+                                            clip-rule="evenodd" />
+                                    </svg></span></label>
+                        </div>
+                    </div>
+                    <div class="bookFiltersDiv" style="display:none">
+                        <label class="my-0">ISBN</label>
+                        <input name="keyISBN" class="col-12 form-control form-control-sm"
+                            placeholder="Inserte el ISBN aqui" />
+                    </div>
+                </li>
+                <li class="form-group container my-0">
+                    <div class="hvr-icon-pop h-aRd m-auto row bold sap-intext-link">
+                        <div class="custom-control custom-switch">
+                            <input onclick="toggle('.bookChapterFiltersDiv', this)" type="checkbox"
+                                class="custom-control-input" name="want_bookChapter" id="want_bookChapter">
+                            <label class="custom-control-label w-100" for="want_bookChapter">
+                                <span> Incluir capítulos&nbsp;<svg class="hvr-icon bi bi-book-half" width="1em"
+                                        height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                                            clip-rule="evenodd" />
+                                        <path fill-rule="evenodd"
+                                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z"
+                                            clip-rule="evenodd" />
+                                    </svg></span></label>
+                        </div>
+                    </div>
+                    <div class="bookChapterFiltersDiv" style="display:none">
+                        <label class="my-0">ISBN del libro <svg data-toggle="tooltip" data-placement="top"
+                                title="ISBN del libro al que pertenece el capitulo" class="bi bi-question-circle"
+                                width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                            </svg></label>
+                        <input name="keyISBNC" class="col-12 form-control form-control-sm"
+                            placeholder="Inserte el ISBN del libro aqui" />
+                        <label class="my-0">Titulo del libro <svg data-toggle="tooltip" data-placement="top"
+                                title="Titulo del libro al que pertenece el capitulo" class="bi bi-question-circle"
+                                width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                            </svg></label>
+                        <input name="keyTitleC" class="col-12 form-control form-control-sm"
+                            placeholder="Inserte el titulo del libro aqui" />
+                    </div>
+                </li>
+                <li class="form-group container my-0">
+                    <div class="hvr-icon-pop h-aRd m-auto row bold sap-intext-link">
+                        <div class="custom-control custom-switch">
+                            <input onclick="toggle('.articleFiltersDiv', this)" type="checkbox"
+                                class="custom-control-input" name="want_article" id="want_article">
+                            <label class="custom-control-label w-100" for="want_article">
+                                <span> Incluir artículos&nbsp; <svg class="hvr-icon bi bi-newspaper" width="1em"
+                                        height="1em" viewBox="0 0 16 16" fill="currentColor"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path fill-rule="evenodd"
+                                            d="M0 2A1.5 1.5 0 011.5.5h11A1.5 1.5 0 0114 2v12a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 010 14V2zm1.5-.5A.5.5 0 001 2v12a.5.5 0 00.5.5h11a.5.5 0 00.5-.5V2a.5.5 0 00-.5-.5h-11z"
+                                            clip-rule="evenodd" />
+                                        <path fill-rule="evenodd"
+                                            d="M15.5 3a.5.5 0 01.5.5V14a1.5 1.5 0 01-1.5 1.5h-3v-1h3a.5.5 0 00.5-.5V3.5a.5.5 0 01.5-.5z"
+                                            clip-rule="evenodd" />
+                                        <path
+                                            d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+                                    </svg></span></label>
+                        </div>
+                    </div>
+                    <div class="articleFiltersDiv" style="display:none">
+                    </div>
+                </li>
+                <li class="form-group container my-1">
+                    <select name="proyectId" id="proyectId" class="m-auto basic-single my-1 mr-sm-2">
+                        <option>Proyecto</option>
+                        <optgroup label="Proyectos disponibles">
+                            {% for program in program_list %}
+                            <option value="{{program.id}}">{{program.name}}</option>
+                            {% endfor %}
+                    </select>
+                </li>
+                <li class="form-group container my-1">
+                    <select name="programId" id="programId" class="m-auto basic-single my-1 mr-sm-2">
+                        <option value="">Programa educativo</option>
+                        <optgroup label="Programas educativos disponibles">
+                            {% for program in program_list %}
+                            <option value="{{program.id}}">{{program.name}}</option>
+                            {% endfor %}
+                    </select>
+                </li>
+                <li class="form-group container my-1">
+                    <select name="academyId" id="academyId" class="m-auto basic-single my-1 mr-sm-2">
+                        <option value="">Cuerpo academico</option>
+                        <optgroup label="Cuerpo academicos disponibles"></optgroup>
+                        {% for academy in academy_list %}
+                        <option value="{{academy.id}}">{{academy.name}}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <li class="form-group container my-1">
+                    <label class="my-0">Filtrar por titulo <svg data-toggle="tooltip" data-placement="top"
+                            title="El titulo del producto contiene la secuencia de letras ingresada"
+                            class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                        </svg></label>
+                    <input name="keyTitle" class="col-12 form-control form-control-sm"
+                        placeholder="Inserte el titulo aqui" />
+                </li>
+                <li class="form-group container my-1">
+                    <label class="my-0">Fuente
+                        <svg data-toggle="tooltip" data-placement="top" title="Fuentes registradas"
+                            class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                        </svg></label>
+                    <select name="sourceId" id="sourceId" class="m-auto basic-single my-1 mr-sm-2">
+                        <option value="">Publicacion / Fuente</option>
+                        <optgroup label="Fuentes  disponibles"></optgroup>
+                        {% for academy in academy_list %}
+                        <option value="{{academy.id}}">{{academy.name}}</option>
+                        {% endfor %}
+                    </select>
+                </li>
+                <li class="form-group container my-1">
+                    <label class="my-0">Tipo de fuente
+                        <svg data-toggle="tooltip" data-placement="top" title="El tipo de fuente coincide"
+                            class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                        </svg></label>
+                    <select name="sourceTipo" id="sourceTipo" class="m-auto custom-select custom-select-sm my-1 mr-sm-2"
+                        id="inlineFormCustomSelectPref3">
+                        <option value="journal">Revista</option>
+                        <option value="editorial">Editorial</option>
+                        <option value="congress">Congreso</option>
+                        <option value="forum">Foro</option>
+                        <option value="symposium">Simposio</option>
+                    </select>
+                </li>
+
+                <li class="form-group container my-1">
+                    <label class="my-0">Año de publicacion
+                        <svg data-toggle="tooltip" data-placement="top" title="El año de publicacion coincide"
+                            class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16"
+                            fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                            <path
+                                d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                        </svg></label>
+                    <select name="pubYear" id="pubYear"
+                        class="m-auto basic-single custom-select custom-select-sm my-1 mr-sm-2">
+                        <option value="journal">Año de publicacion</option>
+                        {% with ''|center:10 as range %}
+                        {% for _ in range reversed %}
+                        <option value="198{{ forloop.counter0 }}">198{{ forloop.counter0 }}</option>
+                        {% endfor %}
+                        {% endwith %}
+                        {% with ''|center:10 as range %}
+                        {% for _ in range reversed %}
+                        <option value="199{{ forloop.counter0 }}">199{{ forloop.counter0 }}</option>
+                        {% endfor %}
+                        {% endwith %}
+                        {% with ''|center:10 as range %}
+                        {% for _ in range reversed %}
+                        <option value="200{{ forloop.counter0 }}">200{{ forloop.counter0 }}</option>
+                        {% endfor %}
+                        {% endwith %}
+                        {% with ''|center:10 as range %}
+                        {% for _ in range reversed %}
+                        <option value="201{{ forloop.counter0 }}">201{{ forloop.counter0 }}</option>
+                        {% endfor %}
+                        {% endwith %}
+                        {% with ''|center:1 as range %}
+                        {% for _ in range reversed %}
+                        <option value="202{{ forloop.counter0 }}">202{{ forloop.counter0 }}</option>
+                        {% endfor %}
+                        {% endwith %}
+
+
+                    </select>
+                </li>
+                <div class="form-group container my-1">
+                    <button class="col-12 form-control btn btn-success" type="sumbit">Filtrar</button>
+                </div>
+            </ul>
+        </form>
+    </div>
+
+    <!--rigt column-->
+    <div class="col-9">
+        <table id="table" class="w-100 ">
+            <div id="data-list" class="container">
+                
+            </div>
+        </table>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jPList Library -->
+<script src="{% static 'js/jplist.min.js' %}"></script>
+<script>
+
+    function toggle(className, obj) {
+        $(className).toggle(obj.checked)
+    }
+
+    var frm = $('#filterForm');
+    var bsc = $('#singleForm');
+    var jsonData;
+    window.onload = onPageLoad();
+    function onPageLoad() {
+        getAjax();
+    }
+    String.prototype.capitalize = function () {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    };
+    frm.submit(getAjax);
+    function getAjax() {
+        var formData = JSON.stringify($("#filterForm").serializeArray());
+        console.log("Request data:")
+        console.log(JSON.parse(formData))
+        $.ajax({
+            headers: { "X-CSRFToken": '{{csrf_token}}' },
+            type: "POST",
+            url: "{% url 'publication:response' %}",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: formData,
+            success: function (data) {
+                jsonData = console.log(data);
+                var dataObj = JSON.parse(data);
+                console.log("Response data:")
+                console.log(dataObj)
+                var html = '<div id="data-list" class="container" data-jplist-group="group1">';
+                var product;
+                var productType;
+                var accounts = new Array();
+                var publication = "";
+                for (var i = 0; i < dataObj.length; i++) {
+                    product = dataObj[i];
+                    if (product.fields.product === "book") {
+                        productType = "libro";
+                        publication = "Editorial " + product.fields.editorial
+                    }
+                    if (product.fields.product === "bookChapter") {
+                        productType = "capitulo"; publication = "Editorial " + product.fields.editorial
+                    } if
+                        (product.fields.product === "article") {
+                        productType = "articulo";
+                        publication = "Revista: " + product.fields.journal
+                    } '{% for account in account_list %}' //listing authors with a space 
+                    for (var j = 0; j < product.fields.authors.length; j++) {
+                        if ('{{account.id}}' == product.fields.authors[j]) {
+                            if ('{{account.id}}' == '{{account_list.last}}') {
+                                accounts['{{forloop.counter0}}'] = '{{account}}';
+                            } else {
+                                accounts['{{forloop.counter0}}'] = ' {{account}}';
+                            }
+                        }
+                    } '{% endfor %}'
+                    html += '<div data-jplist-item class="row container mb-1 btn-outline p-0 ">'
+                        + '<div class="col-2 p-0"><img typeof="foaf:Image"src="https://portals.iucn.org/library/sites/library/files/styles/publication/public/book_covers/BC-1981-001.jpg?itok=pE30M_DN" width = "100%" height = "100%" ></div > '
+                        + '<div class="col-10 pt-1">' + '<h5 class="mr-auto"><strong> Titulo: </strong>'
+                        + '<a class="sap-intext-link " href="/' + productType + '/' + product.pk + '">' +
+                        product.fields.title + '</a>' + '</h5>' + '<h5 class="col-12"><small><strong>'
+                        + 'Tipo de producto: </strong>' + productType.capitalize() + '</h5></small>'
+                        + '<h5 class="col-12"><small><strong>' + 'Autores: </strong>' + accounts
+                        + '</h5></small>' + '<h5 class="col-12"><small><strong>' + 'Publicacion: </strong>'
+                        + publication + '</h5></small>' + '</div></div>';
+                    $('#data-list').replaceWith(html);
+                }
+            },
+        }); return false;
+    }
+    bsc.submit(getObject);
+    function getObject() {
+        var formData = JSON.stringify($("#singleForm").serializeArray());
+        $.ajax({
+            headers: { "X-CSRFToken": '{{csrf_token}}' },
+            type: "POST",
+            url: "{% url 'publication:objectResponse' %}",
+            contentType: 'application/json',
+            dataType: 'json',
+            data: formData,
+            success: function (data) {
+                var dataObj = JSON.parse(data);
+                var html = '<div id="data-object" class="container" data-jplist-group="group1">';
+                var product;
+                var productType;
+                var accounts = new Array();
+                var publication = "";
+                for (var i = 0; i < dataObj.length; i++) {
+                    product = dataObj[i];
+                    if (product.fields.product === "book") {
+                        productType = "libro";
+                        publication = "Editorial " + product.fields.editorial
+                    }
+                    if (product.fields.product === "bookChapter") {
+                        productType = "capitulo"; publication = "Editorial " + product.fields.editorial
+                    } if
+                        (product.fields.product === "article") {
+                        productType = "articulo";
+                        publication = "Revista: " + product.fields.journal
+                    } '{% for account in account_list %}' //listing authors with a space 
+                    for (var j = 0; j < product.fields.authors.length; j++) {
+                        if ('{{account.id}}' == product.fields.authors[j]) {
+                            if ('{{account.id}}' == '{{account_list.last}}') {
+                                accounts['{{forloop.counter0}}'] = '{{account}}';
+                            } else {
+                                accounts['{{forloop.counter0}}'] = ' {{account}}';
+                            }
+                        }
+                    } '{% endfor %}'
+                    html += '<div data-jplist-item class="row container mb-1 btn-outline p-0 ">'
+                        + '<div class="col-2 p-0"><img typeof="foaf:Image"src="https://portals.iucn.org/library/sites/library/files/styles/publication/public/book_covers/BC-1981-001.jpg?itok=pE30M_DN" width = "100%" height = "100%" ></div > '
+                        + '<div class="col-10 pt-1">' + '<h5 class="mr-auto"><strong> Titulo: </strong>'
+                        + '<a class="sap-intext-link " href="/' + productType + '/' + product.pk + '">' +
+                        product.fields.title + '</a>' + '</h5>' + '<h5 class="col-12"><small><strong>'
+                        + 'Tipo de producto: </strong>' + productType.capitalize() + '</h5></small>'
+                        + '<h5 class="col-12"><small><strong>' + 'Autores: </strong>' + accounts
+                        + '</h5></small>' + '<h5 class="col-12"><small><strong>' + 'Publicacion: </strong>'
+                        + publication + '</h5></small>' + '</div></div>';
+                    $('#data-object').replaceWith(html);
+                }
+            },
+        }); return false;
+    }
+
+</script>
+<script>
+    jplist.init();
+</script>
+{% endblock  %}

@@ -1,0 +1,219 @@
+{% extends 'base.html' %}{% load static %}
+{% block title %} Publicaciones {% endblock %}
+{% block content %}
+
+<div class="row sap-container rounded">
+    <div class="w-100">
+        <h3 class="sap-h3 p-3 w-100">Publicaciones</h3>
+    </div>
+    <!--Left Column-->
+    <div class="col-3 sap-menu-container XfvCs">
+        <ul class="sap-menu mt-0">
+            <li class="sap-list-item">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'book:book-create' %}">
+                    Mis publicaciones&nbsp;<svg class="hvr-icon bi bi-book" width="1em" height="1em" viewBox="0 0 16 16"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z"
+                            clip-rule="evenodd" />
+                    </svg>&nbsp;<svg class="hvr-icon bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z"
+                            clip-rule="evenodd" />
+                    </svg>&nbsp;<svg class="hvr-icon bi bi-newspaper" width="1em" height="1em" viewBox="0 0 16 16"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2A1.5 1.5 0 011.5.5h11A1.5 1.5 0 0114 2v12a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 010 14V2zm1.5-.5A.5.5 0 001 2v12a.5.5 0 00.5.5h11a.5.5 0 00.5-.5V2a.5.5 0 00-.5-.5h-11z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M15.5 3a.5.5 0 01.5.5V14a1.5 1.5 0 01-1.5 1.5h-3v-1h3a.5.5 0 00.5-.5V3.5a.5.5 0 01.5-.5z"
+                            clip-rule="evenodd" />
+                        <path
+                            d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+                    </svg></a>
+            </li>
+            <li class="sap-list-item">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
+                    href="{% url 'publication:publication-filter' %}">
+                    Buscar publicación&nbsp; <svg class="hvr-icon bi bi-search" width="1em" height="1em"
+                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                        <path fill-rule="evenodd"
+                            d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                    </svg></a>
+            </li>
+            <li class="sap-list-item">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'book:book-create' %}">
+                    Registrar libro&nbsp;<svg class="hvr-icon bi bi-book " width="1em" height="1em" viewBox="0 0 16 16"
+                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z"
+                            clip-rule="evenodd" />
+                    </svg> </a>
+            </li>
+            <li class="sap-list-item">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
+                    href="{% url 'bookChapter:bookChapter-create' %}">
+                    Registrar capítulo&nbsp;<svg class="hvr-icon bi bi-book-half" width="1em" height="1em"
+                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z"
+                            clip-rule="evenodd" />
+                    </svg></a>
+            </li>
+            <li class="sap-list-item">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
+                    href="{% url 'article:article-create' %}">
+                    Registrar artículo&nbsp; <svg class="hvr-icon bi bi-newspaper" width="1em" height="1em"
+                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M0 2A1.5 1.5 0 011.5.5h11A1.5 1.5 0 0114 2v12a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 010 14V2zm1.5-.5A.5.5 0 001 2v12a.5.5 0 00.5.5h11a.5.5 0 00.5-.5V2a.5.5 0 00-.5-.5h-11z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd"
+                            d="M15.5 3a.5.5 0 01.5.5V14a1.5 1.5 0 01-1.5 1.5h-3v-1h3a.5.5 0 00.5-.5V3.5a.5.5 0 01.5-.5z"
+                            clip-rule="evenodd" />
+                        <path
+                            d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
+                    </svg></a>
+            </li>
+
+        </ul>
+    </div>
+    <!--rigt column-->
+    <div class="col-9">
+        <div class="w-100 row mb-1">
+            <div class="col-6 w-100">
+                <input data-jplist-control="textbox-filter" data-group="group2" data-name="my-filter-1"
+                    data-path=".title" type="text" value="" class="form-control form-control-sm"
+                    placeholder="Escriba el titulo de la publicación" />
+            </div>
+            <div class="col-2">
+                <select class="custom-control custom-select custom-select-sm" data-jplist-control="select-filter"
+                    data-group="group2" data-name="name12">
+                    <option value="0" data-path="default" selected>Producto</option>
+
+                    <option value="1" data-path=".Libro">Libros</option>
+
+                    <option value="2" data-path=".Capitulo">Capitulos</option>
+
+                    <option value="3" data-path=".Articulo">Articlos</option>
+                </select>
+            </div>
+            <div class="col-4 form-group form-group-sm">
+                <select class="custom-control m-auto custom-select custom-select-sm" data-jplist-control="select-filter"
+                    data-group="group2" data-name="name11">
+
+                    <option value="0" data-path="default" selected>Fuente</option>
+
+                    <option value="1" data-path=".Editorial">Editorial</option>
+
+                    <option value="2" data-path=".Revista">Revista</option>
+
+                    <option value="3" data-path=".Congreso">Congreso</option>
+
+                    <option value="4" data-path=".Foro">Foro</option>
+
+                    <option value="5" data-path=".Simposio">Simposio</option>
+                </select>
+            </div>
+        </div>
+        <div class="container row">
+            <div data-jplist-group="group2" class="col-12 container">
+                {% for product in object_list %}
+                <div data-jplist-item class="row btn-outline mb-3 pl-0">
+                    <div class="col-2 pl-0"><img typeof="foaf:Image"
+                            src="http://www.riobeauty.co.uk/images/product_image_not_found.gif" width="100%"
+                            height="100%" style="border: solid 1px black;"></div>
+                    <div class="col-10 pl-0">
+                        {% if product.product == "Libro" %}
+                        <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                            href="{% url 'book:book-detail' product.id  %}">
+                            {{product.title}}</a>
+                        <div><small>Libro</small></div>
+                        <div><small><strong>Fuente: </strong>{{product.editorial}}</small></div>
+                        <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
+                        {% endif %}
+                        {% if product.product == "Capitulo" %}
+                        <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                            href="{% url 'bookChapter:bookChapter-detail' product.id  %}">
+                            {{product.title}}</a>
+                        <div><small>Capitulo de libro</small></div>
+                        <div><small><strong>Fuente: </strong>{{product.bookEditorial}}</small></div>
+                        <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
+                        {% endif %}
+                        {% if product.product == "Articulo" %}
+                        <a class="sap-intext-link title {{product.product}} {{product.eventPublication}} Revista"
+                            href="{% url 'article:article-detail' product.id  %}">
+                            {{product.title}}</a>
+                        <div><small>Articlo</small></div>
+                        <div><small><strong>Fuente: </strong>{{product.journal}}</small></div>
+                        <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- no results control -->
+                <div data-jplist-control="no-results" data-group="group2" data-name="no-results">No se encontraron
+                    registros que coincidan.</div>
+            </div>
+        </div>
+        <!-- pagination control -->
+        <div data-jplist-control="pagination" data-group="group2" data-items-per-page="1" data-current-page="0"
+            data-name="pagination1" class="row">
+            <div class="col-6 container">
+                <div class="row col-12 mb-1">
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="first">«</button>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="prev">‹</button>
+                    <div class="jplist-holder" data-type="pages">
+                        <button class="btn" style="border: 1px solid #dbdbdb;" type="button"
+                            data-type="page">{pageNumber}</button>
+                    </div>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="next">›</button>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="last">»</button>
+                </div>
+            </div>
+
+            <div class="col-6 row container">
+                <!-- items per page select -->
+                <select data-type="items-per-page" class="col-8 custom-select custom-select-sm">
+                    <option value="1"> 1 per page </option>
+                    <option value="2"> 2 per page </option>
+                    <option value="3"> 3 per page </option>
+                    <option value="0"> view all </option>
+                </select>
+
+                <span data-type="info" class="col-4">
+                    Pagina {pageNumber} de {pagesNumber}
+                </span>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jPList Library -->
+<script src="{% static 'js/jplist.min.js' %}"></script>
+<script>
+    jplist.init();
+</script>
+{% endblock  %}
