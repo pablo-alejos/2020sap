@@ -12,7 +12,7 @@ from account.models import Account
 
 class UserSap(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, verbose_name="Correo UABC", unique=True)
-    account = models.OneToOneField(Account, on_delete=models.PROTECT, blank=True, null=True)
+    account = models.OneToOneField(Account, on_delete=models.PROTECT, verbose_name="Informacion personal", blank=True, null=True)
     statuSelect = (
         (None, 'Selecciona estado'),
         ('Activo', 'Activo'),
@@ -63,3 +63,6 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
 
     def get_absolute_url(self):
         return reverse("userSap:user-index")
+    
+    class Meta:
+        verbose_name = 'Usuario'
