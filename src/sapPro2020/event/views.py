@@ -39,7 +39,7 @@ class EventDeleteView(DeleteView):
 
 class EventIndexView(ListView):
     template_name = 'event/event_index.html'
-    queryset = Event.objects.order_by('eventCreated')
+    queryset = Event.objects.order_by('eventStart')
     context_object_name = 'event_list'
     paginate_by = 25
 ################################################

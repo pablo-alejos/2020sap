@@ -4,9 +4,8 @@ from django.urls import reverse
 
 
 class Event(models.Model):
-    ame = models.CharField(max_length=100, verbose_name="Nombre del evento")
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Fecha")
-    eventCreated = models.CharField(max_length=100, verbose_name="Fecha de creacion del evento")
+    name = models.CharField(max_length=100, verbose_name="Nombre del evento")
+    eventStart = models.CharField(max_length=100, verbose_name="Fecha de inicio del evento")
     eventFinish = models.CharField(max_length=100, verbose_name="Fecha de finalización del evento")
     topic = models.CharField(max_length=100, verbose_name="Tema")
     headquarters = models.CharField(max_length=100, verbose_name="Sede")

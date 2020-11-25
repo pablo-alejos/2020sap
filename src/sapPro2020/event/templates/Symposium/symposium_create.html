@@ -9,8 +9,7 @@
             </div>
 
             <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
-                    href="{% url 'event:symposium-index' %}">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:symposium-index' %}">
                     Todos los simposios &nbsp; <svg class="hvr-icon bi bi-calendar3" width="1em" height="1em" viewBox="0 0 16 16"
                         fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -20,8 +19,7 @@
                     </svg></a>
             </li>
             <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
-                    href="{% url 'event:symposium-create' %}">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:symposium-create' %}">
                     Crear simposio &nbsp; <svg class="hvr-icon bi bi-calendar2-plus" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M8 8a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H6a.5.5 0 0 1 0-1h1.5V8.5A.5.5 0 0 1 8 8z"/>
                         <path fill-rule="evenodd" d="M7.5 10.5A.5.5 0 0 1 8 10h2a.5.5 0 0 1 0 1H8.5v1.5a.5.5 0 0 1-1 0v-2z"/>
@@ -31,8 +29,7 @@
                       </svg></a>
             </li>
             <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
-                    href="{% url 'event:symposium-create' %}">
+                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:symposium-create' %}">
                     Buscar simposio &nbsp; <svg class="bi bi-search hvr-icon" width="1em" height="1em"
                         viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -52,19 +49,23 @@
         <!--tag data-->
         <form method="post"> {% csrf_token %}
             <div class="form-group mt-2">
-                <h5><small><strong>Nombre del simposio:</small></h5></strong>
+                <h5><small><strong>Nombre del simposio:</small></h5>
+                </strong>
                 {{form.name}}
                 <input type="hidden" value="lgac" name="tag">
                 <h5><small><strong>Fecha del simposio:</h5></strong>
-                {{form.eventCreated}}
+                {{form.eventStart}}
                 <input type="hidden" value="lgac" name="tag">
-                <h5><small><strong>Sede del simposio:</small></h5></strong>
+                <h5><small><strong>Sede del simposio:</small></h5>
+                </strong>
                 {{form.headquarters}}
                 <input type="hidden" value="lgac" name="tag">
-                <h5><small><strong>Direccion del simposio:</small></h5></strong>
+                <h5><small><strong>Direccion del simposio:</small></h5>
+                </strong>
                 {{form.address}}
                 <input type="hidden" value="lgac" name="tag">
-                <h5><small><strong>Tema:</small></h5></strong>
+                <h5><small><strong>Tema:</small></h5>
+                </strong>
                 {{form.topic}}
                 <input type="hidden" value="lgac" name="tag">
             </div>
@@ -72,7 +73,7 @@
                 Antes de crear un simposio, asegurese de que:
                 <ul>
                     <li>Aun no se que poner aqui. Gracias</li>
-                    
+
                 </ul>
             </div>
             <div class="form-group mt-2">

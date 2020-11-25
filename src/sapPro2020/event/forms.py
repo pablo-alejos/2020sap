@@ -7,7 +7,7 @@ class EventModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(EventModelForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['eventCreated'].widget.attrs['class'] = 'form-control form-control-sm'
+        self.fields['eventStart'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['eventFinish'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['topic'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['headquarters'].widget.attrs['class'] = 'form-control form-control-sm'
@@ -17,7 +17,7 @@ class EventModelForm(forms.ModelForm):
     class Meta:
         model = Event
         fields = ['name',
-                  'eventCreated',
+                  'eventStart',
                   'eventFinish',
                   'topic',
                   'headquarters',
