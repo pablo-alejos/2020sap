@@ -1,56 +1,26 @@
 from django import forms
 from django.forms import ModelForm
 
-from .models import Forum,Symposium,Congress
+from .models import Event
 
-class ForumModelForm(forms.ModelForm):
+class EventModelForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
-        super(ForumModelForm, self).__init__(*args, **kwargs)
+        super(EventModelForm, self).__init__(*args, **kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['eventCreated'].widget.attrs['class'] = 'form-control form-control-sm'
+        self.fields['eventFinish'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['topic'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['headquarters'].widget.attrs['class'] = 'form-control form-control-sm'
         self.fields['address'].widget.attrs['class'] = 'form-control form-control-sm'
+        self.fields['event'].widget.attrs['class'] = 'custom-select custom-select-sm'
        
-
     class Meta:
-        model = Forum
+        model = Event
         fields = ['name',
                   'eventCreated',
+                  'eventFinish',
                   'topic',
                   'headquarters',
-                  'address']
+                  'address',
+                  'event']
 
-
-class SymposiumModelForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(SymposiumModelForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['eventCreated'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['topic'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['headquarters'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['address'].widget.attrs['class'] = 'form-control form-control-sm'
-    class Meta:
-        model = Symposium
-        fields = ['name',
-                  'eventCreated',
-                  'topic',
-                  'headquarters',
-                  'address']
-
-class CongressModelForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(CongressModelForm, self).__init__(*args, **kwargs)
-        self.fields['name'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['eventCreated'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['topic'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['headquarters'].widget.attrs['class'] = 'form-control form-control-sm'
-        self.fields['address'].widget.attrs['class'] = 'form-control form-control-sm'
-
-    class Meta:
-        model = Congress
-        fields = ['name',
-                  'eventCreated',
-                  'topic',
-                  'headquarters',
-                  'address']

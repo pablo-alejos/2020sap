@@ -12,7 +12,10 @@ urlpatterns = [
     path('index', login_required(UserIndexView.as_view()), name='user-index'),
     path('create', UserCreateView.as_view(), name='user-create'),
     path('<int:id>/', login_required(UserDetailView.as_view()), name='user-detail'),
-    path('<int:id>/delete', login_required(UserDeleteView.as_view()), name='user-delete'),
-    path('<int:id>/update', login_required(UserUpdateView.as_view()), name='user-update'),
-    path('<int:id>/changepassword',login_required(UserChangePasswordView.as_view()), name='user-update-password'),
+    path('<int:id>/delete', login_required(UserDeleteView.as_view()),
+         name='user-delete'),
+    path('<int:id>/update', login_required(UserUpdateView.as_view()),
+         name='user-update'),
+    path('<int:id>/changepassword',
+         login_required(UserChangePasswordView.as_view()), name='user-update-password'),
 ]

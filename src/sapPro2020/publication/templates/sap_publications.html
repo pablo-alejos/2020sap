@@ -133,18 +133,18 @@
         </div>
         <div class="container row">
             <div data-jplist-group="group2" class="col-12 container">
-                {% for product in object_list %}
+                {% for product in product_list %}
                 <div data-jplist-item class="row btn-outline mb-3 pl-0">
                     <div class="col-2 pl-0"><img typeof="foaf:Image"
-                            src="http://www.riobeauty.co.uk/images/product_image_not_found.gif" width="100%"
+                            src="/media/{{product.image}}" width="100%"
                             height="100%" style="border: solid 1px black;"></div>
                     <div class="col-10 pl-0">
                         {% if product.product == "Libro" %}
                         <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
                             href="{% url 'book:book-detail' product.id  %}">
-                            {{product.title}}</a>
+                            {{product.title}} </a>
                         <div><small>Libro</small></div>
-                        <div><small><strong>Fuente: </strong>{{product.editorial}}</small></div>
+                        <div><small><strong>Fuente: </strong> {% if product.editorial %} {{product.editorial}}  | {% endif %} {{product.eventPublication}}</small></div>
                         <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
                         {% endif %}
                         {% if product.product == "Capitulo" %}
@@ -152,7 +152,8 @@
                             href="{% url 'bookChapter:bookChapter-detail' product.id  %}">
                             {{product.title}}</a>
                         <div><small>Capitulo de libro</small></div>
-                        <div><small><strong>Fuente: </strong>{{product.bookEditorial}}</small></div>
+                        <div><small><strong>Captiulo del libro: </strong>{{product.bookTitle}}</small></div>
+                        <div><small><strong>Fuente: </strong>{{product.bookEditorial}} | {{product.eventPublication}}</small></div>
                         <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
                         {% endif %}
                         {% if product.product == "Articulo" %}
@@ -160,7 +161,7 @@
                             href="{% url 'article:article-detail' product.id  %}">
                             {{product.title}}</a>
                         <div><small>Articlo</small></div>
-                        <div><small><strong>Fuente: </strong>{{product.journal}}</small></div>
+                        <div><small><strong>Fuente: </strong>{% if product.journal %} {{product.journal}}  | {% endif %} {{product.eventPublication}}</small></div>
                         <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
                         {% endif %}
                     </div>
@@ -172,7 +173,7 @@
             </div>
         </div>
         <!-- pagination control -->
-        <div data-jplist-control="pagination" data-group="group2" data-items-per-page="1" data-current-page="0"
+        <div data-jplist-control="pagination" data-group="group2" data-items-per-page="5" data-current-page="0"
             data-name="pagination1" class="row">
             <div class="col-6 container">
                 <div class="row col-12 mb-1">
@@ -190,10 +191,11 @@
             <div class="col-6 row container">
                 <!-- items per page select -->
                 <select data-type="items-per-page" class="col-8 custom-select custom-select-sm">
-                    <option value="1"> 1 per page </option>
-                    <option value="2"> 2 per page </option>
-                    <option value="3"> 3 per page </option>
-                    <option value="0"> view all </option>
+                    <option value="5"> 5 por pagina</option>
+                    <option value="10"> 10 por pagina</option>
+                    <option value="20"> 20 por pagina</option>
+                    <option value="50"> 20 por pagina</option>
+                    <option value="0"> Mostrar todo </option>
                 </select>
 
                 <span data-type="info" class="col-4">

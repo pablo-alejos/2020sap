@@ -133,11 +133,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATIC_URL = '/static/'
+
+INTERNAL_IPS= ['127.0.0.1']
 
 AUTH_USER_MODEL = 'userSap.UserSap'
 
@@ -145,5 +146,5 @@ LOGIN_URL = reverse_lazy('userSap:user-login')
 LOGIN_REDIRECT_URL = reverse_lazy('userSap:user-index')
 LOGOUT_REDIRECT_URL = reverse_lazy('userSap:user-login')
 
-MEDIA_ROOT=os.path.join(BASE_DIR, 'archiving/')
-MEDIA_URL="/archiving/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"

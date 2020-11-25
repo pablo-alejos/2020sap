@@ -14,7 +14,6 @@ from bookChapter.models import BookChapter
 from account.models import Account, Academy, Program
 from tag.models import Tag
 from project.models import Project
-from event.models import Forum,Congress,Symposium
 
 
 class HomeView(TemplateView):

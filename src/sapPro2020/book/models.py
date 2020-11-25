@@ -26,7 +26,9 @@ class Book(models.Model):
     editorial = models.CharField(max_length=220, verbose_name="Editorial",blank=True)
     isbn = models.CharField(max_length=17, verbose_name="ISBN")
     publicationYear = models.CharField(max_length=4, verbose_name="Año de publicacion")
-    file = models.FileField(upload_to="archiving/", verbose_name="Libro (PDF)")
+    publicationMonth = models.CharField(max_length=12,verbose_name="Mes de publicación",blank=True,default="")
+    file = models.FileField(upload_to="archiving/", verbose_name="Archivo (PDF)")
+    image = models.ImageField(blank=True,default='cover_images/default_cover.jpg', upload_to='cover_images',verbose_name="Cubierta o portada")
     status = (
         ( None, 'Selecciona estado'),
         ('En proceso','En proceso'), 

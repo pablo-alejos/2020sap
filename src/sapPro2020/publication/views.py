@@ -13,24 +13,21 @@ from bookChapter.models import BookChapter
 from account.models import Account, Academy, Program
 from tag.models import Tag
 from project.models import Project
-from event.models import Forum, Congress, Symposium
 
 
-class PublicationView(ListView):
+class PublicationView(TemplateView):
     template_name = "sap_publications.html"
-    book_list = Book.objects.all()
-    bookChapter_list = BookChapter.objects.all()
-    article_list = Article.objects.all()
-    #product_list = list(chain(article_list, book_list, bookChapter_list))
-    #queryset = product_list
-    paginate_by = 25
-
+    
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['book_list'] = self.book_list
-        context['bookChapter_list'] = self.bookChapter_list
-        context['article_list'] = self.article_list
-        context['product_list'] = self.product_list
+        book_list = Book.objects.all()
+        bookChapter_list = BookChapter.objects.all()
+        article_list = Article.objects.all()
+        product_list = list(chain(article_list, book_list, bookChapter_list))
+        context['book_list'] = book_list
+        context['bookChapter_list'] = bookChapter_list
+        context['article_list'] = article_list
+        context['product_list'] = product_list
         return context
 
 
@@ -44,9 +41,6 @@ class SearchView(TemplateView):
         context['account_list'] = Account.objects.order_by('firstName')
         context['project_list'] = Project.objects.order_by('name')
         context['journal_list'] = Journal.objects.order_by('name')
-        context['congress_list'] = Congress.objects.order_by('name')
-        context['forum_list'] = Forum.objects.order_by('name')
-        context['symposuim_list'] = Symposium.objects.order_by('name')
         book_list = Book.objects.all()
         bookChapter_list = BookChapter.objects.all()
         article_list = Article.objects.all()

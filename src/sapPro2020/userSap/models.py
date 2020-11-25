@@ -6,9 +6,12 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Abstra
 from django.contrib.auth.models import PermissionsMixin
 from django.utils.translation import ugettext_lazy as _
 
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from account.models import Account
+
 from .managers import UserSapManager
 
-from account.models import Account
 
 class UserSap(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, verbose_name="Correo UABC", unique=True)
@@ -26,8 +29,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
         ('Estudiante licenciatura', 'Estudiante licenciatura'),
         ('Estudiante postgrado', 'Estudiante postgrado'),
     )
-    rol = models.CharField(
-        max_length=25, choices=rolSelect, verbose_name="Rol en UABC")
+    rol = models.CharField(max_length=25, choices=rolSelect, verbose_name="Rol en UABC")
 
     is_staff = models.BooleanField(
         _('staff status'),
@@ -45,6 +47,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
     )
 
     timeStamp = models.DateTimeField(auto_now_add=True, verbose_name="Time Stamp")
+    image = models.ImageField(blank=True,default='default_profile.jpg', upload_to='profile_images',verbose_name="Imagen del perfil")
 
     objects = UserSapManager()
 
@@ -66,3 +69,10 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
     
     class Meta:
         verbose_name = 'Usuario'
+"""
+@receiver(post_save, sender=UserSap)
+def create_model_account(sender, instance, created, **kwargs):
+    if created:
+        instance.account = Account.objects.create()
+        instance.save()
+"""

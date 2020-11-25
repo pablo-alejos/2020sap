@@ -1,7 +1,7 @@
-{% extends "base.html" %}{% load static %} {% block content %}
+{% extends "base.html" %}{% load static %}{% load crispy_forms_tags %} {% block content %}
 
 <div class="sap-container-fluid">
-
+    
     <div class="row mt-3 align-items-center justify-content-center container-fluid" id="row-two">
         <div class="card col-4 shadow-lg rounded">
             <div class="card-body list-group list-group-flush">
@@ -12,7 +12,8 @@
                     <form method="post">
                         {% csrf_token %}
                         <div class="form-group">
-                            <small id="emailHelp" class="form-text text-muted">Correo institucional.</small> {{form.email}} {% if form.email.errors %} {{form.email.errors}} {% endif%}
+                            <small id="emailHelp" class="form-text text-muted">Correo institucional.</small>
+                            {{form.email}} {% if form.email.errors %} {{form.email.errors}} {% endif%}
 
                         </div>
                         <div class="form-group">
@@ -20,14 +21,16 @@
 
                         </div>
                         <div class="form-group">
-                            <small id="emailHelp" class="form-text text-muted">Porfavor ingrese una contraseña.</small> {{form.password1}}
+                            <small id="emailHelp" class="form-text text-muted">Porfavor ingrese una contraseña.</small>
+                            {{form.password1}}
 
                             <small id="password1Help" class="form-text text-muted"></small>
 
                         </div>
                         <div class="form-group">
                             <small id="password2Help" class="form-text text-muted">Porfavor confirme su
-                                contraseña.</small> {{form.password2}} {% if form.password2.errors %} {{form.password2.errors}} {% endif%}
+                                contraseña.</small> {{form.password2}} {% if form.password2.errors %}
+                            {{form.password2.errors}} {% endif%}
 
                         </div>
                         <div class="form-group">

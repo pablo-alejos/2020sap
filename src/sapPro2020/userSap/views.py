@@ -110,6 +110,7 @@ class UserSapLoginView(LoginView):
 
     """
     success_url = reverse_lazy('userSap:user-index')
+
     @method_decorator(csrf_protect)
     @method_decorator(never_cache)
     def dispatch(self,request,*args,**kwargs):
@@ -117,6 +118,7 @@ class UserSapLoginView(LoginView):
             return HttpResponseRedirect(self.get_success_url())
         else:
             return super(UserSapLoginView,self).dispatch(request,*args,**kwargs)
+
     def form_valid(self,form):
         login(self.request,form.get_user())
         return super(UserSapLoginView,self).form_valid(form)

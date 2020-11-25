@@ -16,40 +16,39 @@
         </div>
 
         <div class="row container ml-2">
-            <div class="col-2 p-0 bg-danger">
-                <img typeof="foaf:Image"
-                    src="https://portals.iucn.org/library/sites/library/files/styles/publication/public/book_covers/BC-1981-001.jpg?itok=pE30M_DN"
-                    width="100%" height="100%">
+            <div class="col-2 p-0 ">
+                <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height="100%"
+                    style="border: solid 1px black;">
             </div>
             <div class="col-10">
                 <h5><small><strong>Subido por: </strong>{{object.user.account}}</small></h5>
                 <h5><small><strong>Autores: </strong>
-                    {% for author in object.authors.all%}
-                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
-                    {% if author != object.authors.last%} | {% endif %}
-                    {% endfor %}</small></h5>
+                        {% for author in object.authors.all%}
+                        <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
+                        {% if author != object.authors.last%} | {% endif %}
+                        {% endfor %}</small></h5>
                 <h5><small><strong>Editorial: </strong>{{object.editorial}}</small></h5>
                 <h5><small><strong>ISBN: </strong>{{object.isbn}}</small></h5>
+                <h5><small><strong>publicación: </strong>{{object.eventPublication}}</small></h5>
                 <h5><small><strong>Año de publicación: </strong>{{object.publicationYear}}</small></h5>
-
+                <div class="simple-separator"></div>
                 <h5><small><strong>Fecha de subida: </strong>{{object.created}}</small></h5>
                 <h5><small><strong>Ultima actualización: </strong>{{object.created}}</small></h5>
-                <div class="simple-separator"></div>
-                <h5><small><strong>Descarga el archivo pdf: </strong>
-                    <a class="sap-intext-link sap-card-link" href="{{ MEDIA_URL }}/archiving/{{object.file}}"
-                        target=”_blank”>{{object.file.name|cut:"archiving/"}}</a>
+                <h5><small>
+                        <a class="sap-intext-link sap-card-link" href="/media/{{object.file}}"
+                            target=”_blank”>Visualizar archivo pdf</a>
                     </small></h5>
                 <div class="simple-separator"></div>
             </div>
             <div class="row container">
                 <div class="form-group">
-                    <h5><small><strong>Etiquetas: </strong>
-                        {% for tag in object.tags.all%}
-                        {% if tag.tag == "lgac" %}
-                        <span class="badge badge-light m-1 p-1" style="border: 1px solid #000" >{{tag}}</span>
-                        {% endif %}
+                    <h5><small><strong>LGAC: </strong>
+                            {% for tag in object.tags.all%}
+                            {% if tag.tag == "lgac" %}
+                            <span class="badge badge-light m-1 p-1" style="border: 1px solid #000">{{tag}}</span>
+                            {% endif %}
 
-                        {% endfor %}</small></h5>
+                            {% endfor %}</small></h5>
                 </div>
             </div>
             <div class="form-group row container mt-0">

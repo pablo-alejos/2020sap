@@ -11,6 +11,7 @@ from bookChapter import views
 from userSap import views
 from project import views
 from publication import views
+from author import views
 from .views import HomeView,SearchView,searchAjaxView,tagsAjaxView
 
 urlpatterns = [
@@ -28,6 +29,5 @@ urlpatterns = [
     path('etiqueta/', include('tag.urls')),
     path('proyecto/', include('project.urls')),
     path('evento/', include('event.urls')),
-    path('autor/', include('author.urls')),
-    #path('responseArticle/', searchArticleView,name="responseArticle"),
+    path('autores/', include('author.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
