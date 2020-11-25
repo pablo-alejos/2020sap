@@ -14,6 +14,9 @@ from publication import views
 from author import views
 from .views import HomeView,SearchView,searchAjaxView,tagsAjaxView
 
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomeView.as_view(),name = "home"),
@@ -30,4 +33,5 @@ urlpatterns = [
     path('proyecto/', include('project.urls')),
     path('evento/', include('event.urls')),
     path('autores/', include('author.urls')),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico')))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

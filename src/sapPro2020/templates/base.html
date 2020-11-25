@@ -8,26 +8,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>{% block title %}Sap UABC{% endblock %}</title>
-
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}" />
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
     <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
     <link rel="stylesheet" href="{% static 'css/jplist.styles.css' %}">
     <link rel="stylesheet" href="{% static 'css/jplist.textbox-filter.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/beauty.css' %}">
-    <link rel="stylesheet" href="{% static 'css/select2-bootstrap.css' %}">
-
-    {% include 'sap_navbar.html' %}
+    <link rel="stylesheet" href="{% static 'css/select2-bootstrap.css' %}"> {% include 'sap_navbar.html' %}
 
 </head>
 
 <body>
     <div class="sap-box-fluid" id="page">
-        {% block content %}
-        {% endblock %}
+        {% block content %} {% endblock %}
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
@@ -37,7 +33,6 @@
 
 </body>
 
-{% include 'footer_loader.html' %}
-{% include 'loadingScreen.html' %}
+{% include 'footer_loader.html' %} {% include 'loadingScreen.html' %}
 
 </html>

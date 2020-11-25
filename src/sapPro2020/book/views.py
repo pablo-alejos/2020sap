@@ -8,6 +8,7 @@ from django.views.generic import (
 
 from .forms import BookModelForm
 from account.models import Academy, Program
+from event.models import Event
 from tag.models import Tag
 from .models import Book
 
