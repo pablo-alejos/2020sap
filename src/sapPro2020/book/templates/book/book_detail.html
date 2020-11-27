@@ -1,98 +1,86 @@
-{% extends 'base.html' %}{% load static %}
-
-{% block content %}
+{% extends 'base.html' %}{% load static %} {% block content %}
 
 <div class="row sap-container shadow-lg rounded">
-    <div class="w-100">
-        <h3 class="sap-h3 p-3 w-100">Detalles del libro</h3>
-    </div>
-    <div class="card-body">
-
-        <div class="row container">
-            <h4 class="col-12"><strong>{{object.title}}</strong></h4>
+    <div class="container-fluid m-0 p-0 ">
+        <!--title row -->
+        <div class="row container-fluid m-0 p-0 ml-4 pt-2 ">
+            <h3 class="">Detalles del libro {{object.title}}</h3>
         </div>
-        <div class="row container">
-            <h5 class="col-12"><small><strong>Título completo: </strong>{{object.title}}</small></h5>
+        <!--separator line row -->
+        <div class="row container-fluid p-0 m-0 w-100">
+            <div class="simple-separator col-12 "></div>
         </div>
-
-        <div class="row container ml-2">
-            <div class="col-2 p-0 ">
-                <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height="100%"
-                    style="border: solid 1px black;">
+        <!--content row -->
+        <div class="row container-fluid m-0 ml-4 p-0 pt-2">
+            <div class="col-2 p-0">
+                <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height=300px " style="border: solid 1px black; ">
             </div>
-            <div class="col-10">
-                <h5><small><strong>Subido por: </strong>{{object.user.account}}</small></h5>
-                <h5><small><strong>Autores: </strong>
+            <div class="col-10 mr-0 pr-0 ">
+               <p> Subido por {{object.user.account}}</p>
+                <p>Autores: 
                         {% for author in object.authors.all%}
-                        <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
+                        <a class="sap-intext-link sap-card-link " href="# "> {{author}}</a>
                         {% if author != object.authors.last%} | {% endif %}
-                        {% endfor %}</small></h5>
-                <h5><small><strong>Editorial: </strong>{{object.editorial}}</small></h5>
-                <h5><small><strong>ISBN: </strong>{{object.isbn}}</small></h5>
-                <h5><small><strong>publicación: </strong>{{object.eventPublication}}</small></h5>
-                <h5><small><strong>Año de publicación: </strong>{{object.publicationYear}}</small></h5>
-                <div class="simple-separator"></div>
-                <h5><small><strong>Fecha de subida: </strong>{{object.created}}</small></h5>
-                <h5><small><strong>Ultima actualización: </strong>{{object.created}}</small></h5>
-                <h5><small>
-                        <a class="sap-intext-link sap-card-link" href="/media/{{object.file}}"
-                            target=”_blank”>Visualizar archivo pdf</a>
-                    </small></h5>
-                <div class="simple-separator"></div>
-            </div>
-            <div class="row container">
-                <div class="form-group">
-                    <h5><small><strong>LGAC: </strong>
-                            {% for tag in object.tags.all%}
-                            {% if tag.tag == "lgac" %}
-                            <span class="badge badge-light m-1 p-1" style="border: 1px solid #000">{{tag}}</span>
-                            {% endif %}
-
-                            {% endfor %}</small></h5>
+                        {% endfor %}
+                </p>
+                <p>Editorial {{object.editorial}}</p>
+                <p>ISBN {{object.isbn}}</p>
+                <p>Publicacado en {{object.eventPublication}}</p>
+                <p>Año de publicación {{object.publicationYear}}</p>
+                <div class="simple-separator "></div>
+                <p>Fecha de subida: {{object.timeStamp}}</p>
+                <p>Ultima actualización: {{object.timeStamp}}</p>
+                <p><a class="sap-intext-link sap-card-link " href="/media/{{object.file}} " target=”_blank”>
+                    Archivo</a> </p>
+                <div class="simple-separator w-100 m-0 p-0 "></div>
+                <div class="form-group ">
+                       <p>Lineas de Generacion y Aplicacion del Conocimiento: 
+                                {% for tag in object.tags.all%}
+                                {% if tag.tag == "lgac " %}
+                                <span class="badge badge-light m-1 p-1 " style="border: 1px solid #000 ">{{tag}}</span>
+                                {% endif %}
+                                {% endfor %}
+                        </p>
                 </div>
             </div>
-            <div class="form-group row container mt-0">
+            <div class="form-group row container mt-0 ">
                 {% if object.user == user %}
-                <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#deletemodal">
+                <button type="button " class="btn btn-danger mr-1 " data-toggle="modal " data-target="#deletemodal ">
                     Eliminar
                 </button>
-
-                <a class="btn btn-warning ml-1" href="{% url 'book:book-update' object.id %}">Editar</a>
-                {% endif %}
+                <a class="btn btn-warning ml-1 " href="{% url 'book:book-update' object.id %} ">Editar</a> {% endif %}
             </div>
         </div>
     </div>
-
 </div>
-</div>
-
 <!-- Modal -->
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar {{object.title}}</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
+<div class="modal fade " id="deletemodal " tabindex="-1 " role="dialog ">
+    <div class="modal-dialog " role="document ">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h5 class="modal-title " id="exampleModalLabel ">Eliminar {{object.title}}</h5>
+                <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                    <span aria-hidden="true ">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body ">
                 <p>Esta publicacion compete tambien a: {% for author in object.authors.all%}
-                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
+                    <a class="sap-intext-link sap-card-link " href="# "> {{author}}</a>
                     {% if author != object.authors.last%} | {% endif %}
                     {% endfor %}</p>
                 <p> ¿Esta seguro que desea eliminar esta publicación? </p>
                 <p><strong> Esta accion es irreversible</strong> </p>
             </div>
-            <div class="modal-footer">
-                <a class="btn btn-warning" href="{% url 'book:book-detail' object.id %}">Cancelar</a>
-                <form method="post" action="{% url 'book:book-delete' object.id %}">
+            <div class="modal-footer ">
+                <a class="btn btn-warning " href="{% url 'book:book-detail' object.id %} ">Cancelar</a>
+                <form method="post " action="{% url 'book:book-delete' object.id %} ">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-danger" value="Confirmar">
+                    <input type="submit " class="btn btn-danger " value="Confirmar ">
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 
 {% endblock %}
