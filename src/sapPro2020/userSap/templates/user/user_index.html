@@ -1,15 +1,13 @@
 {% extends "base.html" %}{% load static %} {% block content %}
 
 <div class="row sap-container rounded">
-    <div class="w-100">
-        <h3 class="sap-h3 p-3 w-100">Perfil</h3>
-    </div>
     <!--Left Column-->
-    <div class="col-3 sap-menu-container XfvCs">
+    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 sap-menu-container XfvCs">
         <ul class="sap-menu">
             <li class="" style="
             padding-left: 10%;">
-                <div class="container"><small><strong>Acceso rapido</small></div></strong>
+                <div class="container"><small><strong>Acceso rapido</small></div>
+                </strong>
             </li>
             <li class="sap-list-item">
                 <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'book:book-create' %}">
@@ -53,12 +51,13 @@
             </li>
             <li class="" style="
             padding-left: 10%;">
-                <div class="container"><small><strong>Publicaciones</small></div></strong>
+                <div class="container"><small><strong>Publicaciones</small></div>
+                </strong>
             </li>
             <li class="sap-list-item">
                 <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
                     href="{% url 'publication:publication-index' %}">
-                    Ver publicaciones&nbsp;<svg class="hvr-icon bi bi-table" width="1em" height="1em"
+                    Ver todas las publicaciones&nbsp;<svg class="hvr-icon bi bi-table" width="1em" height="1em"
                         viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
                             d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
@@ -92,7 +91,7 @@
             </li>
             <li class="sap-list-item">
                 <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
-                    href="{% url 'account:account-create' %}">
+                    href="{% url 'author:author-index' %}">
                     Autores externos &nbsp; <svg class="hvr-icon bi bi-person-plus" width="1em" height="1em"
                         viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd"
@@ -102,9 +101,9 @@
                             clip-rule="evenodd" />
                     </svg></a>
             </li>
-            <li class="" style="
-            padding-left: 10%;">
-                <div class="container"><small><strong>Seguimiento</small></div></strong>
+            <li class="" style="padding-left: 10%;">
+                <div class="container"><small><strong>Seguimiento</small></div>
+                </strong>
             </li>
             <li class="sap-list-item">
                 <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link"
@@ -133,9 +132,10 @@
 
             <li class="sap-list-item">
                 <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:event-index' %}">
-                Eventos&nbsp;<svg class="hvr-icon bi bi-calendar-check-fill" width="1em" height="1em" viewBox="0 0 16 16"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm10.854 3.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                    Eventos&nbsp;<svg class="hvr-icon bi bi-calendar-check-fill" width="1em" height="1em"
+                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm10.854 3.854a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z" />
                     </svg> </a>
             </li>
 
@@ -144,127 +144,49 @@
 
 
 
+
+
     </div>
 
     <!--right column-->
-    <div class="col-9 item-form">
-        <div class="row">
-            <div class="container col-lg-3 col-md-2 col-sm-1">
-                <div class="row justify-content-center">
-                    <img typeof="foaf:Image" src="{% static 'img/static-image-user.png' %}" width="70%" height="70%">
-                </div>
-                <div class="row mt-1">
-                    <a class="btn btn-outline rounded sap-intext-link w-100"
-                        href="{% url 'userSap:user-update' user.id %}">Editar perfil</a>
-                </div>
-                <div class="row mt-1">
-                    <a class="btn btn-outline rounded sap-intext-link w-100"
-                        href="{% url 'userSap:user-update' user.id %}">Ver perfil publico</a>
-                </div>
-                <div class="row mt-1">
-                    <a class="btn btn-outline rounded sap-intext-link w-100"
-                        href="{% url 'userSap:user-update' user.id %}">Generar curriculum</a>
+    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-6 item-form">
+        <div class="m-0 row p-0">
+            <div class=" col-xl-3 col-lg-3 col-md-3 col-sm-12">
+                <div class="row justify-content-center ">
+                    <img typeof="foaf:Image" src="{% static 'img/static-image-user.png' %}" width="100%" height="100%">
                 </div>
             </div>
-            <div class=" col-lg-9 col-md-10 col-sm-11">
-                <div class="row">
-                    <h5 class="col-6">
-                        <small>
-                            {% if user.account.firstName%}
-                            <strong>Nombre completo: </strong>
-                            {{user.account}}
-                            {% else %}
-                            <strong>Complete su perfil: </strong>
-                            {{user}}
-                            <a href="#"><span class="badge-danger badge ">Completar perfil</span></a>
-                            {% endif%}
-                        </small>
-                    </h5>
+            <div class="col-xl-9 col-lg-9 col-md-9 col-sm-12 ">
+                <div class=" ">
+                    <small>
+                        {% if user.account.firstName%}
+                        {{user.account}}
+                        {% else %}
+                        <strong>Complete su perfil: </strong>
+                        {{user}}
+                        <a href="#"><span class="badge-danger badge ">Completar perfil</span></a>
+                        {% endif%}
+                    </small>
                 </div>
-                <div class="row">
-                    <h5 class="col-6">
-                        <small><strong>{{ book_list.all.count|add:bookChapter_list.all.count|add:article_list.all.count }}&nbsp;
-                            </strong>publicaciones</small></h5>
-                    <h5 class="col-6"><small><strong>{{book_list.all.count}}&nbsp;
-                            </strong>proyectos activos</small></h5>
+                <div class=" ">
+                    <small> {{user.rol}}</small>
                 </div>
-                <h5><small><strong>Programa educativo:
-                        </strong>{{user.account.program}}</small>
-                </h5>
+                <div class=" ">
+                    <small><strong>{{ book_list.all.count|add:bookChapter_list.all.count|add:article_list.all.count }}&nbsp;
+                        </strong>publicaciones</small>&nbsp;
+                    <small><strong>{{book_list.all.count}}&nbsp;
+                        </strong>proyectos activos</small>
+                    <!--Crear query para calcular proyectos activos en los que esta involucrado el usuario-->
+                </div>
+                <div class=" ">
+                    <small><strong>Programa educativo: </strong>{{user.account.program}}</small>
+                </div>
                 {% if user.account.academy %}
-                <h5><small><strong>Cuerpo academico:
-                        </strong>{{user.account.academy}}</small></h5>
-                {% endif %}
-                <h5><small><strong>Rol en UABC:
-                        </strong>{{user.rol}}</small></h5>
-
+                <div class=" ">
+                    <small><strong>Cuerpo academico: </strong>{{user.account.academy}}</small>
+                    {% endif %}
+                </div>
             </div>
         </div>
-
-
-        <!--activity feed -->
-        <div class="row container ">
-            <h4 class="sap-h3 mt-5 col-12">Mi actividad reciente</h4>
-        </div>
-        {% for product in product_list reversed %}
-        <div class="row container">
-            <div class="mt-1 col-12">
-                {% if forloop.counter <  10 %}
-                {% if product.product == "Libro" %}
-                <a class="hvr-icon-pop  row bold sap-intext-link btn-outline"
-                    href="{% url 'book:book-detail' product.id %}">
-                    {{product}}&nbsp;
-                    <svg class="hvr-icon bi bi-book" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
-                            clip-rule="evenodd" />
-                        <path fill-rule="evenodd"
-                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609zM15 2.82v9.908c-.846-.343-1.944-.672-3.074-.788-1.143-.118-2.387-.023-3.426.56V2.718c1.063-.929 2.631-.956 4.09-.664A11.956 11.956 0 0115 2.82z"
-                            clip-rule="evenodd" />
-                    </svg></a>
-                {% endif %}
-
-                {% if product.product == "Captiulo" %}
-                <a class="hvr-icon-pop  row bold sap-intext-link btn-outline"
-                    href="{% url 'bookChapter:bookChapter-detail' product.id %}">
-                    {{product}}&nbsp;
-                    <svg class="hvr-icon bi bi-book-half" width="1em" height="1em" viewBox="0 0 16 16"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M3.214 1.072C4.813.752 6.916.71 8.354 2.146A.5.5 0 018.5 2.5v11a.5.5 0 01-.854.354c-.843-.844-2.115-1.059-3.47-.92-1.344.14-2.66.617-3.452 1.013A.5.5 0 010 13.5v-11a.5.5 0 01.276-.447L.5 2.5l-.224-.447.002-.001.004-.002.013-.006a5.017 5.017 0 01.22-.103 12.958 12.958 0 012.7-.869zM1 2.82v9.908c.846-.343 1.944-.672 3.074-.788 1.143-.118 2.387-.023 3.426.56V2.718c-1.063-.929-2.631-.956-4.09-.664A11.958 11.958 0 001 2.82z"
-                            clip-rule="evenodd" />
-                        <path fill-rule="evenodd"
-                            d="M12.786 1.072C11.188.752 9.084.71 7.646 2.146A.5.5 0 007.5 2.5v11a.5.5 0 00.854.354c.843-.844 2.115-1.059 3.47-.92 1.344.14 2.66.617 3.452 1.013A.5.5 0 0016 13.5v-11a.5.5 0 00-.276-.447L15.5 2.5l.224-.447-.002-.001-.004-.002-.013-.006-.047-.023a12.582 12.582 0 00-.799-.34 12.96 12.96 0 00-2.073-.609z"
-                            clip-rule="evenodd" />
-                    </svg></a>
-                {% endif %}
-
-                {% if product.product == "Articulo" %}
-                <a class="hvr-icon-pop  row bold sap-intext-link btn-outline"
-                    href="{% url 'article:article-detail' product.id %}">
-                    {{product}}&nbsp;
-                    <svg class="hvr-icon bi bi-newspaper" width="1em" height="1em" viewBox="0 0 16 16"
-                        fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M0 2A1.5 1.5 0 011.5.5h11A1.5 1.5 0 0114 2v12a1.5 1.5 0 01-1.5 1.5h-11A1.5 1.5 0 010 14V2zm1.5-.5A.5.5 0 001 2v12a.5.5 0 00.5.5h11a.5.5 0 00.5-.5V2a.5.5 0 00-.5-.5h-11z"
-                            clip-rule="evenodd" />
-                        <path fill-rule="evenodd"
-                            d="M15.5 3a.5.5 0 01.5.5V14a1.5 1.5 0 01-1.5 1.5h-3v-1h3a.5.5 0 00.5-.5V3.5a.5.5 0 01.5-.5z"
-                            clip-rule="evenodd" />
-                        <path
-                            d="M2 3h10v2H2V3zm0 3h4v3H2V6zm0 4h4v1H2v-1zm0 2h4v1H2v-1zm5-6h2v1H7V6zm3 0h2v1h-2V6zM7 8h2v1H7V8zm3 0h2v1h-2V8zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1zm-3 2h2v1H7v-1zm3 0h2v1h-2v-1z" />
-                    </svg></a>
-                {% endif %}
-
-                {% endif %}
-            </div>
-        </div>
-        {% empty %}
-        <p class="card-text">No hay actividad reciente</p>
-        {% endfor %}
     </div>
-</div>
-<!---->
-
-{% endblock %}
+</div>{% endblock %}

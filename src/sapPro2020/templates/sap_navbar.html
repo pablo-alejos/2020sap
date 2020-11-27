@@ -30,7 +30,7 @@
         <li class="nav-item container">
           <a class="nav-link" href="{% url 'author:author-index' %}" role="button">
             <button class="sap-nav-button btn-1">
-              <span class="sap-nav-span">Autores</span></button></a>
+              <span class="sap-nav-span">Contacto</span></button></a>
         </li>
 
       </ul>
@@ -80,14 +80,12 @@
             {% endif %}
           </a>
           <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
-            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-index' %}"><img
-                src="{% static 'img/open-iconic/svg/person.svg' %}" height="18px" width="18px"> Perfil</a>
-            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-update' user.id %}"><img
-                src="{% static 'img/open-iconic/svg/cog.svg' %}" height="18px" width="18px"> Editar inicio de
-              sesion</a>
-            <a class="pading-transition-left-1 dropdown-item"
-              href="{% url 'userSap:user-update-password' user.id %}"><img
-                src="{% static 'img/open-iconic/svg/key.svg' %}" height="18px" width="18px"> Cambiar contraseña</a>
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-index' %}">
+              <img src="{% static 'img/open-iconic/svg/person.svg' %}" height="18px" width="18px"> Resumen</a>
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-update' user.id %}">
+              <img src="{% static 'img/open-iconic/svg/cog.svg' %}" height="18px" width="18px"> Ajustes</a>
+            <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-update-password' user.id %}">
+              <img src="{% static 'img/open-iconic/svg/key.svg' %}" height="18px" width="18px"> Cambiar contraseña</a>
             <div class="dropdown-divider"></div>
             <a class="pading-transition-left-1 dropdown-item" href="{% url 'userSap:user-logout' %}"><img
                 src="{% static 'img/open-iconic/svg/account-logout.svg' %}" height="18px" width="18px"> Salir</a>

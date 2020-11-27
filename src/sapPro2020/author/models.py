@@ -13,3 +13,7 @@ class Author(models.Model):
 
     def get_absolute_url(self):
         return reverse("author:author-detail", kwargs={"id": self.id})
+
+    class Meta:
+        verbose_name = 'Autor'
+        verbose_name_plural = 'Autores'

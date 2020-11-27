@@ -15,7 +15,7 @@ class UserSapManager(BaseUserManager):
         if not email:
             raise ValueError('El email es requerido')
         email = self.normalize_email(email)
-        extra_fields.setdefault('is_active', False)
+        extra_fields.setdefault('is_active', True)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
         user.save()

@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from .views import AcademyIndexView, AcademyCreateView, AcademyDetailView, AcademyUpdateView, AcademyDeleteView
 from .views import ProgramIndexView, ProgramCreateView, ProgramDetailView, ProgramUpdateView, ProgramDeleteView
-from .views import AccountIndexView, AccountCreateView, AccountDetailView, AccountUpdateView, AccountDeleteView
+from .views import AccountIndexView, AccountCompleteView, AccountDetailView, AccountUpdateView, AccountDeleteView
 
 app_name = 'account'
 urlpatterns = [
@@ -30,12 +30,9 @@ urlpatterns = [
          login_required(ProgramUpdateView.as_view()), name='program-update'),
 
     path('index', login_required(AccountIndexView.as_view()), name='account-index'),
-    path('create', login_required(
-        AccountCreateView.as_view()), name='account-create'),
-    path('<int:id>/', login_required(AccountDetailView.as_view()),
-         name='account-detail'),
-    path('<int:id>/delete', login_required(AccountDeleteView.as_view()),
-         name='account-delete'),
-    path('<int:id>/update', login_required(AccountUpdateView.as_view()),
-         name='account-update'),
+    #path('create', login_required(AccountCreateView.as_view()), name='account-create'),
+    path('<int:id>/complete', login_required(AccountCompleteView.as_view()), name='account-complete'),
+    path('<int:id>/', login_required(AccountDetailView.as_view()), name='account-detail'),
+    path('<int:id>/delete', login_required(AccountDeleteView.as_view()), name='account-delete'),
+    path('<int:id>/update', login_required(AccountUpdateView.as_view()), name='account-update'),
 ]

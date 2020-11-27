@@ -21,3 +21,6 @@ class Event(models.Model):
 
     def __str__(self):
         return f"{self.event} {'-'} {self.name}"
+
+    class Meta:
+        verbose_name = 'Evento'

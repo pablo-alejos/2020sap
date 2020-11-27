@@ -15,7 +15,7 @@ from .managers import UserSapManager
 
 class UserSap(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=100, verbose_name="Correo UABC", unique=True)
-    account = models.OneToOneField(Account, on_delete=models.PROTECT, verbose_name="Informacion personal", blank=True, null=True)
+    account = models.OneToOneField(Account, on_delete=models.CASCADE, verbose_name="Informacion personal", blank=True, null=True)
     statuSelect = (
         (None, 'Selecciona estado'),
         ('Activo', 'Activo'),
@@ -39,7 +39,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
 
     is_active = models.BooleanField(
         _('active'),
-        default=True,
+        default=False,
         help_text=_(
             'Designates whether this user should be treated as active. '
             'Unselect this instead of deleting accounts.'
