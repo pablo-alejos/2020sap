@@ -26,8 +26,7 @@ class Project(models.Model):
         blank=True, max_length=100, verbose_name=" Convocatoria (Si aplica)")
     amount = models.CharField(
         blank=True, max_length=50, verbose_name="Presupuesto (Si aplica)")
-    participants = models.ManyToManyField(
-        Account, blank=True, verbose_name="Participantes")  # , through='Authors'
+    participants = models.ManyToManyField(UserSap, blank=True, verbose_name="Participantes",related_name="authors")  
     code = models.CharField(verbose_name="Clave", blank=True, max_length=100)
     vigent = models.DateField(blank=True, verbose_name="Vigencia hasta")
     state = (

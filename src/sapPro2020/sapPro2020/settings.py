@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'project.apps.ProjectConfig',
     'event.apps.EventConfig',
     'tag.apps.TagConfig',
+    'publication.apps.PublicationConfig',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Tijuana'
 
 USE_I18N = True
 

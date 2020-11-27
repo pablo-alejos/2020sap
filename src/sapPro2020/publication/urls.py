@@ -8,5 +8,5 @@ urlpatterns = [
     path('', PublicationView.as_view(), name='publication-index'),
     path('buscar/', SearchView.as_view(), name='publication-filter'),
     path('response/', searchAjaxView,name="response"),
-    path('product/', objectAjaxView,name="objectResponse"),
+    path('producto/', objectAjaxView,name="objectResponse"),
 ]

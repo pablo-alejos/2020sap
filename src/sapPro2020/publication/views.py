@@ -39,7 +39,7 @@ class SearchView(TemplateView):
         context['program_list'] = Program.objects.order_by('name')
         context['academy_list'] = Academy.objects.order_by('name')
         context['account_list'] = Account.objects.order_by('firstName')
-        context['project_list'] = Project.objects.order_by('name')
+        context['project_list'] = Project.objects.order_by('title')
         context['journal_list'] = Journal.objects.order_by('name')
         book_list = Book.objects.all()
         bookChapter_list = BookChapter.objects.all()

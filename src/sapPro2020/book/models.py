@@ -13,11 +13,11 @@ from author.models import Author
 
 class Book(models.Model):
     #ForeignKeys
-    project = models.ForeignKey(Project, on_delete=models.PROTECT, verbose_name="Proyecto")
+    project = models.ForeignKey(Project, on_delete=models.PROTECT, verbose_name="Proyecto",null=True)
     user = models.ForeignKey(UserSap, on_delete=models.PROTECT, verbose_name="Autor principal")
-    programTribute = models.ForeignKey(Program, on_delete=models.PROTECT, verbose_name="Programa educativo al que tributa",blank=True,default="")
-    academyTribute = models.ForeignKey(Academy, on_delete=models.PROTECT, verbose_name="Cuerpo académico educativo al que tributa",blank=True,default="")
-    eventPublication = models.ForeignKey(Event, on_delete=models.PROTECT, verbose_name="Evento en el que fue publicado",blank=True,default="")
+    programTribute = models.ForeignKey(Program, on_delete=models.PROTECT, verbose_name="Programa educativo al que tributa",blank=True,default="",null=True)
+    academyTribute = models.ForeignKey(Academy, on_delete=models.PROTECT, verbose_name="Cuerpo académico educativo al que tributa",blank=True,default="",null=True)
+    eventPublication = models.ForeignKey(Event, on_delete=models.PROTECT, verbose_name="Evento en el que fue publicado",blank=True,default="",null=True)
     #ManyToManyFields    
     authors = models.ManyToManyField(Author,blank=True,verbose_name = "Otros Autores")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name="Etiquetas")

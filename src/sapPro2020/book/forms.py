@@ -7,6 +7,7 @@ from userSap.models import UserSap
 from account.models import Account, Program, Academy
 from event.models import Event
 from tag.models import Tag
+from author.models import Author
 
 
 class BookModelForm(forms.ModelForm):
@@ -18,7 +19,7 @@ class BookModelForm(forms.ModelForm):
                                          attrs={
                                              "class": "basic-single form-control w-100",
                                              "id": "id-select-project-book"}))
-    authors = forms.ModelMultipleChoiceField(queryset=Account.objects.order_by('firstName'),
+    authors = forms.ModelMultipleChoiceField(queryset=Author.objects.order_by('firstName'),
                                              label="Autores",
                                              widget=forms.SelectMultiple(
                                                  attrs={
@@ -120,7 +121,8 @@ class BookModelForm(forms.ModelForm):
 
     class Meta:
         model = Book
-        fields = ['project',
+        fields = ['user',
+                  'project',
                   'authors',
                   'title',
                   'editorial',
