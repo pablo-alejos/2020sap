@@ -160,18 +160,10 @@ class BookModelForm(forms.ModelForm):
 
     def clean_title(self):
         title = self.cleaned_data.get("title")
-        if title in Book.objects.values_list('title', flat=True):
-            raise forms.ValidationError(
-                "Este título ya esta tomado. Si requiere utilizarlo pongase en contacto con el administrador del sitio."
-            )
         return title
 
     def clean_isbn(self):
         isbn = self.cleaned_data.get("isbn")
-        if isbn in Book.objects.values_list('isbn', flat=True):
-            raise forms.ValidationError(
-                "Este ISBN ya esta tomado. Si requiere utilizarlo pongase en contacto con el administrador del sitio."
-            )
         if len(isbn) > 17 or len(isbn) < 13:
             raise forms.ValidationError(
                 "El ISBN debe seguir las reglas de numeracion internacional.")

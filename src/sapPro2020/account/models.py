@@ -32,7 +32,7 @@ class Program(models.Model):
 class Account(models.Model):
     program = models.ForeignKey(Program, on_delete=models.PROTECT, verbose_name="Programa educativo", blank=True, null=True)
     academy = models.ForeignKey(Academy, on_delete=models.PROTECT, verbose_name="Cuerpo académico", blank=True, null=True)
-    numEmp = models.CharField(max_length=20, verbose_name="Numero de empleado", blank=True)
+    numEmp = models.CharField(max_length=20, verbose_name="Numero de empleado", blank=True, unique=True)
     firstName = models.CharField(max_length=50, verbose_name="Nombre(s)", blank=True)
     lastNameA = models.CharField(max_length=50, verbose_name="Apellido Paterno", blank=True)
     lastNameB = models.CharField(max_length=50, verbose_name="Apellido Materno", blank=True)
