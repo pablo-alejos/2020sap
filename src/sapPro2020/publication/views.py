@@ -31,6 +31,24 @@ class PublicationView(TemplateView):
         return context
 
 
+
+class PublicationUserView(TemplateView):
+    template_name = "user_publications.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        book_list = Book.objects.filter(user=self.request.user)
+        bookChapter_list = BookChapter.objects.filter(user=self.request.user)
+        article_list = Article.objects.filter(user=self.request.user)
+        product_list = list(chain(article_list, book_list, bookChapter_list))
+        context['book_list'] = book_list
+        context['bookChapter_list'] = bookChapter_list
+        context['article_list'] = article_list
+        context['product_list'] = product_list
+        return context
+
+
+
 class SearchView(TemplateView):
     template_name = "sap_publication_search.html"
 

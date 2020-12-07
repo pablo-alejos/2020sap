@@ -28,7 +28,7 @@
             {% if user.account.firstName or not user.is_authenticated%}
             {% block content %} {% endblock %}
             {% else %}
-
+            <!--Forzar a que complete los datos de Account antes de mostrarle cualquier otra-->
             <div class="row sap-container rounded justify-content-center">
                 <div class="container-fluid">
                     <div class="row justify-content-center m-5">
@@ -51,6 +51,7 @@
             src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.14/js/bootstrap-select.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
         <script src="{% static 'js/custom.js' %}"></script>
+        <script src="{% static 'js/sortable.js' %}"></script>
 
     </body>
 

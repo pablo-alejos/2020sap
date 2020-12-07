@@ -16,3 +16,10 @@ $(document).ready(function() {
     $('.basic-multiple').select2();
     $('.basic-single').select2();
 });
+
+//---------------------------------------------------------------------
+
+
+$(document).ready(function() {
+    createTable('user_publication_table',null,'sortable');
+} );

@@ -69,10 +69,3 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
     
     class Meta:
         verbose_name = 'Usuario'
-"""
-@receiver(post_save, sender=UserSap)
-def create_model_account(sender, instance, created, **kwargs):
-    if created:
-        instance.account = Account.objects.create()
-        instance.save()
-"""
