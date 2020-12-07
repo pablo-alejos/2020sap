@@ -8,7 +8,7 @@ from django.views.generic import (
 
 from .forms import BookModelForm
 from account.models import Academy, Program
-from event.models import Forum,Congress,Symposium,Event
+from event.models import Event
 from tag.models import Tag
 from .models import Book
 
@@ -39,7 +39,7 @@ class BookCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        #form.instance.user = self.request.user
         return super().form_valid(form)
 ############################################################
 

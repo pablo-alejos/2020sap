@@ -13,3 +13,7 @@ class Tag(models.Model):
 
     def get_absolute_url(self):
         return reverse("tag:tag-detail", kwargs={"id": self.id})
+
+    class Meta:
+        verbose_name = 'Etiqueta'
+        

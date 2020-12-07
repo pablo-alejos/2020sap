@@ -1,0 +1,135 @@
+{% extends 'base.html' %}{% load static %} {% block title %} Publicaciones {% endblock %} {% block content %}
+
+<div class="row sap-container rounded">
+    <div class="w-100">
+        <h3 class="sap-h3 p-3 w-100"> Mis Publicaciones</h3>
+    </div>
+    <!--rigt column-->
+    <div class="col-12">
+        <h4>Filtrar</h4>
+        <!--filter controls-->
+        <div class="row mb-1">
+            <div class="col-6 w-100">
+                <input data-jplist-control="textbox-filter" data-group="group2" data-name="my-filter-1"
+                    data-path=".title" type="text" value="" class="form-control form-control-sm"
+                    placeholder="Escriba el titulo de la publicación" />
+            </div>
+            <div class="col-2">
+                <select class="custom-control custom-select custom-select-sm" data-jplist-control="select-filter"
+                    data-group="group2" data-name="name12">
+                    <option value="0" data-path="default" selected>Producto</option>
+
+                    <option value="1" data-path=".Libro">Libros</option>
+
+                    <option value="2" data-path=".Capitulo">Capitulos</option>
+
+                    <option value="3" data-path=".Articulo">Articlos</option>
+                </select>
+            </div>
+            <div class="col-4 form-group form-group-sm">
+                <select class="custom-control m-auto custom-select custom-select-sm" data-jplist-control="select-filter"
+                    data-group="group2" data-name="name11">
+                    <option value="0" data-path="default" selected>Fuente</option>
+                    <option value="1" data-path=".Editorial">Editorial</option>
+                    <option value="2" data-path=".Revista">Revista</option>
+                    <option value="3" data-path=".Congreso">Congreso</option>
+                    <option value="4" data-path=".Foro">Foro</option>
+                    <option value="5" data-path=".Simposio">Simposio</option>
+                </select>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div data-jplist-group="group2" class="row p-1">
+                {% for product in product_list %}
+                <div data-jplist-item class="col-md-4 col-sm-12 mb-3 " >
+                    <div class="container-fluid card btn-outline">
+                        <div class="row justify-content-center">
+                            <img typeof="foaf:Image" src="/media/{{product.image}}" width="130px" height="150px"
+                                style="border: solid 1px black;" class="">
+                        </div>
+                        <div class="col-12">
+                            {% if product.product == "Libro" %}
+                            <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                                href="{% url 'book:book-detail' product.id  %}">
+                                <strong>
+                                    <h5><small>{{product.title}} </small></h5>
+                                </strong>
+                            </a>
+                            <div><small>{% if product.editorial %} Editorial {{product.editorial}} | {% endif %}
+                                    {{product.eventPublication}}</small></div>
+                            <div><small>{{product.publicationYear}}</small></div>
+                            <div><small>Subido por {{product.user.account}}</small></div>
+                            <div><small>Fecha de subida {{product.timeStamp}}</small></div>
+                            <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                                href="{% url 'book:book-detail' product.id  %}">
+                                <strong><small>Vista detallada</small></strong>
+                            </a>
+                            {% endif %} {% if product.product == "Capitulo" %}
+                            <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                                href="{% url 'bookChapter:bookChapter-detail' product.id  %}">
+                                {{product.title}}</a>
+                            <div><small>Capitulo de libro</small></div>
+                            <div><small><strong>Captiulo del libro: </strong>{{product.bookTitle}}</small>
+                            </div>
+                            <div><small><strong>Fuente: </strong>{{product.bookEditorial}} |
+                                    {{product.eventPublication}}</small></div>
+                            <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
+                            {% endif %} {% if product.product == "Articulo" %}
+                            <a class="sap-intext-link title {{product.product}} {{product.eventPublication}} Revista"
+                                href="{% url 'article:article-detail' product.id  %}">
+                                {{product.title}}</a>
+                            <div><small>Articlo</small></div>
+                            <div><small><strong>Fuente: </strong>{% if product.journal %} {{product.journal}} |
+                                    {% endif %}
+                                    {{product.eventPublication}}</small></div>
+                            <div><small><strong>Año: </strong>{{product.publicationYear}}</small></div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <!-- no results control -->
+                <div data-jplist-control="no-results" data-group="group2" data-name="no-results">No se encontraron
+                    registros que coincidan.</div>
+            </div>
+        </div>
+        <!-- pagination control -->
+        <div data-jplist-control="pagination" data-group="group2" data-items-per-page="3" data-current-page="0"
+            data-name="pagination1" class="row">
+            <div class="col-6 container">
+                <div class="row col-12 mb-1">
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="first">«</button>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="prev">‹</button>
+                    <div class="jplist-holder" data-type="pages">
+                        <button class="btn" style="border: 1px solid #dbdbdb;" type="button"
+                            data-type="page">{pageNumber}</button>
+                    </div>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="next">›</button>
+                    <button class="btn" style="border: 1px solid #dbdbdb;" type="button" data-type="last">»</button>
+                </div>
+            </div>
+
+            <div class="col-6 row container">
+                <!-- items per page select -->
+                <select data-type="items-per-page" class="col-8 custom-select custom-select-sm">
+                    <option value="3"> 3 por pagina</option>
+                    <option value="6"> 6 por pagina</option>
+                    <option value="9"> 9 por pagina</option>
+                    <option value="12"> 12 por pagina</option>
+                    <option value="0"> Mostrar todos </option>
+                </select>
+
+                <span data-type="info" class="col-4">
+                    Pagina {pageNumber} de {pagesNumber}
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- jPList Library -->
+<script src="{% static 'js/jplist.min.js' %}"></script>
+<script>
+    jplist.init();
+</script>
+{% endblock %}

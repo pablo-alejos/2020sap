@@ -11,25 +11,26 @@ class UserSapAdmin(UserAdmin):
     add_form = UserSapCreationForm
     form = UserSapChangeForm
     model = UserSap
+    verbose_name = 'Usuario Sap'
     list_display = ('email', 'account', 'rol', 'is_staff', 'is_active',)
-    list_filter = ('email', 'account', 'rol', 'is_staff', 'is_active',)
+    list_filter = ('rol', 'is_staff', 'is_active',)
 
     fieldsets = (
-        (None, {'fields': ('email', 'password', 'rol',)}),
-        ('Personal info', {'fields': ('account',)}),
-        ('Gruops', {'fields': ('groups',)}),
-        ('User permissions', {'fields': ('user_permissions',)}),
+        ('Usuario Sap', {'fields': ('email', 'password', 'rol',)}),
+        ('Informacion personal', {'fields': ('account',)}),
+        ('Grupos', {'classes': ('wide',),'fields': ('groups',)}),
+        ('Permisos', {'classes': ('wide',),'fields': ('user_permissions',)}),
         ('Login', {'fields': ('is_active',)}),
         ('Staff', {'fields': ('is_staff',)}),
     )
-
+    """
     add_fieldsets = (
-        (None, {
+        ('add', {
             'classes': ('wide',),
             'fields': ('email', 'account', 'rol', 'password1', 'password2', 'is_staff', 'is_active')}
          ),
     )
-
+"""
     ordering = ('email',)
 
     search_fields = ('email',)

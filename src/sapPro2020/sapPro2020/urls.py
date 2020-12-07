@@ -11,7 +11,11 @@ from bookChapter import views
 from userSap import views
 from project import views
 from publication import views
+from author import views
 from .views import HomeView,SearchView,searchAjaxView,tagsAjaxView
+
+from django.contrib.staticfiles.storage import staticfiles_storage
+from django.views.generic.base import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -28,6 +32,6 @@ urlpatterns = [
     path('etiqueta/', include('tag.urls')),
     path('proyecto/', include('project.urls')),
     path('evento/', include('event.urls')),
-    path('autor/', include('author.urls')),
-    #path('responseArticle/', searchArticleView,name="responseArticle"),
+    path('autores/', include('author.urls')),
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico')))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

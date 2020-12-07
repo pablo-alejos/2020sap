@@ -7,14 +7,14 @@ from .forms import AuthorModelForm
 from .models import Author
 
 class AuthorIndexView(ListView): 
-    template_name = 'author/author.html'
+    template_name = 'author/author_index.html'
     queryset = Author.objects.all()
 ############################################################
 class AuthorCreateView(CreateView): 
     template_name = 'author/author_create.html'
     form_class = AuthorModelForm
     queryset = Author.objects.all() 
-    success_url = reverse_lazy('userSap:user-index')
+    success_url = reverse_lazy('author:author-index')
 
     def form_valid(self, form):
         return super().form_valid(form)   

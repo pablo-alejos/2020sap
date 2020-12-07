@@ -40,6 +40,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account.apps.AccountConfig',
+    'author.apps.AuthorConfig',
+    'userSap.apps.UsersapConfig',
+    'article.apps.ArticleConfig',
+    'book.apps.BookConfig',
+    'bookChapter.apps.BookchapterConfig',
+    'project.apps.ProjectConfig',
+    'event.apps.EventConfig',
+    'tag.apps.TagConfig',
+    'publication.apps.PublicationConfig',
 ]
 
 MIDDLEWARE = [
@@ -108,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Tijuana'
 
 USE_I18N = True
 
@@ -124,11 +134,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 STATIC_URL = '/static/'
+
+INTERNAL_IPS= ['127.0.0.1']
 
 AUTH_USER_MODEL = 'userSap.UserSap'
 
@@ -136,5 +147,5 @@ LOGIN_URL = reverse_lazy('userSap:user-login')
 LOGIN_REDIRECT_URL = reverse_lazy('userSap:user-index')
 LOGOUT_REDIRECT_URL = reverse_lazy('userSap:user-login')
 
-MEDIA_ROOT=os.path.join(BASE_DIR, 'archiving/')
-MEDIA_URL="/archiving/"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"

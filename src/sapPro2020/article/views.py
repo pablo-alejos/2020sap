@@ -124,3 +124,4 @@ class JournalDeleteView(DeleteView):
 
     def get_success_url(self):
         return reverse('Journal:journal-index')
+

@@ -95,14 +95,18 @@ class AccountIndexView(ListView):
     template_name = 'account/account.html'
     queryset = Account.objects.all()
 ############################################################
-class AccountCreateView(CreateView): 
-    template_name = 'account/account_create.html'
+class AccountCompleteView(UpdateView): 
+    template_name = 'account/account_complete.html'
     form_class = AccountModelForm
-    queryset = Account.objects.all() 
+    queryset = Account.objects.all()
     success_url = reverse_lazy('userSap:user-index')
 
     def form_valid(self, form):
-        return super().form_valid(form)   
+        return super().form_valid(form)    
+
+    def get_object(self):
+        id_ = self.kwargs.get("id")
+        return get_object_or_404(Account, id=id_)
 ############################################################
 class AccountDetailView(DetailView): 
     template_name = 'account/account_detail.html' 

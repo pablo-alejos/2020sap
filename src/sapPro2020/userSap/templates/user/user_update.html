@@ -1,12 +1,12 @@
-{% extends "base.html" %}{% load static %}{% load crispy_forms_tags %}{% block content %}
+{% extends "base.html" %}{% load static %}{% block content %}
 
 
 <div class="row sap-container shadow-lg rounded">
     <div class="w-100">
-        <h3 class="sap-h3 p-3 w-100">Editar usuario</h3>
+        <h3 class="sap-h3 p-3 w-100">Inicio de seision</h3>
     </div>
     {% include 'edit_profile_menu.html' %}
-    <div class="col-8 item-form">
+    <div class="col-md-9 col-sm-6 item-form">
         <div class="row container justify-content-center">
             <form method="post" class="container-fluid"> {% csrf_token %}
                 <div class="form-group row">
@@ -18,11 +18,6 @@
                 <div class="form-group row">
                     <label class="col-4 col-form-label">Rol en UABC</label>
                     <div class="col-8">{{form.rol}}</div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-4 col-form-label">Contraseña</label>
-                    <div class="col-8">{{form.password}}</div>
                 </div>
 
                 <div class="form-group row">

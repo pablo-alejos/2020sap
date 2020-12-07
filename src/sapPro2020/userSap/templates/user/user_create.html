@@ -1,7 +1,7 @@
-{% extends "base.html" %}{% load static %}{% load crispy_forms_tags %} {% block content %}
+{% extends "base.html" %}{% load static %} {% block content %}
 
 <div class="sap-container-fluid">
-    
+
     <div class="row mt-3 align-items-center justify-content-center container-fluid" id="row-two">
         <div class="card col-4 shadow-lg rounded">
             <div class="card-body list-group list-group-flush">
@@ -13,25 +13,29 @@
                         {% csrf_token %}
                         <div class="form-group">
                             <small id="emailHelp" class="form-text text-muted">Correo institucional.</small>
-                            {{form.email}} {% if form.email.errors %} {{form.email.errors}} {% endif%}
-
+                            {{form.email}}
+                            <small style="color:red;">{% if form.email.errors %}
+                                {{form.email.errors}}
+                                {% endif%} </small>
                         </div>
                         <div class="form-group">
                             <small id="rolHelp" class="form-text text-muted">Rol en UABC.</small> {{form.rol}}
-
                         </div>
                         <div class="form-group">
-                            <small id="emailHelp" class="form-text text-muted">Porfavor ingrese una contraseña.</small>
+                            <small id="password1Help" class="form-text text-muted">Porfavor ingrese una
+                                contraseña.</small>
                             {{form.password1}}
-
-                            <small id="password1Help" class="form-text text-muted"></small>
+                            <small style="color:red;">{% if form.password1.errors %}
+                                {{form.password1.errors}}
+                                {% endif%} </small>
 
                         </div>
                         <div class="form-group">
                             <small id="password2Help" class="form-text text-muted">Porfavor confirme su
-                                contraseña.</small> {{form.password2}} {% if form.password2.errors %}
-                            {{form.password2.errors}} {% endif%}
-
+                                contraseña.</small> {{form.password2}}
+                            <small style="color:red;">{% if form.password2.errors %}
+                                {{form.password2.errors}}
+                                {% endif%} </small>
                         </div>
                         <div class="form-group">
                             <div class="row align-items-center justify-content-center">

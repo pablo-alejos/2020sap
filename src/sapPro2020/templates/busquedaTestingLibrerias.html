@@ -1,0 +1,50 @@
+{% load static %}
+
+<body>
+
+    <!-- hidden sort control -->
+    <div style="display: none" data-jplist-control="hidden-sort" data-group="group1" data-path=".name" data-order="asc"
+        data-type="text"></div>
+
+    <!-- text filter control -->
+    <div>
+        <input data-jplist-control="textbox-filter" data-group="group1" data-name="my-filter-1" data-path=".name"
+            type="text" value="" data-clear-btn-id="name-clear-btn" placeholder="Filter by Name" />
+
+        <button type="button" id="name-clear-btn">Clear</button>
+    </div>
+    <div>
+        <input data-jplist-control="textbox-filter" data-group="group1" data-name="my-filter-1" data-path=".academy"
+            type="text" value="" data-clear-btn-id="academy-clear-btn" placeholder="Filter by Name" />
+
+        <button type="button" id="name-clear-btn">Clear</button>
+    </div>
+    <div>
+        <input data-jplist-control="textbox-filter" data-group="group1" data-name="my-filter-1" data-path=".program"
+            type="text" value="" data-clear-btn-id="program-clear-btn" placeholder="Filter by program" />
+
+        <button type="button" id="name-clear-btn">Clear</button>
+    </div>
+
+    <!-- content to filter -->
+    <div data-jplist-group="group1">
+
+        <!-- item -->
+        {% for account in account_list %}
+        <div data-jplist-item class="row">
+            <div class="name col-4">{{account.firstName}}</div>
+            <div class="academy col-4">{{account.academy}}</div>
+            <div class="program col-4">{{account.program}}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <!-- jPList Library -->
+    <script src="{% static 'js/jplist.min.js' %}"></script>
+    <script>
+        jplist.init();
+    </script>
+</body>
+
+</html>

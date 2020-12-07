@@ -1,20 +1,18 @@
-{% extends 'base.html' %}{% load static %}{% load crispy_forms_tags %}
-
-{% block content %}
+{% extends 'base.html' %}{% load static %} {% block content %}
 
 <div class="row sap-container shadow-lg rounded">
+    <div class="w-100">
+        <h3 class="sap-h3 p-3 w-100">Editar registro de libro {{form.id}} </h3>
+    </div>
     <div class="card-body ">
-
-        <div class="row container-fluid">
-            <h3 class="sap-h3 col-12">Actualizar libro</h3>
-        </div>
-
-        <form method='POST' enctype="multipart/form-data"> {% csrf_token %}
+        <form method='POST' enctype="multipart/form-data" novalidate> {% csrf_token %}
             <div class="row">
 
                 <!--auto select the current user to foreignkey in model-->
-                <input id="user-id" type="hidden" value="{{user.account.id}}">
-                {{form.user}}
+                <input type="hidden" name="user" value="{{user.id}}" id="my-id-user">
+
+                <!--auto select the current object to validate in form-->
+                <input type="hidden" name="id" value="{{object.id}}" id="my-id-object">
 
                 <!--left colum-->
                 <div class="col-4">
@@ -28,8 +26,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.title}}
+                            </svg></label> {{form.title}}{% if form.title.errors %}
+                        <small style="color:red;">{{form.title.errors}}</small> {% endif %}
                     </div>
 
                     <div class="form-group form-group-sm">
@@ -41,8 +39,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.editorial}}
+                            </svg></label> {{form.editorial}}{% if form.editorial.errors %}
+                        <small style="color:red;">{{form.editorial.errors}}</small> {% endif %}
                     </div>
 
                     <div class="row">
@@ -56,16 +54,18 @@
                                         d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                     <path
                                         d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                                </svg></label>
-                            {{form.isbn}}
+                                </svg></label> {{form.isbn}}{% if form.isbn.errors %}
+                            <small style="color:red;">{{form.isbn.errors}}</small> {% endif %}
                         </div>
                         <div class="form-group form-group-sm col-6">
                             <label class="sap-form-label" for="form.indexInfo">Año de publicación&nbsp; </label>
-                            {{form.publicationYear}}
+                            {{form.publicationYear}}{% if form.publicationYear.errors %}
+                            <small style="color:red;">{{form.publicationYear.errors}}</small> {% endif %}
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="sap-form-label" for="form.file" class="form-control-file">Elegir archivo&nbsp;
+                    <div class="form-group form-group-sm">
+                        <label class="sap-form-label" for="form.file" class="form-control-file">Libro PDF
+                            archivo&nbsp;
                             <svg data-toggle="tooltip" data-placement="top" data-html="true" title="Archivo comprendido como el producto academico.
                             <strong>Requerido formato PDF</strong>" class="bi bi-question-circle" width="1em"
                                 height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -73,8 +73,21 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.file}}
+                            </svg></label> {{form.file}}{% if form.file.errors %}
+                        <small style="color:red;">{{form.file.errors}}</small> {% endif %}
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="sap-form-label" for="form.image" class="form-control-file">Imagen de cubierta o
+                            portada&nbsp;
+                            <svg data-toggle="tooltip" data-placement="top" data-html="true"
+                                title="Archivo de imagen representativa." class="bi bi-question-circle" width="1em"
+                                height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                <path
+                                    d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                            </svg> {{form.image}}{% if form.image.errors %}
+                            <small style="color:red;">{{form.image.errors}}</small> {% endif %}
                     </div>
                 </div>
 
@@ -91,9 +104,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-
-                        {{form.project}}
+                            </svg></label> {{form.project}}{% if form.project.errors %}
+                        <small style="color:red;">{{form.project.errors}}</small> {% endif %}
                     </div>
                     <div class="form-group form-group-sm w-100">
                         <label class="sap-form-label" for="form.authors">Autor(es)&nbsp;<svg data-toggle="tooltip"
@@ -107,8 +119,9 @@
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
                             </svg></label>
-                        <small id="proyectHelp" class="form-text text-muted"></small>
-                        {{form.authors}}
+                        <small id="proyectHelp" class="form-text text-muted">Porfavor seleccione los autores en el orden
+                            esperado.</small> {{form.authors}}{% if form.authors.errors %}
+                        <small style="color:red;">{{form.authors.errors}}</small> {% endif %}
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="sap-form-label">¿Necesita dar crédito a un autor que no existe
@@ -128,8 +141,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.tags}}
+                            </svg></label> {{form.tags}}{% if form.tags.errors %}
+                        <small style="color:red;">{{form.tags.errors}}</small> {% endif %}
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="sap-form-label">Programa educativo al que tributa&nbsp;<svg data-toggle="tooltip"
@@ -141,8 +154,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.programTribute}}
+                            </svg></label> {{form.programTribute}}{% if form.programTribute.errors %}
+                        <small style="color:red;">{{form.programTribute.errors}}</small> {% endif %}
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="sap-form-label">Cuerpo academico al que tributa&nbsp;<svg data-toggle="tooltip"
@@ -154,8 +167,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                        {{form.academyTribute}}
+                            </svg></label> {{form.academyTribute}}{% if form.academyTribute.errors %}
+                        <small style="color:red;">{{form.academyTribute.errors}}</small> {% endif %}
                     </div>
                     <div class="form-group form-group-sm">
                         <label class="sap-form-label">Evento en el que fue publicado&nbsp;<svg data-toggle="tooltip"
@@ -167,29 +180,8 @@
                                     d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path
                                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                            </svg></label>
-                            {{form.eventPublication}}
-                       <!-- <select name="eventId" id="eventId" class="basic-single form-control w-100">
-                            <option value="">Ninguno</option>
-                            <optgroup label="Congreso"></optgroup>
-                            {% for event in event_list %}
-                            {% if event.event == "congress" %}
-                            <option value="{{event.id}}">{{event.name}}</option>
-                            {% endif %}
-                            {% endfor %}
-                            <optgroup label="Foro"></optgroup>
-                            {% for event in event_list %}
-                            {% if event.event == "forum" %}
-                            <option value="{{event.id}}">{{event.name}}</option>
-                            {% endif %}
-                            {% endfor %}
-                            <optgroup label="Simposio"></optgroup>
-                            {% for event in event_list %}
-                            {% if event.event == "symposium" %}
-                            <option value="{{event.id}}">{{event.name}}</option>
-                            {% endif %}
-                            {% endfor %}
-                        </select>-->
+                            </svg></label> {{form.eventPublication}}{% if form.eventPublication.errors %}
+                        <small style="color:red;">{{form.eventPublication.errors}}</small> {% endif %}
                     </div>
                 </div>
             </div>
@@ -217,9 +209,7 @@
 
             <!--errors-->
             <div class="form-group mt-2">
-                {% if form.errors %}
-                {{form.errors}}
-                {% endif %}
+                {% if form.errors %} {{form.errors}} {% endif %}
             </div>
         </form>
     </div>
