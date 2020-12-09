@@ -6,13 +6,15 @@
         <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
             <div class="sap-box-fluid bg-white p-0">
                 <div class="p-1 row container-fluid justify-content-center">
-                    <strong>Registrar Libro</strong>
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-user' %}">Mis productos</a>
+                    &nbsp;>&nbsp;
+                    Registrar Libro
                 </div>
-
                 <div class="simple-separator"> </div>
-
-
-
                 {% include 'book/form_book.html' %}
             </div>
         </div>
