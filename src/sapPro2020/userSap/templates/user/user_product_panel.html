@@ -6,21 +6,15 @@
         <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
             <div class="sap-box-fluid bg-white p-0">
                 <div class="p-1 row container-fluid justify-content-center">
-                    <strong>Resumen de seguimiento</strong>
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    Mis productos
                 </div>
                 <div class="simple-separator"> </div>
                 <div class="ml-2 mr-2 card-body ">
-                    {% include 'user/table_content_resume.html' %}
-                </div>
-
-                <div class="simple-separator"> </div>
-
-                <div class="p-1 row container-fluid justify-content-center">
-                    <strong>Resumen de proyectos</strong>
-                </div>
-                <div class="simple-separator"> </div>
-                <div class="ml-2 mr-2 card-body ">
-                    {% include 'user/table_content_resume.html' %}
+                    {% include 'product/table_products_user.html' %}
                 </div>
             </div>
         </div>
