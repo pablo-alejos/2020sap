@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.urls import include, path
 from .views import (UserIndexView, UserCreateView,
                     UserDetailView, UserUpdateView, UserChangePasswordView,
-                    UserDeleteView, UserSapLoginView, UserSapLogoutView)
+                    UserDeleteView, UserSapLoginView, UserSapLogoutView,PublicationUserView)
 
 app_name = 'userSap'
 urlpatterns = [
@@ -18,4 +18,5 @@ urlpatterns = [
          name='user-update'),
     path('<int:id>/changepassword',
          login_required(UserChangePasswordView.as_view()), name='user-update-password'),
+    path('mis_productos', PublicationUserView.as_view(), name='user-product-panel'),
 ]

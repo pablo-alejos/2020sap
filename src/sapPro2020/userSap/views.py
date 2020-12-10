@@ -9,7 +9,7 @@ from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
 from django.views.generic import (
-    CreateView, DetailView, ListView, UpdateView, DeleteView)
+    CreateView, DetailView, ListView, UpdateView, DeleteView,TemplateView)
 from itertools import chain
 # , PasswordChangeForm
 from .forms import UserSapModelForm, UserSapCreationForm, UserSapChangeForm, LoginForm
@@ -124,7 +124,26 @@ class UserSapLoginView(LoginView):
         return super(UserSapLoginView,self).form_valid(form)
 """
 
-
 def UserSapLogoutView(request):
     logout(request)
     return HttpResponseRedirect(reverse('userSap:user-login'))
+
+########################################
+
+class PublicationUserView(TemplateView):
+    template_name = "user/user_product_panel.html"
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        book_list = Book.objects.filter(user=self.request.user)
+        bookChapter_list = BookChapter.objects.filter(user=self.request.user)
+        article_list = Article.objects.filter(user=self.request.user)
+        product_list = list(chain(article_list, book_list, bookChapter_list))
+        context['book_list'] = book_list
+        context['bookChapter_list'] = bookChapter_list
+        context['article_list'] = article_list
+        context['product_list'] = product_list
+        return context
+
+
+
