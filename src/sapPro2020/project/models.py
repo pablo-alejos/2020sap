@@ -1,5 +1,6 @@
 from django.db import models
 
+from django.urls import reverse
 from django.db import models
 from django.contrib.admin.widgets import AdminDateWidget
 
@@ -32,7 +33,7 @@ class Project(models.Model):
                                           blank=True,
                                           verbose_name="Participantes",
                                           related_name="authors")
-    code = models.CharField(verbose_name="Clave", blank=True, max_length=100)
+    code = models.CharField(verbose_name="Clave", unique=True, max_length=100)
     vigent = models.DateField(verbose_name="Vigencia hasta")
     state = (
         (None, 'Selecciona estado'),
@@ -40,14 +41,18 @@ class Project(models.Model):
         ('No vigente', 'No vigente'),
         ('Concluido', 'Concluido'),
     )
-    status = models.CharField(blank=True,
-                              max_length=25,
+    status = models.CharField(max_length=25,
                               choices=state,
-                              verbose_name="Estado del proyecto")
+                              verbose_name="Estado del proyecto",
+                              default="Vigente")
     createdPubProject = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("project:project-detail", kwargs={"id": self.id})
+
 
     class Meta:
         verbose_name = 'Proyecto'

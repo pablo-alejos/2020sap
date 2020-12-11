@@ -1,0 +1,28 @@
+<div class="row container-fluid">
+    <div class=" col-md-12 col-sm-12 mr-0 pr-0 ">
+        <p> Responsable tecnico {{object.userResponsable}}</p>
+        <p> Clave {{object.code}}</p>
+        <p>Participantes:
+            {% for user in object.participants.all%}
+            <a class=" sap-intext-link sap-card-link " href=" # "> {{user}}</a>
+            {% if user != object.participants.last%} | {% endif %}
+            {% endfor %}
+        </p>
+        <p>Tipo de proyecto: {{object.typeP}}</p>
+        {%if object.announcement %}
+        <p>Convocatoria: {{object.announcement}}</p>
+        {% endif %}
+        {% if object.amount%}
+        <p>Presupuesto (MXN) {{object.amount}}</p>
+        {% endif %}
+        <p>Vigencia hasta {{object.vigent}}</p>
+
+        <p>Estado: {{object.status}}</p>
+
+        <div class=" simple-separator"></div>
+        <p>Ultima actualizacion: {{object.createdPubProject}}</p>
+        <p><a class="sap-intext-link sap-card-link" href="{% url 'project:project-join' %}" target=”_blank”>
+                Participar</a> </p>
+        <div class=" simple-separator w-100 m-0 p-0 "></div>
+    </div>
+</div>

@@ -1,5 +1,6 @@
 from django import forms
 from django.forms import ModelForm
+from django.http import request
 
 from .models import Project
 from account.models import Account
@@ -47,7 +48,11 @@ class ProjectModelForm(forms.ModelForm):
                                       "placeholder": "Ingrese la clave aqui",
                                       "class": "form-control form-control-sm"
                                   }))
+    YEARS = (2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010,
+             2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+             2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029, 2030)
     vigent = forms.DateField(widget=forms.SelectDateWidget(
+        years=YEARS,
         empty_label=("Choose Year", "Choose Month", "Choose Day"),
         attrs={"class": "custom-select custom-select-sm"}))
 

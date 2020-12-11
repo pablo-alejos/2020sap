@@ -1,9 +1,9 @@
 <div class="row container-fluid">
     <div class="col-md-2 col-sm-0 p-0 m-0">
-        <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height=250px " style=" border: solid
-            1px black; ">
+        <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height=250px " style=" border: solid 1px
+            black; ">
     </div>
-    <div class="col-md-10 col-sm-11 mr-0 pr-0 ">
+    <div class=" col-md-10 col-sm-11 mr-0 pr-0 ">
        <p> Subido por {{object.user.account}}</p>
         <p>Autores: 
                 {% for author in object.authors.all%}
@@ -11,12 +11,23 @@
                 {% if author != object.authors.last%} | {% endif %}
                 {% endfor %}
         </p>
+        <p>Programa academico al que tributa: {{object.programTribute}}</p>
+        {%if object.academyTribute %}
+        <p>Cuerpo academico al que tributa: {{object.academyTribute}}</p>
+        {% endif %}
+        {% if object.project%}
+        <p>Proyecto: 
+            <a class=" sap-intext-link sap-card-link " href="{% url 'project:project-detail' object.project.id%}">   {{object.project}}</a>
+        </p>
+        {% endif %}
+        {% if object.editorial%}
         <p>Editorial {{object.editorial}}</p>
+        {% endif %}
         <p>ISBN {{object.isbn}}</p>
         {%if object.eventPublication %}
         <p>Publicacado en {{object.eventPublication}}</p>
         {% endif %}
-        <p>Año de publicación {{object.publicationYear}}</p>
+        <p>Publicado en {{object.publicationYear}}</p>
         <div class=" simple-separator"></div>
     <p>Fecha de subida: {{object.timeStamp}}</p>
     <p>Ultima actualización: {{object.timeStamp}}</p>

@@ -9,7 +9,7 @@ urlpatterns = [
     path('index',login_required(ProjectIndexView.as_view()),name='project-index'),
     path('create',login_required(ProjectCreateView.as_view()),name='project-create'), 
     path('<int:id>/',(ProjectDetailView.as_view()),name='project-detail'),  
-    path('<int:id>/delete',(ProjectUpdateView.as_view()),name='project-delete'),
-    path('<int:id>/update',(ProjectDeleteView.as_view()),name='project-update'), 
+    path('<int:id>/delete',(ProjectDeleteView.as_view()),name='project-delete'),
+    path('<int:id>/update',(ProjectUpdateView.as_view()),name='project-update'), 
     path('join',(ProjectJoinView.as_view()),name='project-join'), 
 ]

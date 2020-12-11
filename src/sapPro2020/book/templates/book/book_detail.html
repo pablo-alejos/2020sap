@@ -16,8 +16,9 @@
                 <div class="container m-0">
                     {% include 'book/detail_book.html' %}
                 </div>
+
+                {% if object.user == user %}
                 <div class="container-fluid border border-danger border-1 ">
-                    {% if object.user == user %}
                     <div class="form-group"> Solo usted puede ver esto porque tiene los derechos sobre el libro.</div>
                     <div class="form-group"> Estado: {{object.status}}</div>
                     <div class="form-group">
@@ -26,8 +27,8 @@
                         </button>
                         <a class="btn btn-warning ml-1 " href="{% url 'book:book-update' object.id %}">Editar</a>
                     </div>
-                    {% endif %}
                 </div>
+                {% endif %}
 
             </div>
         </div>
