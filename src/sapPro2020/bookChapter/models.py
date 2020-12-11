@@ -20,7 +20,7 @@ class BookChapter(models.Model):
     authors = models.ManyToManyField(Author,blank=True,verbose_name = "Otros Autores")
     tags = models.ManyToManyField(Tag, blank=True, verbose_name="Etiquetas")
     #Fields
-    title = models.CharField(max_length=100, verbose_name="Nombre del capitulo")
+    title = models.CharField(max_length=100, verbose_name="Nombre del capitulo",unique=True)
     bookTitle = models.CharField(max_length=100, verbose_name="Titulo del libro")
     bookEditorial = models.CharField(max_length=100, blank=True, verbose_name="Editorial del libro")
     bookIsbn = models.CharField(max_length=100, blank=True, verbose_name="ISBN del libro")

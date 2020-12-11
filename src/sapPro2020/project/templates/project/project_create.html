@@ -8,14 +8,12 @@
                 <div class="p-1 row container-fluid justify-content-center">
                     <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
                     &nbsp;>&nbsp;
-                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Proyectos</a>
                     &nbsp;>&nbsp;
-                    <a class="sap-intext-link" href="{% url 'userSap:user-product-panel' %}">Mis productos</a>
-                    &nbsp;>&nbsp;
-                    Registrar Capitulo de libro
+                    Registrar proyecto
                 </div>
                 <div class="simple-separator"> </div>
-                {% include 'bookChapter/form_bookChapter.html' %}
+                <!-- include -->
             </div>
         </div>
     </div>

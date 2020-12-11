@@ -9,7 +9,7 @@
             type="text" value="" class="form-control form-control-sm"
             placeholder="Escriba una palabra o secuencia de letras" />
     </div>
-    <div class="col-6 ">
+    <div class="col-3 ">
         <small>
             <muted>Tipo de producto</muted>
         </small>
@@ -19,6 +19,19 @@
             <option value="1" data-path=".Libro">Libros</option>
             <option value="2" data-path=".Capitulo">Capitulos</option>
             <option value="3" data-path=".Articulo">Articlos</option>
+        </select>
+    </div>
+
+    <div class="col-3 ">
+        <small>
+            <muted>Estado del producto</muted>
+        </small>
+        <select class="custom-control custom-select custom-select-sm" data-jplist-control="select-filter"
+            data-group="group2" data-name="name13">
+            <option value="0" data-path="default" selected>Cualquiera</option>
+            <option value="1" data-path=".Liberado">Liberado</option>
+            <option value="2" data-path=".Sometido">Sometido</option>
+            <option value="3" data-path=".En proceso">En proceso</option>
         </select>
     </div>
 
@@ -35,6 +48,7 @@
                     </svg></th>
                 <th class="btn-outline">Año de publicacion</th>
                 <th class="btn-outline">Fuente</th>
+                <th class="btn-outline">Estado</th>
             </tr>
         </thead>
         <tbody data-jplist-group="group2">
@@ -43,7 +57,7 @@
                 <!--Book-->
                 {% if product.product == "Libro" %}
                 <td>
-                    <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial"
+                    <a class="sap-intext-link title {{product.product}} {{product.eventPublication.event}} Editorial {{product.status}}"
                         href="{% url 'book:book-detail' product.id  %}">
                         {{product.title}}
                     </a>
@@ -51,6 +65,7 @@
                 {% if product.editorial %} 
                 <td>Editorial {{product.editorial}}</td>
                 {% endif %}
+                <td>{{product.status}}</td>
                 {% endif %}
                 <!--BookChapter-->
                 {% if product.product == "Capitulo" %}
@@ -64,6 +79,7 @@
                 {% if product.editorial %} 
                 <td>Editorial {{product.editorial}}</td>
                 {% endif %}
+                <td>{{product.status}}</td>
                 {% endif %}
                 <!--Article-->
                 {% if product.product == "Articulo" %}
@@ -74,6 +90,7 @@
                 </td>
                 <td>{{product.publicationYear}}</td>
                 <td>{{product.journal}}</td>
+                <td>{{product.status}}</td>
                 {% endif %}
             </tr>
             {% endfor %}
