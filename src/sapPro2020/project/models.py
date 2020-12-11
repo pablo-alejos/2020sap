@@ -9,7 +9,6 @@ from account.models import Account
 
 class Project(models.Model):
     userResponsable = models.ForeignKey(UserSap,
-                                        blank=True,
                                         on_delete=models.PROTECT,
                                         verbose_name="Responsable técnico")
     selectP = (
@@ -34,7 +33,7 @@ class Project(models.Model):
                                           verbose_name="Participantes",
                                           related_name="authors")
     code = models.CharField(verbose_name="Clave", blank=True, max_length=100)
-    vigent = models.DateField(blank=True, verbose_name="Vigencia hasta")
+    vigent = models.DateField(verbose_name="Vigencia hasta")
     state = (
         (None, 'Selecciona estado'),
         ('Vigente', 'Vigente'),

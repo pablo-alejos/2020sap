@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.urls import reverse
-
+from django.urls import reverse, reverse_lazy
 from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
 
 from .forms import ProjectModelForm
@@ -14,8 +13,15 @@ class ProjectCreateView(CreateView):
     template_name = 'project/project_create.html'
     form_class = ProjectModelForm
     queryset = Project.objects.all() 
+    def dispatch(self, request, *args, **kwargs):
+        if request.method == 'POST':
+            want_redirect = request.POST.get('want_redirect')
+            if not want_redirect:
+                self.success_url = reverse_lazy('project:project-create')
+        return super(ProjectCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
+        form.instance.user = self.request.user
         return super().form_valid(form)   
 ############################################################
 class ProjectDetailView(DetailView): 
