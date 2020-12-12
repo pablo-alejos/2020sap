@@ -20,6 +20,11 @@ class ArticleCreateView(CreateView):
     form_class = ArticleModelForm
     queryset = Article.objects.all()
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_journal'] = JournalModelForm
+        return context
+
     def dispatch(self, request, *args, **kwargs):
         if request.method == 'POST':
             want_redirect = request.POST.get('want_redirect')
@@ -28,7 +33,8 @@ class ArticleCreateView(CreateView):
         return super(ArticleCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        print('fuck this')
+        #form.instance.user = self.request.user
         return super().form_valid(form)
 ############################################################
 

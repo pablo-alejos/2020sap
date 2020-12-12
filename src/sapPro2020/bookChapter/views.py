@@ -40,7 +40,7 @@ class BookChapterCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        form.instance.user = self.request.user
+        #form.instance.user = self.request.user
         return super().form_valid(form)
 ############################################################
 
@@ -91,4 +91,4 @@ class BookChapterDeleteView(DeleteView):
         return get_object_or_404(BookChapter, id=id_)
 
     def get_success_url(self):
-        return reverse('bookChapter:bookChapter-index')
+        return reverse('userSap:user-product-panel')

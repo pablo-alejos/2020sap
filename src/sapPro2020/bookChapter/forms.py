@@ -5,6 +5,7 @@ from .models import BookChapter
 from project.models import Project
 from userSap.models import UserSap
 from account.models import Account, Program, Academy
+from author.models import Author
 from event.models import Event
 from tag.models import Tag
 
@@ -22,7 +23,7 @@ class BookChapterModelForm(forms.ModelForm):
                 "id": "id-select-project-bookchapter"
             }))
     authors = forms.ModelMultipleChoiceField(
-        queryset=Account.objects.order_by('firstName'),
+        queryset=Author.objects.order_by('firstName'),
         label="Autores",
         widget=forms.SelectMultiple(
             attrs={
@@ -149,7 +150,7 @@ class BookChapterModelForm(forms.ModelForm):
     class Meta:
         model = BookChapter
         fields = [
-            'project', 'authors', 'title', 'bookTitle', 'bookEditorial',
+            'user','project', 'authors', 'title', 'bookTitle', 'bookEditorial',
             'bookIsbn', 'publicationYear', 'tags', 'programTribute',
             'academyTribute', 'eventPublication', 'image', 'file'
         ]

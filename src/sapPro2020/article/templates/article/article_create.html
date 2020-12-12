@@ -1,108 +1,47 @@
-{% extends 'base.html' %}{% load static %} {% block content %}
-<div class="row sap-container shadow-lg rounded">
-    <div class="card-body">
-        <div class="row container">
-            <h3 class="sap-h3 col-11">Registro de Articulo</h3>
-            <div class="col-1">
-                <a href="{% url 'article:article-index' %}" class="btn btn-danger">Cancelar</a>
+{% extends "base.html" %}{% load static %} {% block content %}
+
+<div class="container-fluid pt-3">
+    <div class="row">
+        {% include 'menus/menu_dash.html'%}
+        <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
+            <div class="sap-box-fluid bg-white p-0">
+                <div class="p-1 row container-fluid justify-content-center">
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'userSap:user-product-panel' %}">Mis productos</a>
+                    &nbsp;>&nbsp;
+                    Registrar Articulo
+                </div>
+                <div class="simple-separator"> </div>
+                {% include 'article/form_article.html' %}
             </div>
         </div>
-
-        <form method='POST' enctype="multipart/form-data"> {% csrf_token %}
-            <div class="row container container-fluid">
-
-                <!--auto select the current user to foreignkey in model-->
-                <input id="user-id" type="hidden" value="{{user.id}}"> {{form.user}}
-
-                <!--left colum-->
-                <div class="col-6">
-
-                    <div class="form-group">
-                        <label for="form.authors">Título</label> {{form.title}}
-                    </div>
-
-                    <div class="form-group">
-                        <label for="form.title">Arbitraje</label> {{form.arbitration}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.title">Paginas</label> {{form.pages}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.authors">Mes</label> {{form.month}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.authors">Año de publicacion</label> {{form.year}}
-                    </div>
-
-                    <div class="row">
-                        <div class="form-group col-6">
-                            <label for="form.indexed">Indizado</label> {{form.indexed}}
-                        </div>
-                        <div class="form-group  col-6">
-                            <label for="form.indexInfo">Donde</label> {{form.indexInfo}}
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="form.file" class="form-control-file">Elegir archivo</label> {{form.file}}
-                    </div>
-                </div>
-
-                <!--rigth colum-->
-                <div class="col-6 mt-2 simple-separator-left">
-                    <div class="form-group">
-                        <label for="form.project">Proyecto</label>
-                        <small id="proyectHelp" class="form-text text-muted">Seleccione la revista al
-                                cual corresponda la publicacion de este Articulo</small> {{form.project}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.project">Revista</label>
-                        <small id="proyectHelp" class="form-text text-muted">Seleccione el proyecto al
-                                cual corresponda la publicacion de este Articulo</small> {{form.journal}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.journal">Co Autor(es)</label>
-                        <small id="proyectHelp" class="form-text text-muted">Seleccione autores segun
-                                corresponda a quienes hayan participado en esta publicacion</small> {{form.authors}}
-                    </div>
-                    <div class="form-group">
-                        <label for="form.journal">Estatus</label>
-                        <small id="proyectHelp" class="form-text text-muted">Seleccione el estatus 
-                            del articulo actualmente</small> {{form.status}}
-                    </div>
-                    <div class="form-group">
-                        <label>¿Necesita dar credito a un autor que no existe
-                                en este sistema? Ingrese sus datos haciendo
-                                <a class="sap-intext-link" href="#">clic aqui</a></label>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mt-3 simple-separator"></div>
-
-            <!--bottom row-->
-            <div class="row mt-3 container container-fluid">
-                <div class="col-12 col-md-3">
-                    <!--sumbit form-->
-                    <button type="submit" class="btn btn-success">Publicar</button>
-                    <button type="reset" class="btn btn-warning" onclic="reload()">Limpiar campos</button>
-                </div>
-
-                <!--redirect switch-->
-                <div class="col-3 custom-control custom-switch">
-                    <input type="checkbox" class="custom-control-input" name="want_redirect" id="want_redirect">
-                    <label class="custom-control-label" for="want_redirect">Redireccionar al enviar</label>
-                </div>
-                <div class="col-12 col-md-6"> <a href="#" class="btn btn-link">¿No se trata de un
-                            documento publicado? Solicite
-                            una revision aqui</a>
-                </div>
-            </div>
-
-            <!--errors-->
-            <div class="form-group mt-2">
-                {% if form.errors %} {{form.errors}} {% endif %}
-            </div>
-        </form>
     </div>
 </div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Registrar Revista</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!--{% include 'article/form_journal.html' %}-->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
