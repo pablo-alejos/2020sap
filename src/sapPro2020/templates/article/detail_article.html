@@ -1,0 +1,46 @@
+<div class="row container-fluid">
+    <div class="col-md-2 col-sm-0 p-0 m-0">
+        <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height=250px " style=" border: solid 1px
+            black; ">
+    </div>
+    <div class=" col-md-10 col-sm-11 mr-0 pr-0 ">
+       <p> Subido por {{object.user.account}}</p>
+        <p>Autores: 
+                {% for author in object.authors.all%}
+                <a class=" sap-intext-link sap-card-link " href=" # "> {{author}}</a>
+                {% if author != object.authors.last%} | {% endif %}
+                {% endfor %}
+        </p>
+        <p>Programa academico al que tributa: {{object.programTribute}}</p>
+        {%if object.academyTribute %}
+        <p>Cuerpo academico al que tributa: {{object.academyTribute}}</p>
+        {% endif %}
+        {% if object.project%}
+        <p>Proyecto: 
+            <a class=" sap-intext-link sap-card-link " href="{% url 'project:project-detail' object.project.id%}">   {{object.project}}</a>
+        </p>
+        {% endif %}
+        {% if object.editorial%}
+        <p>Editorial {{object.editorial}}</p>
+        {% endif %}
+        <p>ISBN {{object.isbn}}</p>
+        {%if object.eventPublication %}
+        <p>Publicacado en {{object.eventPublication}}</p>
+        {% endif %}
+        <p>Publicado en {{object.publicationYear}}</p>
+        <div class=" simple-separator"></div>
+    <p>Fecha de subida: {{object.timeStamp}}</p>
+    <p>Ultima actualización: {{object.timeStamp}}</p>
+    <p><a class="sap-intext-link sap-card-link" href="/media/{{object.file}}" target=”_blank”>
+            Archivo</a> </p>
+    <div class="simple-separator w-100 m-0 p-0 "></div>
+    <div class="form-group ">
+        <p>Lineas de Generacion y Aplicacion del Conocimiento:
+            {% for tag in object.tags.all%}
+            {% if tag.tag == "lgac" %}
+            <span class=" badge badge-light m-1 p-1" style="border: 1px solid #000 ">{{tag}}</span>
+            {% endif %}
+            {% endfor %}
+        </p>
+    </div>
+</div>

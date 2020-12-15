@@ -55,7 +55,7 @@ class UserSap(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['rol']
 
     def __str__(self):
-        return self.email
+        return f'{self.account.firstName} {self.account.lastNameA} {self.account.lastNameB}'
 
     def get_full_name(self):
         return self.account

@@ -92,4 +92,4 @@ class BookDeleteView(DeleteView):
         return get_object_or_404(Book, id=id_)
 
     def get_success_url(self):
-        return reverse('book:book-index')
+        return reverse('userSap:user-product-panel')

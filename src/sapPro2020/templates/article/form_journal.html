@@ -1,0 +1,88 @@
+<form method='POST' novalidate action="{% url 'article:journal-create'%}" target="_blank"> {% csrf_token %}
+    <div class="container-fluid">
+        <div class="form-group form-group-sm">
+            <label class="col-form-label" for="form.title">Nombre&nbsp;
+                <svg data-toggle="tooltip" data-placement="top" data-html="true" title="Titulo o nombre de la obra
+                <strong>Maximo 220 caracteres</strong>" class="bi bi-question-circle" width="1em" height="1em"
+                    viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                </svg>
+            </label>
+            {{form_journal.name}}
+            {% if form_journal.name.errors %}
+            <small style="color:red;">{{form_journal.name.errors}}</small> {% endif %}
+        </div>
+
+        <div class="form-group form-group-sm>
+                    <label class=" col-form-label" for="form.indexed">Editorial&nbsp; <svg data-toggle="tooltip"
+                data-placement="top" data-html="true"
+                title="El ISBN se compone actualmente de trece dígitos agrupados en cinco elementos separados por guiones de la siguiente manera: <u>978-607-0000-00-0</u>"
+                class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                <path
+                    d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+            </svg></label> {{form_journal.editorial}} {% if form_journal.editorial.errors %}
+            <small style="color:red;">{{form_journal.editorial.errors}}</small> {% endif %}
+        </div>
+
+        <div class="row">
+            <div class="form-group form-group-sm col-6">
+                <label class="col-form-label" for="form.indexed">Pais&nbsp; <svg data-toggle="tooltip"
+                        data-placement="top" data-html="true"
+                        title="El ISBN se compone actualmente de trece dígitos agrupados en cinco elementos separados por guiones de la siguiente manera: <u>978-607-0000-00-0</u>"
+                        class="bi bi-question-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                    </svg></label> {{form_journal.country}} {% if form_journal.country.errors %}
+                <small style="color:red;">{{form_journal.country.errors}}</small> {% endif %}
+            </div>
+            <div class="form-group form-group-sm col-6">
+                <label class="col-form-label" for="form.indexInfo">Cuartiles de la revista&nbsp; </label>
+                {{form_journal.quartMagazine}} {% if form_journal.quartMagazine.errors %}
+                <small style="color:red;">{{form_journal.quartMagazine.errors}}</small> {% endif %}
+            </div>
+        </div>
+
+        <div class="form-group form-group-sm">
+            <label class="col-form-label" for="form.file" class="form-control-file">Referencia a la revista (enlace)
+                &nbsp; <svg data-toggle="tooltip" data-placement="top" data-html="true" title="Archivo comprendido como el producto academico.
+            <strong>Requerido formato PDF</strong>" class="bi bi-question-circle" width="1em" height="1em"
+                    viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                </svg></label> {{form_journal.referenceMagazine}} {% if form_journal.referenceMagazine.errors %}
+            <small style="color:red;">{{form_journal.referenceMagazine.errors}}</small> {% endif %}
+        </div>
+        <div class="form-group form-group-sm">
+            <label class="col-form-label" for="form.file" class="form-control-file">ISSN
+                &nbsp; <svg data-toggle="tooltip" data-placement="top" data-html="true" title="Archivo comprendido como el producto academico.
+            <strong>Requerido formato PDF</strong>" class="bi bi-question-circle" width="1em" height="1em"
+                    viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
+                </svg></label> {{form_journal.issn}} {% if form_journal.issn.errors %}
+            <small style="color:red;">{{form_journal.issn.errors}}</small> {% endif %}
+        </div>
+    </div>
+    <div class="row mt-3 container container-fluid">
+        <div class="col-12 col-md-3">
+            <!--sumbit form-->
+            <button type="submit" class="btn btn-success">Publicar</button>
+        </div>
+    </div>
+    <!--errors-->
+    <div class="form-group mt-2">
+
+    </div>
+</form>

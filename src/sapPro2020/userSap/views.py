@@ -8,8 +8,8 @@ from django.contrib.auth import login, logout
 from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import LoginView, PasswordChangeView
 from django.http import HttpResponseRedirect
-from django.views.generic import (
-    CreateView, DetailView, ListView, UpdateView, DeleteView,TemplateView)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
+                                  DeleteView, TemplateView)
 from itertools import chain
 # , PasswordChangeForm
 from .forms import UserSapModelForm, UserSapCreationForm, UserSapChangeForm, LoginForm
@@ -17,6 +17,7 @@ from .models import UserSap
 from book.models import Book
 from article.models import Article
 from bookChapter.models import BookChapter
+from project.models import Project
 
 
 class UserIndexView(DetailView):
@@ -34,12 +35,14 @@ class UserIndexView(DetailView):
             user=self.request.user.id)
         context['article_list'] = Article.objects.filter(
             user=self.request.user.id)
+        context['project_list'] = Project.objects.all()
         article_list = Article.objects.filter(user=self.request.user.id)
         book_list = Book.objects.filter(user=self.request.user.id)
         chapter_list = BookChapter.objects.filter(user=self.request.user.id)
         product_list = list(chain(article_list, book_list, chapter_list))
         context['product_list'] = product_list
         return context
+
 
 ############################################################
 
@@ -52,6 +55,8 @@ class UserCreateView(CreateView):
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
 ############################################################
 
 
@@ -61,6 +66,8 @@ class UserDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(UserSap, id=id_)
+
+
 ############################################################
 
 
@@ -75,6 +82,8 @@ class UserUpdateView(UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(UserSap, id=id_)
+
+
 ############################################################
 
 
@@ -90,6 +99,8 @@ class UserChangePasswordView(PasswordChangeView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(UserSap, id=id_)
+
+
 ############################################################
 
 
@@ -107,7 +118,6 @@ class UserDeleteView(DeleteView):
 class UserSapLoginView(LoginView):
     template_name = 'user/user_login.html'
     authentication_form = LoginForm
-
     """
     success_url = reverse_lazy('userSap:user-index')
 
@@ -124,15 +134,18 @@ class UserSapLoginView(LoginView):
         return super(UserSapLoginView,self).form_valid(form)
 """
 
+
 def UserSapLogoutView(request):
     logout(request)
     return HttpResponseRedirect(reverse('userSap:user-login'))
 
+
 ########################################
+
 
 class PublicationUserView(TemplateView):
     template_name = "user/user_product_panel.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         book_list = Book.objects.filter(user=self.request.user)
@@ -144,6 +157,3 @@ class PublicationUserView(TemplateView):
         context['article_list'] = article_list
         context['product_list'] = product_list
         return context
-
-
-
