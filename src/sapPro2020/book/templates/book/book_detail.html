@@ -1,60 +1,38 @@
-{% extends 'base.html' %}{% load static %} {% block content %}
+{% extends "base.html" %}{% load static %} {% block content %}
 
-<div class="row sap-container shadow-lg rounded">
-    <div class="container-fluid m-0 p-0 ">
-        <!--title row -->
-        <div class="row container-fluid m-0 p-0 ml-4 pt-2 ">
-            <h3 class="">Detalles del libro {{object.title}}</h3>
-        </div>
-        <!--separator line row -->
-        <div class="row container-fluid p-0 m-0 w-100">
-            <div class="simple-separator col-12 "></div>
-        </div>
-        <!--content row -->
-        <div class="row container-fluid m-0 ml-4 p-0 pt-2">
-            <div class="col-md-2 col-sm-0 p-0">
-                <img typeof="foaf:Image" src="/media/{{object.image}}" width="100%" height=300px " style=" border: solid
-                    1px black; ">
-            </div>
-            <div class="col-md-10 col-sm-11 mr-0 pr-0 ">
-               <p> Subido por {{object.user.account}}</p>
-                <p>Autores: 
-                        {% for author in object.authors.all%}
-                        <a class=" sap-intext-link sap-card-link " href=" # "> {{author}}</a>
-                        {% if author != object.authors.last%} | {% endif %}
-                        {% endfor %}
-                </p>
-                <p>Editorial {{object.editorial}}</p>
-                <p>ISBN {{object.isbn}}</p>
-                {%if object.eventPublication %}
-                <p>Publicacado en {{object.eventPublication}}</p>
+<div class="container-fluid pt-3 ">
+    <div class="row">
+        {% include 'menus/menu_dash.html'%}
+        <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
+            <div class="sap-box-fluid bg-white p-0 pb-5">
+                <div class="p-1 row container-fluid justify-content-center">
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    {{object.title}}
+                </div>
+                <div class="simple-separator"> </div>
+                <div class="container m-0">
+                    {% include 'book/detail_book.html' %}
+                </div>
+
+                {% if object.user == user %}
+                <div class="container-fluid border border-danger border-1 ">
+                    <div class="form-group"> Solo usted puede ver esto porque tiene los derechos sobre el libro.</div>
+                    <div class="form-group"> Estado: {{object.status}}</div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                            Eliminar publicación
+                        </button>
+                        <a class="btn btn-warning ml-1 " href="{% url 'book:book-update' object.id %}">Editar</a>
+                    </div>
+                </div>
                 {% endif %}
-                <p>Año de publicación {{object.publicationYear}}</p>
-                <div class=" simple-separator"></div>
-            <p>Fecha de subida: {{object.timeStamp}}</p>
-            <p>Ultima actualización: {{object.timeStamp}}</p>
-            <p><a class="sap-intext-link sap-card-link" href="/media/{{object.file}}" target=”_blank”>
-                    Archivo</a> </p>
-            <div class="simple-separator w-100 m-0 p-0 "></div>
-            <div class="form-group ">
-                <p>Lineas de Generacion y Aplicacion del Conocimiento:
-                    {% for tag in object.tags.all%}
-                    {% if tag.tag == "lgac" %}
-                    <span class=" badge badge-light m-1 p-1" style="border: 1px solid #000 ">{{tag}}</span>
-                    {% endif %}
-                    {% endfor %}
-                </p>
+
             </div>
-        </div>
-        <div class="form-group row container mt-0">
-            {% if object.user == user %}
-            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
-                Eliminar publicación
-            </button>
-            <a class="btn btn-warning ml-1 " href="{% url 'book:book-update' object.id %}">Editar</a> {% endif %}
         </div>
     </div>
-</div>
 </div>
 
 <!-- Modal -->
@@ -81,6 +59,5 @@
         </div>
     </div>
 </div>
-
 
 {% endblock %}

@@ -53,7 +53,6 @@ class BookModelForm(forms.ModelForm):
                                    "class": "form-control form-control-sm",
                                    "id": "my-id-isbn"
                                }))
-
     YEARS = (
         ('1990', '1990'),
         ('1991', '1991'),
