@@ -1,0 +1,69 @@
+{% load static %}
+<!--filter controls-->
+<div class="row form-group-sm mb-1">
+    <div class="col-6">
+        <small>
+            <muted>Nombre y apellidos</muted>
+        </small>
+        <input data-jplist-control="textbox-filter" data-group="group2" data-name="my-filter-1" data-path=".title"
+            type="text" value="" class="form-control form-control-sm"
+            placeholder="Escriba una palabra o secuencia de letras" />
+    </div>
+
+</div>
+<!--Content-->
+<div class="container-fluid p-0">
+    <table id="user_publication_table" class="table table-bordered table-hover table-sm">
+        <thead>
+            <tr>
+                <th class="btn-outline">Nombre(s)</th>
+                <th class="btn-outline">Apellido paterno</th>
+                <th class="btn-outline">Apellido materno</th>
+            </tr>
+        </thead>
+        <tbody data-jplist-group="group2">
+            {% for author in object_list %}
+            <tr data-jplist-item>
+                <td class="title {{author.firstName}} {{author.lastNameA}}  {{author.lastNameB}}">
+                        {{author.firstName}}
+                </td>
+                <td class="title">{{author.lastNameA}}</td>
+                <td class="title">{{author.lastNameB}}</td>
+            </tr>
+            {% endfor %}
+            <!-- no results control -->
+            <div data-jplist-control="no-results" data-group="group2" data-name="no-results">No se encontraron
+                registros que coincidan.</div>
+        </tbody>
+    </table>
+</div>
+<!-- pagination control -->
+<div data-jplist-control="pagination" data-group="group2" data-items-per-page="5" data-current-page="0"
+    data-name="pagination1" class="row">
+    <div class="col-6 container">
+        <div class="row col-12 mb-1">
+            <button class="" style="border: 1px solid #dbdbdb;" type="button" data-type="first">«</button>
+            <button class="" style="border: 1px solid #dbdbdb;" type="button" data-type="prev">‹</button>
+            <div class="jplist-holder" data-type="pages">
+                <button class="" style="border: 1px solid #dbdbdb;" type="button" data-type="page">{pageNumber}</button>
+            </div>
+            <button class="" style="border: 1px solid #dbdbdb;" type="button" data-type="next">›</button>
+            <button class="" style="border: 1px solid #dbdbdb;" type="button" data-type="last">»</button>
+        </div>
+    </div>
+
+    <div class="col-6 row container">
+        <!-- items per page select -->
+        <select data-type="items-per-page" class="col-8 custom-select custom-select-sm">
+            <option value="5"> 5 por pagina</option>
+            <option value="10"> 10 por pagina</option>
+            <option value="15"> 15 por pagina</option>
+            <option value="20"> 20 por pagina</option>
+            <option value="0"> Mostrar todos </option>
+        </select>
+
+        <span data-type="info" class="col-4">
+            Pagina {pageNumber} de {pagesNumber}
+        </span>
+    </div>
+</div>
