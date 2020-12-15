@@ -33,7 +33,6 @@ class ArticleCreateView(CreateView):
         return super(ArticleCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        print('fuck this')
         #form.instance.user = self.request.user
         return super().form_valid(form)
 ############################################################

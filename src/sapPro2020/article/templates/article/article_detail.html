@@ -1,90 +1,63 @@
-{% extends 'base.html' %}{% load static %}
+{% extends "base.html" %}{% load static %} {% block content %}
 
-{% block content %}
+<div class="container-fluid pt-3 ">
+    <div class="row">
+        {% include 'menus/menu_dash.html'%}
+        <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
+            <div class="sap-box-fluid bg-white p-0 pb-5">
+                <div class="p-1 row container-fluid justify-content-center">
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    {{object.title}}
+                </div>
+                <div class="simple-separator"> </div>
+                <div class="container m-0">
+                    {% include 'article/detail_article.html' %}
+                </div>
 
-<div class="row sap-container shadow-lg rounded">
-    <div class="card-body">
-
-        <div class="row container-fluid">
-            <h3 class="sap-h3 col-12">Detalles de Articulos</h3>
-        </div>
-
-        <div class="row container ml-2">
-            <h4><strong>{{object.title}}</strong></h4>
-        </div>
-        <div class="row container ml-2">
-            <h5><em><small><strong>Título completo: </strong>{{object.title}}</small></em></h5>
-        </div>
-        
-        <div class="row container ml-2">
-            <div class="col-2 p-0 bg-danger">
-                <img typeof="foaf:Image"
-                    src="https://portals.iucn.org/library/sites/library/files/styles/publication/public/book_covers/BC-1981-001.jpg?itok=pE30M_DN"
-                    width="100%" height="100%">
-            </div>
-            <div class="col-10">
-                <h5><em><small><strong>Subido por: </strong></em>{{object.user.account}}</small></h5>
-                <h5><em><small><strong>Autores: </strong></em>
-                    {% for author in object.authors.all%}
-                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
-                    {% if author != object.authors.last%} | {% endif %}
-                    {% endfor %}</small></h5>
-                <h5><em><small><strong>Revista: </strong></em>{{object.journal}}</small></h5>
-                <h5><em><small><strong>EStatus: </strong></em>{{object.status}}</small></h5>
-                <h5><em><small><strong>Año de publicacion: </strong></em>{{object.publicationYear}}</small></h5>
-                <h5><em><small><strong>Mes de publicacion: </strong></em>{{object.month}}</small></h5>
-                <h5><em><small><strong>Páginas: </strong></em>{{object.month}}</small></h5>
-                <div class="simple-separator"></div>
-                <h5><em><small><strong>Fecha de subida: </strong></em>{{object.created}}</small></h5>
-                <h5><em><small><strong>Ultima actualizacion: </strong></em>{{object.created}}</small></h5>
-                <div class="simple-separator"></div>
-                <h5><em><small><strong>Descarga el archivo pdf: </strong></em>
-                    <a class="sap-intext-link sap-card-link" href="{{ MEDIA_URL }}/archiving/{{object.file}}"
-                        target=”_blank”>{{object.file.name|cut:"archiving/"}}</a>
-                    </small></h5>
-                <div class="simple-separator mb-2"></div>
                 {% if object.user == user %}
-
-
-                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deletemodal">
-                    Eliminar
-                </button>
-                <a class="btn btn-warning " href="{% url 'article:article-update' object.id %}">Editar</a>
+                <div class="container-fluid border border-danger border-1 ">
+                    <div class="form-group"> Solo usted puede ver esto porque tiene los derechos sobre el libro.</div>
+                    <div class="form-group"> Estado: {{object.status}}</div>
+                    <div class="form-group">
+                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+                            Eliminar producto
+                        </button>
+                        <a class="btn btn-warning ml-1 " href="{% url 'article:article-update' object.id %}">Editar</a>
+                    </div>
+                </div>
                 {% endif %}
 
             </div>
-
         </div>
     </div>
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="deletemodal" tabindex="-1" role="dialog">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Eliminar {{object.title}}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Eliminar {{object}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Esta publicacion compete tambien a: {% for author in object.authors.all%}
-                    <a class="sap-intext-link sap-card-link" href="#"> {{author}}</a>
-                    {% if author != object.authors.last%} | {% endif %}
-                    {% endfor %}</p>
-                <p> ¿Esta seguro que desea eliminar esta publicacion? </p>
-                <p><strong> Esta accion es irreversible</strong> </p>
+                ...
             </div>
             <div class="modal-footer">
-                <a class="btn btn-warning" href="{% url 'book:book-detail' object.id %}">Cancelar</a>
-                <form method="post" action="{% url 'book:book-delete' object.id %}">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <form method="POST" action="{% url 'article:article-delete' object.id %}">
                     {% csrf_token %}
-                    <input type="submit" class="btn btn-danger" value="Confirmar">
+                    <input type="submit" class="btn btn-danger" value="Confirmar"></input>
                 </form>
             </div>
         </div>
     </div>
 </div>
 
-    {% endblock %}
+{% endblock %}
