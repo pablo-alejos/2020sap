@@ -20,10 +20,14 @@
             <a class=" sap-intext-link sap-card-link " href="{% url 'project:project-detail' object.project.id%}">   {{object.project}}</a>
         </p>
         {% endif %}
-        {% if object.editorial%}
-        <p>Editorial {{object.editorial}}</p>
+        <p>Revista: {{object.journal.name}}</p>
+        <p>En las paginas: {{object.pages}}</p>
+        <p>Cuartil de la revista: {{object.journal.quartMagazine}}</p>
+        {% if object.indexed%}
+        <p>Indice: 
+            {{object.indexInfo}}
+        </p>
         {% endif %}
-        <p>ISBN {{object.isbn}}</p>
         {%if object.eventPublication %}
         <p>Publicacado en {{object.eventPublication}}</p>
         {% endif %}

@@ -93,6 +93,7 @@ class JournalCreateView(CreateView):
     queryset = Journal.objects.all()
 
     def form_valid(self, form):
+        print("form validated")
         return super().form_valid(form)
 ############################################################
 
