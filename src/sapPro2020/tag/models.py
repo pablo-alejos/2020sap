@@ -4,7 +4,7 @@ from django.urls import reverse
 
 
 class Tag(models.Model):
-    name = models.CharField(max_length=100, verbose_name="Nombre de la etiqueta")
+    name = models.CharField(max_length=100, verbose_name="Nombre de la etiqueta",unique=True)
     tag = models.CharField(max_length=10, verbose_name="Tipo")
     timeStamp = models.DateTimeField(auto_now_add=True, verbose_name="Time Stamp")
 

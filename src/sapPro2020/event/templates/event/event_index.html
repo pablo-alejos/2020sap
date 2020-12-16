@@ -1,179 +1,25 @@
 {% extends "base.html" %}{% load static %} {% block content %}
 
-
-<div class="row sap-container rounded">
-    <div class="w-100">
-        <h3 class="sap-h3 p-3 w-100">Publicaciones</h3>
-    </div>
-    <section class="col-3 sap-menu-container XfvCs">
-        <ul class="sap-menu">
-
-
-            <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:event-index' %}">
-                    Todos los eventos &nbsp; <svg class="hvr-icon bi bi-calendar3" width="1em" height="1em"
-                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-                        <path fill-rule="evenodd"
-                            d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg></a>
-            </li>
-            <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:event-create' %}">
-                    Crear evento &nbsp; <svg class="hvr-icon bi bi-calendar3" width="1em" height="1em"
-                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-                        <path fill-rule="evenodd"
-                            d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg></a>
-
-            </li>
-            <li class="sap-list-item">
-                <a class="hvr-icon-pop w-100 h-aRd ml-1 row bold sap-intext-link" href="{% url 'event:event-index' %}">
-                    Buscar evento &nbsp; <svg class="hvr-icon bi bi-calendar3" width="1em" height="1em"
-                        viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd"
-                            d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z" />
-                        <path fill-rule="evenodd"
-                            d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
-                    </svg></a>
-
-            </li>
-        </ul>
-
-    </section>
-
-    <!--foros-->
-    <div class="col-9">
-        <div class="row w-100 mb-1">
-            <div class="col-8 w-100">
-                <input placeholder="Buscar..." type="text" value="" data-jplist-control="textbox-filter"
-                    data-group="group2" data-name="my-filter-1" data-path=".title" class="form-control form-control-sm">
-            </div>
-            <div class="col-4">
-                <select class="custom-select custom-select-sm col-4">
-                    <option value="">Seleccionar opcion</option>
-                    <option value="Congreso">Congreso</option>
-                    <option value="Foro">Foro</option>
-                    <option value="Simposio">Simposio</option>
-                </select>
-            </div>
-        </div>
-        <div data-jplist-group="group2" class="container">
-
-
-            {%for event in event_list%}
-            
-            <div data-jplist-item class="row container btn-outline mb-1">
-                <div class="form-group">
-                    <h5><small><strong>Nombre del evento:</small></h5></strong>
-                    <div class="title">
-                        {{event.name}}
-                    </div>
-                    <h5><small><strong>Sede del congreso:</small></h5></strong>
-                    {{event.headquarters}}
-                    <h5><small><strong>Dirección del congreso:</small></h5></strong>
-                    {{event.address}}
-                    <h5><small><strong>Tema:</small></h5></strong>
-                    {{event.topic}}
-                    <h5><small><strong>Evento:</small></h5></strong>
-                    {{event.event}}
-                    <div class="d-flex align-self-end mr-auto">
-                        <a href="{% url 'event:event-update' event.id %}" class="btn btn-warning mr-1">Editar </a>
-                        <button type="button" class="btn btn-danger mr-1" data-toggle="modal" data-target="#deletemodal{{forloop.counter}}">
-                            Eliminar
-                        </button>
+<div class="container-fluid pt-3">
+    <div class="row">
+        {% include 'menus/menu_dash.html'%}
+        <div class="col-xl-10 col-lg-9 col-md-8 col-sm-7 m-0">
+            <div class="sap-box-fluid bg-white p-0">
+                <div class="p-1 row container-fluid justify-content-center">
+                    <a class="sap-intext-link" href="{% url 'userSap:user-index' %}">Resumen</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
+                    &nbsp;>&nbsp;
+                    Eventos
                 </div>
-                
-          
-            </div>
-         
-            </div>
-
-
-
-               <!-- Modal -->
-               <div class="modal fade" id="deletemodal{{forloop.counter}}" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Eliminar {{event.title}}</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-
-                            <p> ¿Esta seguro que desea eliminar este evento? </p>
-                            <p><strong> Esta accion es irreversible</strong> </p>
-                        </div>
-                        <div class="modal-footer">
-
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                            <form method="post" action="{% url 'event:event-delete' event.id %}">
-                                {% csrf_token %}
-                                <input type="submit" class="btn btn-danger" value="Confirmar">
-                            </form>
-                        </div>
-                    </div>
+                <div class="simple-separator"> </div>
+                <div class="ml-2 mr-2 card-body ">
+                    <a class="sap-intext-link" href="{% url 'event:event-create' %}">Registrar evento</a>
+                    {% include 'event/table_event_all.html' %}  
                 </div>
             </div>
-
-
-
-
-            {%endfor%}
-
-         
-
         </div>
-
-
-        {% if page_obj %}
-        <ul class="pagination justify-content-center float-right">
-
-            {% if page_obj.has_previous %}
-            <li class="page-item"><a class="page-link" href="?page=1">&laquo; Primera</a></li>
-
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a>
-            </li>
-            {% endif %}
-            {% for i in paginator.page_range %}
-            {% if page_obj.number == i %}
-            <li class="page-item active">
-                <span class="page-link">
-                    {{ i }}
-                    <span class="sr-only">(current)</span>
-                </span>
-            </li>
-            {% else %}
-            <li><a a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
-            {% endif %}
-            {% endfor %}
-            {% if page_obj.has_next %}
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
-            <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">Ultima
-                    &raquo;</a></li>
-            {% endif %}
-        </ul>
-        {% endif %}
-
-
-
-
     </div>
-
-
-
-
 </div>
-
-<!-- jPList Library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js%22%3E"></script>
-<script src="{% static 'js/jplist.min.js' %}"></script>
-<script>jplist.init();</script>
-
 
 {% endblock %}
