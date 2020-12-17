@@ -137,7 +137,8 @@
                     </svg></label> {{form.journal}} {% if form.journal.errors %}
                 <small style="color:red;">{{form.journal.errors}}</small> {% endif %}
                 ¿Necesita seleccionar una revista que no ha sido registrada? Ingrese sus datos haciendo
-                    <button type="button" class="sap-intext-link" data-toggle="modal" data-target="#exampleModal">clic aquí</button>
+                  <!--  <button type="button" class="sap-intext-link" data-toggle="modal" data-target="#exampleModal">clic aquí</button>-->
+                  <a class="sap-intext-link" href="{% url 'article:journal-create' %}" target="_blank">clic aqui</a>
             </div>
             <div class="form-group form-group-sm">
                 <label class="col-form-label" for="form.project">Paginas en que se encuentra&nbsp; <svg data-toggle="tooltip"

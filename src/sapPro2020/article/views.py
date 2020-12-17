@@ -78,7 +78,7 @@ class ArticleDeleteView(DeleteView):
         return get_object_or_404(Article, id=id_)
 
     def get_success_url(self):
-        return reverse('Article:article-index')
+        return reverse('article:article-index')
 
 
 class JournalIndexView(ListView):
@@ -93,6 +93,7 @@ class JournalCreateView(CreateView):
     queryset = Journal.objects.all()
 
     def form_valid(self, form):
+        print("form validated")
         return super().form_valid(form)
 ############################################################
 
@@ -128,5 +129,5 @@ class JournalDeleteView(DeleteView):
         return get_object_or_404(Journal, id=id_)
 
     def get_success_url(self):
-        return reverse('Journal:journal-index')
+        return reverse('article:journal-index')
 

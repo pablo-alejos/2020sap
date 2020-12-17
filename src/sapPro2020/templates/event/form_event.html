@@ -1,0 +1,26 @@
+<form method="post"> {% csrf_token %}
+    <div class=" container-fluid">
+        <h5><small><strong>Nombre del evento:</small></h5>
+        </strong>
+        {{form.name}}
+        <h5><small><strong>Fecha del evento:</h5></strong>
+        {{form.eventStart}}
+        <h5><small><strong>Fin del evento:</h5></strong>
+        {{form.eventFinish}}
+        <h5><small><strong>Sede del evento:</small></h5>
+        </strong>
+        {{form.headquarters}}
+        <h5><small><strong>Direccion del evento:</small></h5>
+        </strong>
+        {{form.address}}
+        <h5><small><strong>Tema:</small></h5>
+        </strong>
+        {{form.topic}}
+        <h5><small><strong>Evento:</small></h5>
+        </strong>
+        {{form.event}}
+        <div class="form-group mt-2">
+            <input type="submit" class="btn btn-success" value="Enviar">
+        </div>
+    </div>
+</form>

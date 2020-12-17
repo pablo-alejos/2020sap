@@ -12,10 +12,10 @@ urlpatterns = [
     path('<int:id>/delete',login_required(ArticleDeleteView.as_view()),name='article-delete'),
     path('<int:id>/update',login_required(ArticleUpdateView.as_view()),name='article-update'), 
 
-    path('',JournalIndexView.as_view(),name='journal-index'),
-    path('create',login_required(JournalCreateView.as_view()),name='journal-create'), 
-    path('<int:id>/',login_required(JournalDetailView.as_view()),name='journal-detail'),  
-    path('<int:id>/delete',login_required(JournalDeleteView.as_view()),name='journal-delete'),
-    path('<int:id>/update',login_required(JournalUpdateView.as_view()),name='journal-update'), 
+    path('revistas',JournalIndexView.as_view(),name='journal-index'),
+    path('revista/create',login_required(JournalCreateView.as_view()),name='journal-create'), 
+    path('revista/<int:id>/',login_required(JournalDetailView.as_view()),name='journal-detail'),  
+    path('revista/<int:id>/delete',login_required(JournalDeleteView.as_view()),name='journal-delete'),
+    path('revista/<int:id>/update',login_required(JournalUpdateView.as_view()),name='journal-update'), 
 
 ]

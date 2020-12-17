@@ -32,6 +32,9 @@ class Journal(models.Model):
     class Meta:
         verbose_name = 'Revista'
 
+    def get_absolute_url(self):
+        return reverse("article:journal-detail",kwargs={"id":self.id})
+
 
 class Article(models.Model):      
     #ForeignKeys

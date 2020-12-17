@@ -1,4 +1,4 @@
-<form method='POST' novalidate action="{% url 'article:journal-create'%}" target="_blank"> {% csrf_token %}
+<form method='POST' novalidate action="{% url 'article:journal-create'%}"> {% csrf_token %}
     <div class="container-fluid">
         <div class="form-group form-group-sm">
             <label class="col-form-label" for="form.title">Nombre&nbsp;
@@ -11,9 +11,9 @@
                         d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
                 </svg>
             </label>
-            {{form_journal.name}}
-            {% if form_journal.name.errors %}
-            <small style="color:red;">{{form_journal.name.errors}}</small> {% endif %}
+            {{form.name}}
+            {% if form.name.errors %}
+            <small style="color:red;">{{form.name.errors}}</small> {% endif %}
         </div>
 
         <div class="form-group form-group-sm>
@@ -25,8 +25,8 @@
                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                 <path
                     d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-            </svg></label> {{form_journal.editorial}} {% if form_journal.editorial.errors %}
-            <small style="color:red;">{{form_journal.editorial.errors}}</small> {% endif %}
+            </svg></label> {{form.editorial}} {% if form.editorial.errors %}
+            <small style="color:red;">{{form.editorial.errors}}</small> {% endif %}
         </div>
 
         <div class="row">
@@ -40,13 +40,13 @@
                             d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                         <path
                             d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                    </svg></label> {{form_journal.country}} {% if form_journal.country.errors %}
-                <small style="color:red;">{{form_journal.country.errors}}</small> {% endif %}
+                    </svg></label> {{form.country}} {% if form.country.errors %}
+                <small style="color:red;">{{form.country.errors}}</small> {% endif %}
             </div>
             <div class="form-group form-group-sm col-6">
                 <label class="col-form-label" for="form.indexInfo">Cuartiles de la revista&nbsp; </label>
-                {{form_journal.quartMagazine}} {% if form_journal.quartMagazine.errors %}
-                <small style="color:red;">{{form_journal.quartMagazine.errors}}</small> {% endif %}
+                {{form.quartMagazine}} {% if form.quartMagazine.errors %}
+                <small style="color:red;">{{form.quartMagazine.errors}}</small> {% endif %}
             </div>
         </div>
 
@@ -59,8 +59,8 @@
                         d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path
                         d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                </svg></label> {{form_journal.referenceMagazine}} {% if form_journal.referenceMagazine.errors %}
-            <small style="color:red;">{{form_journal.referenceMagazine.errors}}</small> {% endif %}
+                </svg></label> {{form.referenceMagazine}} {% if form.referenceMagazine.errors %}
+            <small style="color:red;">{{form.referenceMagazine.errors}}</small> {% endif %}
         </div>
         <div class="form-group form-group-sm">
             <label class="col-form-label" for="form.file" class="form-control-file">ISSN
@@ -71,14 +71,14 @@
                         d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path
                         d="M5.25 6.033h1.32c0-.781.458-1.384 1.36-1.384.685 0 1.313.343 1.313 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.007.463h1.307v-.355c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.326 0-2.786.647-2.754 2.533zm1.562 5.516c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z" />
-                </svg></label> {{form_journal.issn}} {% if form_journal.issn.errors %}
-            <small style="color:red;">{{form_journal.issn.errors}}</small> {% endif %}
+                </svg></label> {{form.issn}} {% if form.issn.errors %}
+            <small style="color:red;">{{form.issn.errors}}</small> {% endif %}
         </div>
     </div>
     <div class="row mt-3 container container-fluid">
         <div class="col-12 col-md-3">
             <!--sumbit form-->
-            <button type="submit" class="btn btn-success">Publicar</button>
+            <button id="jorunal-submit" type="submit" class="btn btn-success">Publicar</button>
         </div>
     </div>
     <!--errors-->

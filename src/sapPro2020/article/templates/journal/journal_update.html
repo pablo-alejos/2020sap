@@ -10,13 +10,14 @@
                     &nbsp;>&nbsp;
                     <a class="sap-intext-link" href="{% url 'publication:publication-index' %}">Productos</a>
                     &nbsp;>&nbsp;
-                    Eventos
+                    <a class="sap-intext-link" href="{% url 'article:article-create' %}">Registrar articulo</a>
+                    &nbsp;>&nbsp;
+                    <a class="sap-intext-link" href="{% url 'article:journal-index' %}">Revistas</a>
+                    &nbsp;>&nbsp;
+                    Actualizar revista
                 </div>
                 <div class="simple-separator"> </div>
-                <div class="ml-2 mr-2 card-body ">
-                    <a class="sap-intext-link" href="{% url 'event:event-create' %}">Registrar evento</a>
-                    {% include 'event/table_event_all.html' %}  
-                </div>
+                {% include 'article/form_journal.html' %}
             </div>
         </div>
     </div>
