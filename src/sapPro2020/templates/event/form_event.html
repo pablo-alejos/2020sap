@@ -1,24 +1,42 @@
-<form method="post"> {% csrf_token %}
+<form method="post" novalidate> {% csrf_token %}
     <div class=" container-fluid">
         <h5><small><strong>Nombre del evento:</small></h5>
         </strong>
         {{form.name}}
-        <h5><small><strong>Fecha del evento:</h5></strong>
+        {% if form.name.errors %}
+        <small style="color:red;">{{form.name.errors}}</small> {% endif %}
+
+        <h5><small><strong>Fecha del evento:</h5></small></strong>
         {{form.eventStart}}
-        <h5><small><strong>Fin del evento:</h5></strong>
+        {% if form.eventStart.errors %}
+        <small style="color:red;">{{form.eventStart.errors}}</small> {% endif %}
+
+        <h5><small><strong>Fin del evento:</h5></small></strong>
         {{form.eventFinish}}
-        <h5><small><strong>Sede del evento:</small></h5>
-        </strong>
+        {% if form.eventFinish.errors %}
+        <small style="color:red;">{{form.eventFinish.errors}}</small> {% endif %}
+
+        <h5><small><strong>Sede del evento:</small></h5> </strong>
         {{form.headquarters}}
-        <h5><small><strong>Direccion del evento:</small></h5>
-        </strong>
+        {% if form.headquarters.errors %}
+        <small style="color:red;">{{form.headquarters.errors}}</small> {% endif %}
+
+        <h5><small><strong>Direccion del evento:</small></h5> </strong>
         {{form.address}}
-        <h5><small><strong>Tema:</small></h5>
-        </strong>
+        {% if form.address.errors %}
+        <small style="color:red;">{{form.address.errors}}</small> {% endif %}
+
+        <h5><small><strong>Tema:</small></h5> </strong>
         {{form.topic}}
+        {% if form.topic.errors %}
+        <small style="color:red;">{{form.topic.errors}}</small> {% endif %}
+
         <h5><small><strong>Evento:</small></h5>
         </strong>
         {{form.event}}
+        {% if form.event.errors %}
+        <small style="color:red;">{{form.event.errors}}</small> {% endif %}
+
         <div class="form-group mt-2">
             <input type="submit" class="btn btn-success" value="Enviar">
         </div>
