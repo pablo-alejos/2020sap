@@ -14,7 +14,6 @@ from book.models import Book
 class BookModelForm(forms.ModelForm):
     project = forms.ModelChoiceField(
         queryset=Project.objects.order_by('title'),
-        required=False,
         label="Proyecto",
         empty_label="Seleccionar proyecto",
         widget=forms.Select(
@@ -182,12 +181,14 @@ class BookModelForm(forms.ModelForm):
         file = self.cleaned_data.get("file")
         if not (file.name.endswith(".pdf")):
             raise forms.ValidationError(
-                    "Favor de ingresar un archivo en formato pdf")
-        if file in Book.objects.values_list('file', flat=True):
-            raise forms.ValidationError(
+                "Favor de ingresar un archivo en formato pdf")
+        for item in Book.objects.values_list('file', flat=True):
+            print(item)
+            if file.name in item:
+                raise forms.ValidationError(
                     "Ya existe un archivo con este nombre.")
         return file
-        
+
     def clean(self):
         cleaned_data = super().clean()
         editorial = cleaned_data.get("editorial")

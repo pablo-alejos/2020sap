@@ -14,7 +14,6 @@ class BookChapterModelForm(forms.ModelForm):
 
     project = forms.ModelChoiceField(
         queryset=Project.objects.order_by('title'),
-        required=False,
         label="Proyecto",
         empty_label="Seleccionar proyecto",
         widget=forms.Select(
@@ -187,6 +186,14 @@ class BookChapterModelForm(forms.ModelForm):
                 raise forms.ValidationError(
                     "Usted no es participante en este proyecto.")
         return project
+
+    def clean_file(self):
+        file = self.cleaned_data.get("file")
+        if not (file.name.endswith(".pdf")):
+            raise forms.ValidationError(
+                    "Favor de ingresar un archivo en formato pdf")
+        return file
+
 
     def clean(self):
         cleaned_data = super().clean()

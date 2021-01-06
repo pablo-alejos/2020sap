@@ -8,12 +8,12 @@ from account.models import Account, Program, Academy
 from author.models import Author
 from tag.models import Tag
 from event.models import Event
+from article.models import Article
 
 
 class ArticleModelForm(forms.ModelForm):
     project = forms.ModelChoiceField(
         queryset=Project.objects.order_by('title'),
-        required=False,
         label="Proyecto",
         empty_label="Seleccionar proyecto",
         widget=forms.Select(
@@ -172,6 +172,13 @@ class ArticleModelForm(forms.ModelForm):
                 'El campo {fieldname} es requerido'.format(
                     fieldname=field.label)
             }
+
+    def clean_file(self):
+        file = self.cleaned_data.get("file")
+        if not (file.name.endswith(".pdf")):
+            raise forms.ValidationError(
+                    "Favor de ingresar un archivo en formato pdf")
+        return file
 
     def clean_project(self):
         project = self.cleaned_data.get("project")
