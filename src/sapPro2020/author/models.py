@@ -3,9 +3,9 @@ from django.db import models
 from django.urls import reverse
 
 class Author(models.Model):
-    firstName = models.CharField(max_length=50, verbose_name="Nombre(s)", blank=True)
-    lastNameA = models.CharField(max_length=50, verbose_name="Apellido Paterno", blank=True)
-    lastNameB = models.CharField(max_length=50, verbose_name="Apellido Materno", blank=True)
+    firstName = models.CharField(max_length=50, verbose_name="Nombre(s)")
+    lastNameA = models.CharField(max_length=50, verbose_name="Apellido Paterno")
+    lastNameB = models.CharField(max_length=50, verbose_name="Apellido Materno")
     timeStamp = models.DateTimeField(auto_now_add=True, verbose_name="Time Stamp")
 
     def __str__(self):
