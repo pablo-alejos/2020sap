@@ -5,15 +5,14 @@ from django.utils.translation import ugettext_lazy as _
 class UserSapManager(BaseUserManager):
     """
     A custom user manager to deal with emails as unique identifiers for auth
-    instead of usernames. The default that's used is "UserManager"
+    instead of emails. The default that's used is "UserManager"
     """
-
     def _create_user(self, email, password, **extra_fields):
         """
         Creates and saves a User with the given email and password.
         """
         if not email:
-            raise ValueError('El email es requerido')
+            raise ValueError('El correo es requerido')
         email = self.normalize_email(email)
         extra_fields.setdefault('is_active', True)
         user = self.model(email=email, **extra_fields)

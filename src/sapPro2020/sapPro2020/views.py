@@ -11,7 +11,7 @@ from django.core import serializers
 from book.models import Book
 from article.models import Article, Journal
 from bookChapter.models import BookChapter
-from account.models import Account, Academy, Program
+from userSap.models import Account, Academy, Program
 from tag.models import Tag
 from project.models import Project
 
@@ -73,10 +73,9 @@ def searchAjaxView(request):
         if 'want_book' in requestData:
             if program_id != 'Programa educativo' and academy_id != 'Cuerpo academico':
                 tagCombo_list = (
-                    Tag.objects.filter(
-                        name=Program.objects.get(id=program_id))
-                    | Tag.objects.filter(
-                        name=Academy.objects.get(id=academy_id))).distinct()
+                    Tag.objects.filter(name=Program.objects.get(id=program_id))
+                    | Tag.objects.filter(name=Academy.objects.get(
+                        id=academy_id))).distinct()
                 book_list = Book.objects.filter(
                     tags__in=list(tagCombo_list)).distinct()
             elif program_id != 'Programa educativo' or academy_id != 'Cuerpo academico':
@@ -100,10 +99,9 @@ def searchAjaxView(request):
         if 'want_bookChapter' in requestData:
             if program_id != 'Programa educativo' and academy_id != 'Cuerpo academico':
                 tagCombo_list = (
-                    Tag.objects.filter(
-                        name=Program.objects.get(id=program_id))
-                    | Tag.objects.filter(
-                        name=Academy.objects.get(id=academy_id))).distinct()
+                    Tag.objects.filter(name=Program.objects.get(id=program_id))
+                    | Tag.objects.filter(name=Academy.objects.get(
+                        id=academy_id))).distinct()
                 bookChapter_list = BookChapter.objects.filter(
                     tags__in=list(tagCombo_list)).distinct()
             elif program_id != 'Programa educativo' or academy_id != 'Cuerpo academico':
@@ -118,8 +116,10 @@ def searchAjaxView(request):
                     bookChapter_list = BookChapter.objects.filter(
                         tags__in=list(tagCombo_list)).distinct()
             if keyword != '':
-                bookChapter_list = (bookChapter_list.filter(title__icontains=keyword)
-                                    | bookChapter_list.filter(bookEditorial__icontains=keyword)).distinct()
+                bookChapter_list = (
+                    bookChapter_list.filter(title__icontains=keyword)
+                    | bookChapter_list.filter(
+                        bookEditorial__icontains=keyword)).distinct()
         if not 'want_bookChapter' in requestData:
             bookChapter_list = BookChapter.objects.none()
 
@@ -139,11 +139,16 @@ def searchAjaxView(request):
                     article_list = Article.objects.filter(
                         authors__in=list(account_list)).distinct()
             if keyword != '':
-                article_list = (article_list.filter(user__account__firstName__icontains=keyword)
-                                | article_list.filter(user__account__lastNameA__icontains=keyword)
-                                | article_list.filter(user__account__lastNameB__icontains=keyword)
-                                | article_list.filter(title__icontains=keyword)
-                                | article_list.filter(editorial__icontains=keyword)).distinct()
+                article_list = (
+                    article_list.filter(
+                        user__account__firstName__icontains=keyword)
+                    | article_list.filter(
+                        user__account__lastNameA__icontains=keyword)
+                    | article_list.filter(
+                        user__account__lastNameB__icontains=keyword)
+                    | article_list.filter(title__icontains=keyword)
+                    | article_list.filter(
+                        editorial__icontains=keyword)).distinct()
         if not 'want_article' in requestData:
             article_list = Article.objects.none()
         product_list = list(chain(article_list, book_list, bookChapter_list))

@@ -5,7 +5,7 @@ from django.db import models
 from django.contrib.admin.widgets import AdminDateWidget
 
 from userSap.models import UserSap
-from account.models import Account
+from userSap.models import Account
 
 
 class Project(models.Model):
@@ -22,7 +22,9 @@ class Project(models.Model):
     typeP = models.CharField(max_length=25,
                              choices=selectP,
                              verbose_name=" Tipo de proyecto")
-    title = models.CharField(max_length=100, verbose_name="Título de proyecto",unique=True)
+    title = models.CharField(max_length=100,
+                             verbose_name="Título de proyecto",
+                             unique=True)
     announcement = models.CharField(blank=True,
                                     max_length=100,
                                     verbose_name=" Convocatoria (Si aplica)")

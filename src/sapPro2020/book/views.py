@@ -3,11 +3,11 @@ from django.urls import reverse, reverse_lazy
 
 from itertools import chain
 
-from django.views.generic import (
-    CreateView, DetailView, ListView, UpdateView, DeleteView)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
+                                  DeleteView)
 
 from .forms import BookModelForm
-from account.models import Academy, Program
+from userSap.models import Academy, Program
 from event.models import Event
 from tag.models import Tag
 from .models import Book
@@ -16,6 +16,8 @@ from .models import Book
 class BookIndexView(ListView):
     template_name = 'book/book_index.html'
     queryset = Book.objects.all()
+
+
 ############################################################
 
 
@@ -41,6 +43,8 @@ class BookCreateView(CreateView):
     def form_valid(self, form):
         #form.instance.user = self.request.user
         return super().form_valid(form)
+
+
 ############################################################
 
 
@@ -51,6 +55,8 @@ class BookDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Book, id=id_)
+
+
 ############################################################
 
 
@@ -81,6 +87,8 @@ class BookUpdateView(UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(Book, id=id_)
+
+
 ############################################################
 
 

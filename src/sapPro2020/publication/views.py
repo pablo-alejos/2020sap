@@ -10,14 +10,14 @@ from django.core import serializers
 from book.models import Book
 from article.models import Article, Journal
 from bookChapter.models import BookChapter
-from account.models import Account, Academy, Program
+from userSap.models import Account, Academy, Program
 from tag.models import Tag
 from project.models import Project
 
 
 class PublicationView(TemplateView):
     template_name = "sap_publications.html"
-    
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         book_list = Book.objects.all()
@@ -98,10 +98,9 @@ def searchAjaxView(request):
         if 'want_book' in requestData:
             if program_id != 'Programa educativo' and academy_id != 'Cuerpo academico':
                 tagCombo_list = (
-                    Tag.objects.filter(
-                        name=Program.objects.get(id=program_id))
-                    | Tag.objects.filter(
-                        name=Academy.objects.get(id=academy_id))).distinct()
+                    Tag.objects.filter(name=Program.objects.get(id=program_id))
+                    | Tag.objects.filter(name=Academy.objects.get(
+                        id=academy_id))).distinct()
                 book_list = Book.objects.filter(
                     tags__in=list(tagCombo_list)).distinct()
             elif program_id != 'Programa educativo' or academy_id != 'Cuerpo academico':
@@ -116,7 +115,7 @@ def searchAjaxView(request):
                     book_list = Book.objects.filter(
                         tags__in=list(tagCombo_list)).distinct()
             if keyTitle != '':
-                pass#book_list = book_list.filter(title__icontains=keyTitle)
+                pass  #book_list = book_list.filter(title__icontains=keyTitle)
             if source_Id != '':
                 pass
         if not 'want_book' in requestData:

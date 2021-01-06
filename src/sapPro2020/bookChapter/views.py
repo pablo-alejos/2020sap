@@ -1,21 +1,24 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
 
-from django.views.generic import (
-    CreateView, DetailView, ListView, UpdateView, DeleteView)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView,
+                                  DeleteView)
 
 from .forms import BookChapterModelForm
 from .models import BookChapter
 
 from .forms import BookChapterModelForm
-from account.models import Academy, Program
+from userSap.models import Academy, Program
 from event.models import Event
 from tag.models import Tag
 from book.models import Book
 
+
 class BookChapterIndexView(ListView):
     template_name = 'bookChapter/bookChapter_index.html'
     queryset = BookChapter.objects.all()
+
+
 ############################################################
 
 
@@ -30,7 +33,8 @@ class BookChapterCreateView(CreateView):
             if not want_redirect:
                 self.success_url = reverse_lazy(
                     'bookChapter:bookChapter-create')
-        return super(BookChapterCreateView, self).dispatch(request, *args, **kwargs)
+        return super(BookChapterCreateView,
+                     self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -42,6 +46,8 @@ class BookChapterCreateView(CreateView):
     def form_valid(self, form):
         #form.instance.user = self.request.user
         return super().form_valid(form)
+
+
 ############################################################
 
 
@@ -51,6 +57,8 @@ class BookChapterDetailView(DetailView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(BookChapter, id=id_)
+
+
 ############################################################
 
 
@@ -64,8 +72,10 @@ class BookChapterUpdateView(UpdateView):
             want_redirect = request.POST.get('want_redirect')
             if not want_redirect:
                 self.success_url = reverse_lazy(
-                    'bookChapter:bookChapter-update', kwargs={'id': self.kwargs.get("id")})
-        return super(BookChapterUpdateView, self).dispatch(request, *args, **kwargs)
+                    'bookChapter:bookChapter-update',
+                    kwargs={'id': self.kwargs.get("id")})
+        return super(BookChapterUpdateView,
+                     self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -80,6 +90,8 @@ class BookChapterUpdateView(UpdateView):
     def get_object(self):
         id_ = self.kwargs.get("id")
         return get_object_or_404(BookChapter, id=id_)
+
+
 ############################################################
 
 

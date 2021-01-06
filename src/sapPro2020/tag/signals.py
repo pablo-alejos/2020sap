@@ -1,9 +1,8 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from account.models import Program, Academy
+from userSap.models import Program, Academy
 from article.models import Journal
 from tag.models import Tag
-
 """
 @receiver(post_save, sender=Program)
 def create_model_program(sender, instance, created, **kwargs):
