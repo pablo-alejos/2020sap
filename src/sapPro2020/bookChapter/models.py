@@ -26,7 +26,7 @@ class BookChapter(models.Model):
     bookIsbn = models.CharField(max_length=100, verbose_name="ISBN del libro")
     publicationYear = models.CharField(max_length=4, verbose_name="Año de publicacion",default="")
     publicationMonth = models.CharField(max_length=12,verbose_name="Mes de publicación",blank=True,default="")
-    file = models.FileField(upload_to='archiving/', verbose_name="Capitulo de libro (PDF)")
+    file = models.FileField(upload_to='archiving/', verbose_name="Capitulo de libro (PDF)",unique=True)
     image = models.ImageField(blank=True,default='cover_images/default_cover.jpg', upload_to='cover_images',verbose_name="Cubierta o portada")
     status = (
         ( None, 'Selecciona estado'),

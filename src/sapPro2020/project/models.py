@@ -22,11 +22,13 @@ class Project(models.Model):
     typeP = models.CharField(max_length=25,
                              choices=selectP,
                              verbose_name=" Tipo de proyecto")
-    title = models.CharField(max_length=100, verbose_name="Título de proyecto")
+    title = models.CharField(max_length=100, verbose_name="Título de proyecto",unique=True)
     announcement = models.CharField(blank=True,
                                     max_length=100,
                                     verbose_name=" Convocatoria (Si aplica)")
     amount = models.CharField(blank=True,
+                              null=True,
+                              default=0,
                               max_length=50,
                               verbose_name="Presupuesto (Si aplica)")
     participants = models.ManyToManyField(UserSap,
@@ -52,7 +54,6 @@ class Project(models.Model):
 
     def get_absolute_url(self):
         return reverse("project:project-detail", kwargs={"id": self.id})
-
 
     class Meta:
         verbose_name = 'Proyecto'

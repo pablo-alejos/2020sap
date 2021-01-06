@@ -62,7 +62,7 @@ class Article(models.Model):
         ('Liberado','Liberado'), 
         )
     status =models.CharField(max_length=25,choices=status,verbose_name = "Estado",default="Sometido")
-    file = models.FileField(upload_to='archiving/',verbose_name="Articulo (PDF)")
+    file = models.FileField(upload_to='archiving/',verbose_name="Articulo (PDF)",unique=True)
     image = models.ImageField(blank=True,default='cover_images/default_cover.jpg', upload_to='cover_images',verbose_name="Cubierta o portada")
     #SystemFields
     timeStamp = models.DateTimeField(auto_now_add=True, verbose_name="Time Stamp")

@@ -8,6 +8,7 @@ from account.models import Account, Program, Academy
 from event.models import Event
 from tag.models import Tag
 from author.models import Author
+from book.models import Book
 
 
 class BookModelForm(forms.ModelForm):
@@ -39,7 +40,6 @@ class BookModelForm(forms.ModelForm):
                                 }))
     editorial = forms.CharField(
         label="Editorial",
-        required=False,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Inserte la editorial aqui",
@@ -178,6 +178,16 @@ class BookModelForm(forms.ModelForm):
                     "Usted no es participante en este proyecto.")
         return project
 
+    def clean_file(self):
+        file = self.cleaned_data.get("file")
+        if not (file.name.endswith(".pdf")):
+            raise forms.ValidationError(
+                    "Favor de ingresar un archivo en formato pdf")
+        if file in Book.objects.values_list('file', flat=True):
+            raise forms.ValidationError(
+                    "Ya existe un archivo con este nombre.")
+        return file
+        
     def clean(self):
         cleaned_data = super().clean()
         editorial = cleaned_data.get("editorial")

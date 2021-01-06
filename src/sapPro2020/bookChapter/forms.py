@@ -49,7 +49,6 @@ class BookChapterModelForm(forms.ModelForm):
             }))
     bookEditorial = forms.CharField(
         label="Editorial del libro",
-        required=False,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Inserte la editorial aqui",

@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse, reverse_lazy
-from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView)
+from django.views.generic import (CreateView, DetailView, ListView, UpdateView, DeleteView,TemplateView)
 
 from .forms import ProjectModelForm
 from .models import Project
@@ -53,14 +53,10 @@ class ProjectDeleteView(DeleteView):
     def get_success_url(self): 
         return reverse('Project:project-index')
 
-class ProjectJoinView(UpdateView): 
-    template_name = 'project/project_update.html'
+class ProjectJoinView(TemplateView): 
+    template_name = 'project/project_join.html'
     form_class = ProjectModelForm
     queryset = Project.objects.all()
 
     def form_valid(self, form):
         return super().form_valid(form)    
-
-    def get_object(self):
-        id_ = self.kwargs.get("id")
-        return get_object_or_404(Project, id=id_)
