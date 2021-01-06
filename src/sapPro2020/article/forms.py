@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from .models import Article, Journal
 from project.models import Project
 from userSap.models import UserSap
-from account.models import Account, Program, Academy
+from userSap.models import Account, Program, Academy
 from author.models import Author
 from tag.models import Tag
 from event.models import Event
@@ -177,7 +177,7 @@ class ArticleModelForm(forms.ModelForm):
         file = self.cleaned_data.get("file")
         if not (file.name.endswith(".pdf")):
             raise forms.ValidationError(
-                    "Favor de ingresar un archivo en formato pdf")
+                "Favor de ingresar un archivo en formato pdf")
         return file
 
     def clean_project(self):
@@ -194,8 +194,9 @@ class ArticleModelForm(forms.ModelForm):
         model = Article
         fields = [
             'user', 'project', 'journal', 'authors', 'title', 'indexed',
-            'indexInfo', 'arbitration', 'publicationYear', 'pages', 'file', 'image',
-            'programTribute', 'academyTribute', 'eventPublication', 'tags'
+            'indexInfo', 'arbitration', 'publicationYear', 'pages', 'file',
+            'image', 'programTribute', 'academyTribute', 'eventPublication',
+            'tags'
         ]
 
 

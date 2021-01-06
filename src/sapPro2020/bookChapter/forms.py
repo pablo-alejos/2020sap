@@ -4,7 +4,7 @@ from django.forms import ModelForm
 from .models import BookChapter
 from project.models import Project
 from userSap.models import UserSap
-from account.models import Account, Program, Academy
+from userSap.models import Account, Program, Academy
 from author.models import Author
 from event.models import Event
 from tag.models import Tag
@@ -148,9 +148,10 @@ class BookChapterModelForm(forms.ModelForm):
     class Meta:
         model = BookChapter
         fields = [
-            'user','project', 'authors', 'title', 'bookTitle', 'bookEditorial',
-            'bookIsbn', 'publicationYear', 'tags', 'programTribute',
-            'academyTribute', 'eventPublication', 'image', 'file'
+            'user', 'project', 'authors', 'title', 'bookTitle',
+            'bookEditorial', 'bookIsbn', 'publicationYear', 'tags',
+            'programTribute', 'academyTribute', 'eventPublication', 'image',
+            'file'
         ]
 
     def __init__(self, *args, **kwargs):
@@ -191,9 +192,8 @@ class BookChapterModelForm(forms.ModelForm):
         file = self.cleaned_data.get("file")
         if not (file.name.endswith(".pdf")):
             raise forms.ValidationError(
-                    "Favor de ingresar un archivo en formato pdf")
+                "Favor de ingresar un archivo en formato pdf")
         return file
-
 
     def clean(self):
         cleaned_data = super().clean()
@@ -204,4 +204,3 @@ class BookChapterModelForm(forms.ModelForm):
             msg = "Solo puede tener una fuente la publicación de este producto."
             self.add_error('editorial', msg)
             self.add_error('event', msg)
-

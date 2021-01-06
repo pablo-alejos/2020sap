@@ -5,7 +5,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 from article import views
-from account import views
 from book import views
 from bookChapter import views
 from userSap import views
@@ -25,7 +24,6 @@ urlpatterns = [
     path('tags/', tagsAjaxView,name="tags"),    
     path('publicaciones/', include('publication.urls')),
     path('usuario/', include('userSap.urls')),
-    path('cuenta/', include('account.urls')),
     path('articulo/', include('article.urls')),
     path('libro/', include('book.urls')),
     path('capitulo/', include('bookChapter.urls')),
@@ -33,5 +31,6 @@ urlpatterns = [
     path('proyecto/', include('project.urls')),
     path('evento/', include('event.urls')),
     path('autores/', include('author.urls')),
-    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico')))
+    path('favicon.ico', RedirectView.as_view(url=staticfiles_storage.url('img/favicon.ico'))),
+    path('accounts/', include('allauth.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
